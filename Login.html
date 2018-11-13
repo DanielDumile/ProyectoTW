@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title> Prueba </title>
+		<script src='Validaciones.js'></script>
+	</head>
+	<body>
+		<form method="post" action="Servlet1">
+		<p id="hola"> </p>
+		Usuario:
+		<input type="text" name="usuario" onkeypress="return soloNumeros(event)"><br>
+		Contrasena:
+		<input type="text" name="pass" onpaste="return false;" onkeypress="return validacaracter(event)" required><br>
+		<input type="submit" name="boton" value="Crear" onclick="return cambiar(event)" required>  
+		</form>
+	</body>
+</html>

@@ -1,6 +1,7 @@
 function cambiar(e){
 	document.getElementById("hola").innerHTML = "Hola Mundo!";
-	return false;
+	document.getElementById('hola').style="color:blue"
+	return true;
 }
 
 function validacaracter(e) {

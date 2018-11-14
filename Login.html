@@ -2,15 +2,24 @@
 	<head>
 		<title> Prueba </title>
 		<script src='Validaciones.js'></script>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
 	</head>
 	<body>
 		<form method="post" action="Servlet1">
-		<p id="hola"> </p>
-		Usuario:
-		<input type="text" name="usuario" onkeypress="return soloNumeros(event)"><br>
-		Contrasena:
-		<input type="text" name="pass" onpaste="return false;" onkeypress="return validacaracter(event)" required><br>
-		<input type="submit" name="boton" value="Crear" onclick="return cambiar(event)" required>  
+			<p id="hola"> </p>
+			<center>
+				<div class="div1">
+					<br><br>
+
+					<b>Usuario:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" name="usuario" onkeypress="return soloNumeros(event)">
+					<br><br><br>
+					
+					<b>Contrasena:</b>
+					<input type="text" name="pass" onpaste="return false;" onkeypress="return validacaracter(event)" required><br>
+					<input type="submit" name="boton" value="Crear" onclick="return cambiar(event)" required>
+				</div>
+			</center>
 		</form>
 	</body>
 </html>

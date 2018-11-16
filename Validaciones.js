@@ -13,7 +13,7 @@ var app = new Vue({
 function cambiar(e){
 	document.getElementById("hola").innerHTML = "Hola Mundo!";
 	document.getElementById('hola').style="color:blue"
-	return true;
+	return false;
 }
 
 function validacaracter(e) {

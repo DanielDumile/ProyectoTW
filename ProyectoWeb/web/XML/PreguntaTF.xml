@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <pregunta id="1">
+      <texto> El logo de ESCOM es azul </texto>
+      <respuesta> Verdadero </respuesta>
+  </pregunta>
+</root>

@@ -1,11 +1,11 @@
 /*----------------------------------------------------*/
 //Login
 new Vue({
-  el: "#men",
+  el: "#Login",
 
   data:{
-      login: "",
-      senha: "",
+      user: "",
+      pass: "",
       log: ""
   },
   
@@ -13,9 +13,9 @@ new Vue({
       
       sub: function(event){
           
-          if(this.login == "" || this.senha == ""){
+          if(this.user == "" || this.pass == ""){
             
-            this.log = "Preencha o campo para login.";
+            this.log = "Completa los campos requeridos";
             event.preventDefault();
           }else{
             this.log = "Go";

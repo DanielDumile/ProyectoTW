@@ -39,10 +39,14 @@
             
            {{log}}
            
-            <form v-on:submit="sub" action="#" method="post">
-
-                <input v-model="login" placeholder="Login">
-                <input v-model="senha" placeholder="Senha">
+            <form v-on:submit="sub" action="xD" method="post">
+                
+                <u><p class="Titulos">Inicio de Sesión</p></u>
+                <p class="Subtitulos">Usuario:</p>
+                <p><input class="Form" v-model="user"></p>
+                <p class="Subtitulos">Contraseña:</p>
+                <p><input class="Form" v-model="pass" type="password"></p>
+                
                 <button type="submit">Entrar</button>   
             </form>
             

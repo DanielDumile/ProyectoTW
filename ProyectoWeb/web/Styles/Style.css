@@ -17,7 +17,7 @@ li a {
     display: block;
     color: white;
     font-size: 20px;
-    font-weight: bold;
+    
     font-family: "Nirmala UI Semilight";
     text-align: center;
     padding: 17px 26px;
@@ -112,6 +112,14 @@ body{
     
 }
 
+.Form2{
+    
+    width: 170px;
+    height: 20px;
+    font-size: 20px;
+    
+}
+
 .button1 {
     
     background-color: #555555; 
@@ -163,5 +171,15 @@ body{
 /*---------------------------------------*/
 /*Estilos para la barra de navegación Administrador*/
 
+.Ad{
+    
+    float: none;
+    position: relative;
+    
+    
+    height: 110px;
+    width: 150px;
+    
+}
 
 

@@ -58,3 +58,9 @@ function Cerrar(){
     
 }
 
+function TrueorFalse(){
+    
+   location.href ="/ProyectoWeb/Vistas/TrueFalse.html"; 
+    
+}
+

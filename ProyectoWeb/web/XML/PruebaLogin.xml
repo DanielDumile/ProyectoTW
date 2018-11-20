@@ -1,0 +1,21 @@
+<!DOCTYPE usuarios
+[
+<!ELEMENT usuarios (user)*>
+<!ELEMENT user (nombre,password)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+]>
+<usuarios>
+    <user>
+        <id>1</id>
+        <nombre>Alex</nombre>
+        <password>1234</password>
+        <tipo>Administrador</tipo>
+    </user>
+    <user>
+        <id>2</id>
+        <nombre>Castle</nombre>
+        <password>2334</password>
+        <tipo>Alumno</tipo>
+    </user>
+</usuarios>

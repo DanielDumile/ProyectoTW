@@ -15,10 +15,11 @@ new Vue({
           
           if(this.user == "" || this.pass == ""){
             
-            this.log = "Completa los campos requeridos";
+            alert('Completa los campos');
             event.preventDefault();
+            
           }else{
-            this.log = "Go";
+            alert('Bienvenido');
           }   
       }
   }

@@ -32,7 +32,7 @@ class LoginBean
      * @param contrasena
      * return String with user type
      */
-    public String validarUsuario (String usuario, String contrasena, String ruta)
+    public String validarUsuario (String usuario, String contrasena, String ruta) throws IOException
     {
         //HttpSession sesion=request.getSession();
         SAXBuilder builder = new SAXBuilder();

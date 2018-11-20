@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>Sistema Evaluador</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="Styles/Style.css" type="text/css">
+        <script src="Frameworks/vue.js"></script>
+        
+    </head>
+    
+    <body>
+        
+        <!--Div Introducción-->
+        <div class="Inicio">
+            
+            <img class="IPN" alt="Logo ESCOM" src="Imagenes/IPN.png" />
+            <img class="ESCOM" alt="Logo IPN" src="Imagenes/ESCOM.png" />
+            <p class="Principal">Sistema Evaluador Interactivo</p>
+            <p>Proyecto generador y evaluador de preguntas para la asignatura Tecnologías para la Web</p>
+            
+        </div>
+        
+        <br />
+        <hr>
+         <!--Div Barra de Navegación-->
+        <div id="Barra"> 
+            <ul>
+                <li><a class="Activo" href="index.html">Inicio</a></li>
+                <li><a>Información de la plataforma</a>
+                <li onclick="Desarrolladores()"><a>Desarrolladores</a></li>
+            </ul>
+        </div>
+        
+        <br />
+        <br />
+        
+         <!--Div Login (Formulario con Vue.js)-->
+        <div id="Login">
+            
+            <form v-on:submit="sub" action="xD" method="post">
+                
+                <u><p class="Titulos">Inicio de Sesión</p></u>
+                
+                <p class="Subtitulos">Usuario:</p>
+                <p><input class="Form" v-model="user" name="user" required></p>
+                
+                <p class="Subtitulos">Contraseña:</p>
+                <p><input class="Form" v-model="pass" name="pass" type="password" required></p>
+                
+                <br />
+                <br />
+                
+                <button class="button1" type="submit">Iniciar Sesión</button>   
+                
+            </form>
+            
+        </div>
+         
+       <script src="Scripts/index.js"></script>
+       
+    </body>
+</html>

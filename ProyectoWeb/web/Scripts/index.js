@@ -1,11 +1,17 @@
 new Vue({
-  el: '#example-2',
+  el: '#example-1',
+
   data: {
     show: false
-  }
+  },
+  
 });
 
-vm.pick === vm.a
+
+
+
+
+
 /*----------------------------------------------------*/
 //Login
 new Vue({
@@ -43,6 +49,12 @@ function Desarrolladores(){
             Daniel Adrian Gonzalez Nuñez\n\
             \n\
             Grupo 2CM7');
+    
+}
+
+function Cerrar(){
+    
+   location.href ="/ProyectoWeb/index.html"; 
     
 }
 

@@ -13,7 +13,7 @@
         
     </head>
     <body>
-        <button class="button2" type="button" onclick="">Cerrar Sesión</button>
+        <button class="button2" type="button" onclick="Cerrar()">Cerrar Sesión</button>
         <p class="Principal">Bienvenido Administrador</p>
         
         <div class="Admin">
@@ -26,11 +26,45 @@
         <hr />
         
         <div class="btn-group">
-
-                <button @click="show = !show" class="button">Agregar Pregunta</button>
+            
+            <div id="example-1">
+                
+                <button v-on:click="show = !show" class="button">Agregar Pregunta</button>
                 <button class="button">Modificar Pregunta</button>
                 <button class="button">Eliminar Pregunta</button>
                 <button class="button">Ver Pregunta</button>
+                
+                <br />
+                <br />
+                
+                <center>
+
+                <transition name="slide-fade">
+
+                    <p v-if="show">
+
+                        <br />
+                        <br />
+                        <br />
+                        <label class="Titulo">Escoge el tipo de pregunta</label>         
+                        <br />
+                        <br />
+                        <button class="button1">True or False</button>
+                        <br />
+                        <br />
+                        <button class="button1">Hot Object</button>
+                        <br />
+                        <br />
+  
+                    </p>
+                    
+                   
+ 
+                </transition>
+                    
+                </center>
+                
+            </div>             
         </div>
      
         <script src="../Scripts/index.js"></script>

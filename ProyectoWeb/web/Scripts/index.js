@@ -1,3 +1,11 @@
+new Vue({
+  el: '#example-2',
+  data: {
+    show: false
+  }
+});
+
+vm.pick === vm.a
 /*----------------------------------------------------*/
 //Login
 new Vue({
@@ -6,7 +14,6 @@ new Vue({
   data:{
       user: "",
       pass: "",
-      log: ""
   },
   
   methods: {
@@ -38,3 +45,4 @@ function Desarrolladores(){
             Grupo 2CM7');
     
 }
+

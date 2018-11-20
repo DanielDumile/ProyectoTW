@@ -8,37 +8,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" href="../Styles/Style.css" type="text/css" />
-        <script src="Frameworks/vue.js"></script>
+        <link rel="stylesheet" href="../Styles/StyleAdministrador.css" type="text/css" />
+        <script src="../Frameworks/vue.js"></script>
         
     </head>
     <body>
-         <button class="button2" type="button">Cerrar Sesión</button>
+        <button class="button2" type="button" onclick="">Cerrar Sesión</button>
         <p class="Principal">Bienvenido Administrador</p>
         
         <div class="Admin">
-        
-            
+       
             <p>Interfaz para la administración de la plataforma</p>
            
         </div>
-        <hr>
-        <br />
         
-      
+        <br />
+        <hr />
         
         <div class="btn-group">
-            
-            <button class="button">Button</button>
-            <button class="button">Button</button>
-            <button class="button">Button</button>
-            <button class="button">Button</button>
-            <p>Escoga cualquiera de las siguientes opciones</p>
-            
-        
+
+                <button @click="show = !show" class="button">Agregar Pregunta</button>
+                <button class="button">Modificar Pregunta</button>
+                <button class="button">Eliminar Pregunta</button>
+                <button class="button">Ver Pregunta</button>
         </div>
-       
-        
-        
+     
+        <script src="../Scripts/index.js"></script>
     </body>
 </html>

@@ -1,12 +1,90 @@
-.div1 {
-	background-color: lightblue;
-	text-align: center;
-	height: 200px;
-	width: 500px;
+/*Estilos para la barra de navegación*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #767a7d;
 }
-body {
-	background-color: papayawhip;
+
+li {
+    float: left;
+    border-right: 2px solid #bbb;
 }
-p {
-	color:blue;
+
+li a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Nirmala UI Semilight";
+    text-align: center;
+    padding: 34px 26px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #0f95d6;
+} 
+
+.Activo {
+    background-color: #0f95d6;
+}
+/*---------------------------------------*/
+
+/*Estilos generales*/
+
+p{
+    font-family: "Nirmala UI Semilight";
+    
+}
+
+body{
+    
+    background-color: #e5e5e5;
+}
+/*---------------------------------------*/
+
+/*Estilos de imagenes*/
+
+.ESCOM{
+    
+    width: 120px;
+    height: 100px;
+    float: left;
+}
+
+.IPN{
+    
+    width: 120px;
+    height: 120px;
+    float: right;   
+}
+
+/*---------------------------------------*/
+
+/*Estilos de Div*/
+#Login{
+    
+    text-align: center;   
+}
+
+.Inicio{
+    
+    text-align: center;
+}
+
+
+.Titulos{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 40px;
+    
+}
+
+.Principal{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 30px;
+    
 }

@@ -133,4 +133,62 @@ body{
     color: black;
     
 }
+
+.button2 {
+    
+    background-color: #555555; 
+    border: 2px solid #555555;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    float: right;
+    
+
+} 
+
+.button2:hover{
+    
+    background-color: white;
+    color: black;
+    
+}
 /*---------------------------------------*/
+
+/*---------------------------------------*/
+/*Estilos para la barra de navegación Administrador*/
+
+.btn-group .button {
+    background-color: #4CAF50; /* Green */
+    border: 1px solid green;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 300px;
+    display: block;
+    
+}
+
+.btn-group .button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+    background-color: #3e8e41;
+}
+
+.Admin{
+    
+    position: relative;
+    left: 30px;
+   
+    
+}

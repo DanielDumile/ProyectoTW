@@ -1,0 +1,147 @@
+/*---------------------------------------*/
+/*Estilos para la barra de navegación*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4CAF50;
+}
+
+li {
+    float: left;
+    border-right: 2px solid #bbb;
+}
+
+li a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Nirmala UI Semilight";
+    text-align: center;
+    padding: 25px 26px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: black;
+} 
+
+.Activo {
+    background-color: black;
+    color: white
+}
+/*---------------------------------------*/
+
+/*---------------------------------------*/
+/*Estilos generales*/
+
+p{
+    font-family: "Nirmala UI Semilight";
+    
+}
+
+body{
+    
+    background-color: #e5e5e5;
+}
+
+.button2 {
+    
+    background-color: #555555; 
+    border: 2px solid #555555;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    float: right;
+    
+
+} 
+
+.button2:hover{
+    
+    background-color: white;
+    color: black;
+    
+}
+
+.Principal{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 30px;
+    
+}
+
+
+.Admin{
+    
+    position: relative;
+    left: 30px;   
+}
+
+.btn-group .button {
+    background-color: #4CAF50; /* Green */
+    border: 1px solid green;
+    color: white;
+    padding: 15px 150px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    float: left;
+    font-family:  "Nirmala UI Semilight";
+}
+
+.btn-group .button:hover {
+    background-color: #3e8e41;
+}
+
+.Titulo{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 30px;
+    
+}
+
+.button1 {
+    
+    background-color: #555555; 
+    border: 2px solid #555555;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    
+
+} 
+
+.button1:hover{
+    
+    background-color: white;
+    color: black;
+    
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+

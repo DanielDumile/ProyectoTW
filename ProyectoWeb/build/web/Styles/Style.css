@@ -1,0 +1,185 @@
+/*---------------------------------------*/
+/*Estilos para la barra de navegación*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #767a7d;
+}
+
+li {
+    float: left;
+    border-right: 2px solid #bbb;
+}
+
+li a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    
+    font-family: "Nirmala UI Semilight";
+    text-align: center;
+    padding: 17px 26px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #0f95d6;
+} 
+
+.Activo {
+    background-color: #0f95d6;
+}
+/*---------------------------------------*/
+
+
+/*---------------------------------------*/
+/*Estilos generales*/
+
+p{
+    font-family: "Nirmala UI Semilight";
+    
+}
+
+body{
+    
+    background-color: #e5e5e5;
+}
+
+/*---------------------------------------*/
+
+
+/*---------------------------------------*/
+/*Estilos de imagenes*/
+
+.ESCOM{
+    
+    width: 120px;
+    height: 100px;
+    float: right;
+}
+
+.IPN{
+    
+    width: 120px;
+    height: 120px;
+    float: left;   
+}
+
+/*---------------------------------------*/
+
+
+/*---------------------------------------*/
+/*Estilos de Pagina Principal*/
+#Login{
+    
+    text-align: center;   
+}
+
+.Inicio{
+    
+    text-align: center;
+}
+
+.Titulos{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 40px;
+    
+    
+}
+
+.Subtitulos{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 20px;
+    
+}
+
+.Principal{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 30px;
+    
+}
+
+.Form{
+    
+    width: 290px;
+    height: 20px;
+    font-size: 20px;
+    
+}
+
+.Form2{
+    
+    width: 170px;
+    height: 20px;
+    font-size: 20px;
+    
+}
+
+.button1 {
+    
+    background-color: #555555; 
+    border: 2px solid #555555;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    
+
+} 
+
+.button1:hover{
+    
+    background-color: white;
+    color: black;
+    
+}
+
+.button2 {
+    
+    background-color: #555555; 
+    border: 2px solid #555555;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    float: right;
+    
+
+} 
+
+.button2:hover{
+    
+    background-color: white;
+    color: black;
+    
+}
+/*---------------------------------------*/
+
+/*---------------------------------------*/
+/*Estilos para la barra de navegación Administrador*/
+
+.Ad{
+    
+    float: none;
+    position: relative;
+    
+    
+    height: 110px;
+    width: 150px;
+    
+}
+
+

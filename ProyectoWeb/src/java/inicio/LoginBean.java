@@ -1,3 +1,5 @@
+package inicio;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,8 +28,8 @@ class LoginBean
     /**
      * determine if the username/password combination are
      * present in the validUsers repository.
-     * param usuario
-     * param contrasena
+     * @param usuario
+     * @param contrasena
      * return String with user type
      */
     public String validarUsuario (String usuario, String contrasena, String ruta)
@@ -45,9 +47,8 @@ class LoginBean
             {
                //Se obtiene el elemento 'user1'
                 Element campo = (Element) list.get(i);
-                //Se obtiene la lista de hijos del tag 'tabla'
-                nombre = campo.getChildTextTrim("nombre");
-                //Se obtiene el valor que esta entre los tags '&lt;valor&gt;&lt;/valor&gt;'
+                //Se obtiene el valor que esta entre los tags
+                nombre = campo.getChildTextTrim("nombre");  
                 pass = campo.getChildTextTrim("password");
                 if(pass.equals(contrasena)){
                     //Si la contrasena fue correcta, retorna el tipo de usuario.

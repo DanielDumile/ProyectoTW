@@ -21,9 +21,7 @@
                 <p class="Titulos">Preguntas tipo: True or False</p>
                 
                 <hr />
-
-                
-                        
+       
                 <p class="Subtitulos">ID de Pregunta:   
                 <input class="Form2
                        " v-model="ID" name="ID" required></p>
@@ -33,8 +31,8 @@
                 
                 <p class="Subtitulos">Distractores:</p>
                 <p>Seleccione en cual respuesta sera la correcta</p>
-                <p><input class="Form" v-model="Opc1" required name="Opc1" placeholder="Opción 1"> <input type="radio" name="Correcta" value="CorrectaOp1" checked></p>
-                <p><input class="Form" v-model="Opc2" required name="Opc2" placeholder="Opción 2"> <input type="radio" name="Correcta" value="CorrectaOp2"></p>
+                <p><input class="Form" v-model="T" required name="T" placeholder="Opción 1" disabled value="True"> <input type="radio" name="Correcta" value="CorrectaT" checked></p>
+                <p><input class="Form" v-model="F" required name="F" placeholder="Opción 2" disabled value="False"> <input type="radio" name="Correcta" value="CorrectaF"></p>
                 
                 <br />
                 

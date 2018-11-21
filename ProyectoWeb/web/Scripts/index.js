@@ -16,12 +16,6 @@ var vm = new Vue({
   }
 })
 
-
-
-
-
-
-
 /*----------------------------------------------------*/
 //Login
 new Vue({
@@ -41,9 +35,7 @@ new Vue({
             alert('Completa los campos');
             event.preventDefault();
             
-          }else{
-            alert('Bienvenido');
-          }   
+          } 
       }
   }
   
@@ -71,6 +63,7 @@ function Cerrar(){
 function TrueorFalse(){
     
    location.href ="/ProyectoWeb/Vistas/TrueFalse.html"; 
+   
     
 }
 

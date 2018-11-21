@@ -16,6 +16,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
 public class Login extends HttpServlet {
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
@@ -23,7 +24,8 @@ public class Login extends HttpServlet {
         
         ServletContext context = request.getServletContext();
         response.setContentType("text/html;charset=UTF-8");
-
+        PrintWriter out = response.getWriter();
+        
         String ruta=context.getRealPath("/")+"XML/PruebaLogin.xml";
         String usuario = request.getParameter("user");
         String contrasena= request.getParameter("pass");        
@@ -36,7 +38,20 @@ public class Login extends HttpServlet {
         LoginBean lb = new LoginBean();
         // Checamos si hay un usuario con dicho usuario y contrasena
         String tipoUsuario = lb.validarUsuario(usuario,contrasena,ruta);
-        response.sendRedirect("Menu"+tipoUsuario);
+        
+        if(tipoUsuario.equals("Administrador")){
+        
+            response.sendRedirect("/Vistas/Administrador.html");
+        
+        }else if (tipoUsuario.equals("Estudiante")){
+        
+            out.print("<script>alert('Bienvenido Estudiante')</script>");
+            
+        }else{
+        
+            out.print("<script>alert('Datos Incorrectos');</script>");
+            response.sendRedirect("index.html");
+  
         /*
         if(tipoUsuario != "ERROR"){
             if(tipoUsuario.equals("Administrador")) response.sendRedirect("welcome");
@@ -46,5 +61,7 @@ public class Login extends HttpServlet {
         else{
         	response.sendRedirect("Error");
         }*/
+        
+        }
     }
 }

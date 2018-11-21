@@ -32,15 +32,17 @@
                 <p><textarea cols="40" rows="5" v-model="pregunta" required name="pregunta" placeholder="Esribe una pregunta de cualquier tema"></textarea></p>
                 
                 <p class="Subtitulos">Distractores:</p>
-                <p><input class="Form" v-model="Opc1" required name="Opc1" placeholder="A. True"> <input type="radio" id="one" value="Correcta" v-model="picked"></p>
-                <p><input class="Form" v-model="Opc2" required name="Opc2" placeholder="B. False"> <input type="radio" id="two" value="Correcta" v-model="picked"></p>
+                <p>Seleccione en cual respuesta sera la correcta</p>
+                <p><input class="Form" v-model="Opc1" required name="Opc1" placeholder="Opción 1"> <input type="radio" name="Correcta" value="CorrectaOp1" checked></p>
+                <p><input class="Form" v-model="Opc2" required name="Opc2" placeholder="Opción 2"> <input type="radio" name="Correcta" value="CorrectaOp2"></p>
+                
                 <br />
                 
                 <button class="button1" type="submit">Subir pregunta</button>   
                 
             </form>
                 <br />
-                <button class="button3">Regresar</button>   
+                <button class="button3" onclick="Regresar()">Regresar</button>   
                 
             
         </div>

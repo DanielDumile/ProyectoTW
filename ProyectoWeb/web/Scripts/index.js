@@ -65,12 +65,18 @@ function Desarrolladores(){
 function Cerrar(){
     
    location.href ="/ProyectoWeb/index.html"; 
-    
+
 }
 
 function TrueorFalse(){
     
    location.href ="/ProyectoWeb/Vistas/TrueFalse.html"; 
     
+}
+
+function Regresar(){
+    
+   location.href ="/ProyectoWeb/Vistas/Administrador.html"; 
+
 }
 

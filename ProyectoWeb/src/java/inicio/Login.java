@@ -49,16 +49,6 @@ public class Login extends HttpServlet {
         
             out.print("<script>alert('Datos Incorrectos');</script>");
             response.sendRedirect("index.html");
-                        
-        /*
-        if(tipoUsuario != "ERROR"){
-            if(tipoUsuario.equals("Administrador")) response.sendRedirect("welcome");
-            else if(tipoUsuario.equals("Profesor")) response.sendRedirect("Profesor");
-            else if(tipoUsuario.equals("Alumno")) response.sendRedirect("Alumno");    
-        }
-        else{
-        	response.sendRedirect("Error");
-        }*/
         
         }
     }

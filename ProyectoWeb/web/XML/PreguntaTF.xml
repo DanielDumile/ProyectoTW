@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root
+[
+<!ELEMENT root (pregunta)*>
+<!ELEMENT pregunta (texto,respuesta)>
+<!ELEMENT texto (#PCDATA)>
+<!ELEMENT respuesta (#PCDATA)>
+<!ATTLIST pregunta id CDATA #REQUIRED>
+]>
 <root>
   <pregunta id="1">
       <texto> El logo de ESCOM es azul </texto>

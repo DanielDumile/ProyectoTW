@@ -24,9 +24,9 @@ public class Login extends HttpServlet {
         ServletContext context = request.getServletContext();
         response.setContentType("text/html;charset=UTF-8");
 
-        String ruta=context.getRealPath("/")+"PruebaLogin.xml";
-        String usuario = request.getParameter("usuario");
-        String contrasena= request.getParameter("contrasena");        
+        String ruta=context.getRealPath("/")+"XML/PruebaLogin.xml";
+        String usuario = request.getParameter("user");
+        String contrasena= request.getParameter("pass");        
         
         HttpSession sesion=request.getSession();
         sesion.setAttribute("user",usuario);

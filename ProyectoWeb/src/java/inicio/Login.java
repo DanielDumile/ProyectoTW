@@ -44,14 +44,12 @@ public class Login extends HttpServlet {
             response.sendRedirect("/Vistas/Administrador.html");
         
         }else if (tipoUsuario.equals("Estudiante")){
-        
-            out.print("<script>alert('Bienvenido Estudiante')</script>");
-            
+              
         }else{
         
             out.print("<script>alert('Datos Incorrectos');</script>");
             response.sendRedirect("index.html");
-  
+                        
         /*
         if(tipoUsuario != "ERROR"){
             if(tipoUsuario.equals("Administrador")) response.sendRedirect("welcome");

@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
         
         if(tipoUsuario.equals("Administrador")){
         
-            response.sendRedirect("/Vistas/Administrador.html");
+            response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
         
         }else if (tipoUsuario.equals("Estudiante")){
               

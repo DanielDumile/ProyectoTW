@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Hot Object</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="../Styles/Style.css" type="text/css">
+        <script src="../Frameworks/vue.js"></script>
+        <script src="../Scripts/Validaciones.js"></script>
+    </head>
+    <body>
+    <center>
+         <div id="Hot">
+            <img class="Ad1" src="../Imagenes/Object.png" alt="Examen"/>
+            
+            <form v-on:submit="Hot" action="Servlet" method="post">
+                
+                <p class="Titulos">Preguntas tipo: Hot Object</p>
+                
+                <hr />
+       
+                <p class="Subtitulos">ID de Pregunta:   
+                <input class="Form2
+                       " v-model="ID" name="ID" required></p>
+                
+                <p class="Subtitulos">Pregunta: </p>
+                <p><textarea cols="40" rows="5" v-model="pregunta" required name="pregunta" placeholder="Esribe una pregunta de cualquier tema"></textarea></p>
+                
+                <p class="Subtitulos">Distractores:</p>
+                <p>Seleccione en cual respuesta sera la correcta</p>
+                <p><input class="Form" v-model="T" required name="T" placeholder="Opción 1" disabled value="True"> <input type="radio" name="Correcta" value="CorrectaT" checked></p>
+                <p><input class="Form" v-model="F" required name="F" placeholder="Opción 2" disabled value="False"> <input type="radio" name="Correcta" value="CorrectaF"></p>
+                
+                <br />
+                
+                <button class="button1" type="submit">Subir pregunta</button>   
+                
+            </form>
+                <br />
+                <button class="button3" onclick="Regresar()">Regresar</button>   
+                
+            
+        </div>
+    </center>
+    <script src="../Scripts/index.js"></script>
+    </body>
+</html>

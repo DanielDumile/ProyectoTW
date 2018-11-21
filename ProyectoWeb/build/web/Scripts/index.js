@@ -73,3 +73,9 @@ function Regresar(){
 
 }
 
+function HotObject(){
+    
+   location.href ="/ProyectoWeb/Vistas/HotObject.html"; 
+   
+    
+}

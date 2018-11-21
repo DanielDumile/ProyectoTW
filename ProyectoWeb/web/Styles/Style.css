@@ -205,6 +205,18 @@ body{
     
 }
 
+
+.Ad1{
+    
+    float: none;
+    position: relative;
+    
+    
+    height: 150px;
+    width: 150px;
+    
+}
+
 .Subtitulos2{
     
     font-family: "Nirmala UI Semilight";

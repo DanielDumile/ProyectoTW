@@ -12,6 +12,10 @@
         <servlet-name>AltaTF</servlet-name>
         <servlet-class>Administrador.AltaTF</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Modificar</servlet-name>
+        <servlet-class>inicio.Modificar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>AltaTF</servlet-name>
         <url-pattern>/AltaTF</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Modificar</servlet-name>
+        <url-pattern>/Modificar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

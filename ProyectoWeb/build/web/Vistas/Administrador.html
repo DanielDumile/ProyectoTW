@@ -28,12 +28,11 @@
         
         <div class="btn-group">
             
-            <div id="example-1">
+            <div id="Botones">
                 
                 <button v-on:click="show = !show" class="button">Agregar Pregunta</button>
-                <button class="button">Modificar Pregunta</button>
-                <button class="button">Eliminar Pregunta</button>
-                <button class="button">Ver Pregunta</button>
+                <button v-on:click="show2 = !show2" class="button">Agregar Pregunta</button>
+                
                 
                 <br />
                 <br />
@@ -49,10 +48,12 @@
                         <br />
                         
                         
-                        <label class="Titulo">Escoge el tipo de pregunta</label>         
+                        <label class="Titulo">Crear Nueva Pregunta</label>         
                         <br />
                         <br />
-                        
+                         <label class="Texto">Seleccione el tipo de pregunta para crear</label>
+                          <br />
+                          <br />
                         <button class="button1" onclick="TrueorFalse()">True or False</button>
                         <br />
                         <br />
@@ -60,15 +61,40 @@
                         <br />
                         <br />
                         <img class="Ad" src="../Imagenes/Examen.png" alt="Examen"/>
-                        
-  
+                    </p>
+                    
+                    <p v-if="show2">
+
+                        <br />
+                        <br />
+                        <br />
+                        <                       
+                        <label class="Titulo">Modificar Pregunta</label>         
+                        <br />
+                        <br />
+                        <label class="Texto">Seleccione el tipo de pregunta a modificar</label>
+                        <br />
+                        <br />
+                        <button class="button1" onclick="TrueorFalse()">True or False</button>
+                        <br />
+                        <br />
+                        <button class="button1" onclick="HotObject()">Hot Object</button>
+                        <br />
+                        <br />
+                        <img class="Ad" src="../Imagenes/Examen.png" alt="Examen"/>
                     </p>
                    
                 </transition>
                     
                 </center>
                 
-            </div>             
+                
+                
+            </div>
+            
+            
+            
+             
         </div>
      
         <script src="../Scripts/index.js"></script>

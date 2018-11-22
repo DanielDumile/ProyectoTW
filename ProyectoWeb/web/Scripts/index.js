@@ -1,11 +1,14 @@
 new Vue({
-  el: '#example-1',
+  el: '#Botones',
 
   data: {
-    show: false
+    show: false,
+    show2: false
   },
   
 });
+
+
 
 /* eslint-disable no-new */
 var vm = new Vue({

@@ -25,10 +25,7 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.w3c.dom.NodeList;
 
-/**
- *
- * @author Daniel
- */
+
 public class AltaTF extends HttpServlet {
 
     /**

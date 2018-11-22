@@ -16,7 +16,7 @@
          <div id="Hot">
             <img class="Ad1" src="../Imagenes/Object.png" alt="Examen"/>
             
-            <form v-on:submit="Hot" action="Servlet" method="post">
+            <form v-on:submit="Hot" action="AltaHot" method="post">
                 
                 <p class="Titulos">Preguntas tipo: Hot Object</p>
                 
@@ -29,10 +29,16 @@
                 <p class="Subtitulos">Pregunta: </p>
                 <p><textarea cols="40" rows="5" v-model="pregunta" required name="pregunta" placeholder="Esribe una pregunta de cualquier tema"></textarea></p>
                 
-                <p class="Subtitulos">Distractores:</p>
-                <p>Seleccione en cual respuesta sera la correcta</p>
-                <p><input class="Form" v-model="T" required name="T" placeholder="Opción 1" disabled value="True"> <input type="radio" name="Correcta" value="CorrectaT" checked></p>
-                <p><input class="Form" v-model="F" required name="F" placeholder="Opción 2" disabled value="False"> <input type="radio" name="Correcta" value="CorrectaF"></p>
+                <p class="Subtitulos">Hot Object:</p>
+                <p>Seleccione que respuestas seran correctas</p>
+                <p><input class="Form" v-model="H1" required name="H1" placeholder="Opción 1" > <input type="checkbox" name="Correcta" value="Correcta1"></p>
+                <p><input class="Form" v-model="H2" required name="H2" placeholder="Opción 2" > <input type="checkbox" name="Correcta" value="Correcta2"></p>
+                <p><input class="Form" v-model="H3" required name="H3" placeholder="Opción 3" > <input type="checkbox" name="Correcta" value="Correcta3"></p>
+                <p><input class="Form" v-model="H4" required name="H4" placeholder="Opción 4" > <input type="checkbox" name="Correcta" value="Correcta4"></p>
+                <p><input class="Form" v-model="H5" required name="H5" placeholder="Opción 5" > <input type="checkbox" name="Correcta" value="Correcta5"></p>
+                <p><input class="Form" v-model="H6" required name="H6" placeholder="Opción 6" > <input type="checkbox" name="Correcta" value="Correcta6"></p>
+                <p><input class="Form" v-model="H7" required name="H7" placeholder="Opción 7"  > <input type="checkbox" name="Correcta" value="Correcta7"></p>
+                <p><input class="Form" v-model="H8" required name="H8" placeholder="Opción 8" > <input type="checkbox" name="Correcta" value="Correcta8"></p>
                 
                 <br />
                 

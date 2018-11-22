@@ -9,7 +9,7 @@ import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
-class LoginBean
+public class LoginBean
 {
     
     String nombre="";

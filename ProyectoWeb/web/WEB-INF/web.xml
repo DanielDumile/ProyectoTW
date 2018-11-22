@@ -14,7 +14,7 @@
     </servlet>
     <servlet>
         <servlet-name>Modificar</servlet-name>
-        <servlet-class>inicio.Modificar</servlet-class>
+        <servlet-class>Administrador.Modificar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>

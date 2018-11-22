@@ -82,3 +82,10 @@ function HotObject(){
    
     
 }
+
+function Modificar(){
+    
+   location.href ="/ProyectoWeb/Modificar"; 
+   
+    
+}

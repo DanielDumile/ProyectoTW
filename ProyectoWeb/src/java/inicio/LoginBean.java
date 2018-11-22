@@ -50,7 +50,7 @@ class LoginBean
                 //Se obtiene el valor que esta entre los tags
                 nombre = campo.getChildTextTrim("nombre");  
                 pass = campo.getChildTextTrim("password");
-                if(pass.equals(contrasena)){
+                if(pass.equals(contrasena) && nombre.equals(usuario)){
                     //Si la contrasena fue correcta, retorna el tipo de usuario.
                     tipoUsuario= campo.getChildTextTrim("tipo");
                     return tipoUsuario;    

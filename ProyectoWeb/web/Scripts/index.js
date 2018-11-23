@@ -90,3 +90,10 @@ function Modificar(){
    
     
 }
+
+function Eliminar(){
+    
+   location.href = "/ProyectoWeb/Eliminar"; 
+   
+    
+}

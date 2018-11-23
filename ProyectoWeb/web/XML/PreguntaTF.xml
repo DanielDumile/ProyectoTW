@@ -1,14 +1,23 @@
 <!DOCTYPE root
 [
 <!ELEMENT root (pregunta)*>
-<!ELEMENT pregunta (texto,respuesta)>
+<!ELEMENT pregunta (texto,respuesta,opcion*)>
+<!ELEMENT opcion (#PCDATA)>
 <!ELEMENT texto (#PCDATA)>
 <!ELEMENT respuesta (#PCDATA)>
 <!ATTLIST pregunta id CDATA #REQUIRED>
+<!ATTLIST opcion id CDATA #REQUIRED>
 ]>
 <root>
-  <pregunta id="1">
-      <texto> El logo de ESCOM es azul </texto>
-      <respuesta> Verdadero </respuesta>
-  </pregunta>
+	<pregunta id="1">
+		<texto> El logo de ESCOM es azul </texto>
+   		<respuesta> Verdadero </respuesta>
+  	</pregunta>
+  	<pregunta id="55">
+  		<texto>Pregunta 2</texto>
+  		<opcion id="1">cual</opcion>
+  		<opcion id="2">opc2</opcion>
+  		<opcion id="3">opc3</opcion>
+  		<respuesta> opc1,opc3 </respuesta>
+  	</pregunta>
 </root>

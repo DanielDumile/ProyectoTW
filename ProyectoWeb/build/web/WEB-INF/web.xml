@@ -39,8 +39,6 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>Eliminar</servlet-name>
         <servlet-class>Administrador.Eliminar</servlet-class>
     </servlet>

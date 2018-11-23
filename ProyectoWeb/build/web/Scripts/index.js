@@ -4,7 +4,8 @@ new Vue({
   data: {
     show: false,
     show2: false,
-    show3: false
+    show3: false,
+    show4: false
   },
   
 });

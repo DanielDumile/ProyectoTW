@@ -4,7 +4,7 @@ new Vue({
   data: {
     show: false,
     show2: false,
-    img: true
+    show3: false
   },
   
 });

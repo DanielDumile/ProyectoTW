@@ -98,3 +98,10 @@ function Eliminar(){
    
     
 }
+
+function Ver(){
+    
+   location.href = "/ProyectoWeb/Ver"; 
+   
+    
+}

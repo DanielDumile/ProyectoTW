@@ -21,7 +21,7 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-public class Eliminar extends HttpServlet {
+public class Ver extends HttpServlet {
     
     
     /**
@@ -62,7 +62,7 @@ public class Eliminar extends HttpServlet {
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
                 out.println("<form method='post' action='s'>");
-                    out.println("<p class='Titulos'>Preguntas True or Flase</p>");
+                    out.println("<p class='Titulos'>Lista de preguntas</p>");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )
                     {
@@ -77,7 +77,7 @@ public class Eliminar extends HttpServlet {
                         out.println("<input type='text' name='pregunta' value='pregunta"+i+"' hidden>");
                         out.println("<input type='text' name='respuesta' value='respuesta"+i+"' hidden>");
                         
-                        out.print("<button class='button4' type='submit'>Eliminar</button>");
+                        out.print("<button class='button4' type='submit'>Ver Pregunta</button>");
                         out.println("<p class='Subtitulos'><b>Pregunta:</b> "+texto+"<br></p>");
 
                         out.print("<p class='Subtitulos'><b>Respuesta:</b> "+respuesta+"<br></p>");
@@ -90,7 +90,7 @@ public class Eliminar extends HttpServlet {
                 }
                     out.println("</form>");
                     out.println("<br />");
-                    
+                   
                     out.println("<br />");
                     out.println("<br />");
                     out.print("<center><button class='button5' onclick='Regresar()'>Regresar</button></center>");

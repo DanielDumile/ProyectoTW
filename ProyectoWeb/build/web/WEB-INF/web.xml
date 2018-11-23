@@ -4,6 +4,10 @@
         <servlet-name>AltaHot</servlet-name>
         <servlet-class>Administrador.AltaHot</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Ver</servlet-name>
+        <servlet-class>Administrador.Ver</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>Eliminar</servlet-name>
         <url-pattern>/Eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ver</servlet-name>
+        <url-pattern>/Ver</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

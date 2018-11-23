@@ -62,7 +62,7 @@ public class Modificar extends HttpServlet {
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
                 out.println("<form method='post' action='Cambios'>");
-                    out.println("<p class='Titulos'>Preguntas True or Flase</p>");
+                    out.println("<p class='Titulos'>Lista de preguntas</p>");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )
                     {
@@ -73,9 +73,7 @@ public class Modificar extends HttpServlet {
                         String texto = campo.getChildTextTrim("texto");  
                         String respuesta = campo.getChildTextTrim("respuesta");
                         
-                        out.println("");
-                        out.println("<input type='text' name='pregunta' value='pregunta"+i+"' hidden>");
-                        out.println("<input type='text' name='respuesta' value='respuesta"+i+"' hidden>");
+      
                         
                         out.print("<button class='button4' type='submit'>Modificar</button>");
                         out.println("<p class='Subtitulos'><b>Pregunta:</b> "+texto+"<br></p>");
@@ -88,8 +86,7 @@ public class Modificar extends HttpServlet {
                 }
                     out.println("</form>");
                     out.println("<br />");
-                    out.println("<p class='Titulos'>Preguntas Hot Object</p>");
-                    out.println("<hr />");
+                   
                     out.println("<br />");
                     out.println("<br />");
                     out.print("<center><button class='button5' onclick='Regresar()'>Regresar</button></center>");

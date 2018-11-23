@@ -8,14 +8,14 @@
 <usuarios>
     <user>
         <id>1</id>
-        <nombre>Alex</nombre>
+        <nombre>Oscar</nombre>
         <password>1234</password>
         <tipo>Administrador</tipo>
     </user>
     <user>
         <id>2</id>
-        <nombre>Castle</nombre>
-        <password>2334</password>
+        <nombre>Daniel</nombre>
+        <password>1234</password>
         <tipo>Alumno</tipo>
     </user>
 </usuarios>

@@ -205,6 +205,17 @@ body{
     
 }
 
+.Ad2{
+
+    float: none;
+    position: relative;
+    
+    
+    height: 60px;
+    width: 110px;
+
+}
+
 
 .Ad1{
     
@@ -222,6 +233,30 @@ body{
     font-family: "Nirmala UI Semilight";
     font-size: 20px;
     float:next;
+    
+}
+
+.button4 {
+    
+    background-color: #a93226; 
+    border: 2px solid #a93226;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    float: right;
+    
+
+} 
+
+.button4:hover{
+    
+    background-color: white;
+    color: black;
     
 }
 

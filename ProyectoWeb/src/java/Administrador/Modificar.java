@@ -83,9 +83,7 @@ public class Modificar extends HttpServlet {
                         out.print("<p class='Subtitulos'><b>Respuesta:</b> "+respuesta+"<br></p>");
 
                         out.println("<hr />");
-                    
-                    
-                    
+                 
                     
                 }
                     out.println("</form>");

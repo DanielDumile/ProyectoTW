@@ -3,7 +3,8 @@ new Vue({
 
   data: {
     show: false,
-    show2: false
+    show2: false,
+    img: true
   },
   
 });

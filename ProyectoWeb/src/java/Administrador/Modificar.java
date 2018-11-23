@@ -87,6 +87,10 @@ public class Modificar extends HttpServlet {
                     out.println("<br />");
                     out.println("<p class='Titulos'>Preguntas Hot Object</p>");
                     out.println("<hr />");
+                    out.println("<br />");
+                    out.println("<br />");
+                    out.print("<center><button class='button5' onclick='Regresar()'>Regresar</button></center>");
+                    out.println("<script src=\"Scripts/index.js\"></script>");
             }catch ( JDOMException io ) {
                 System.out.println(io.getMessage());
             }

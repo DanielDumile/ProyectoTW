@@ -253,6 +253,29 @@ body{
 
 } 
 
+.button5:hover{
+    
+    background-color: white;
+    color: black;
+    
+}
+
+.button5 {
+    
+    background-color: #189db7; 
+    border: 2px solid #189db7;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    
+
+} 
+
 .button4:hover{
     
     background-color: white;

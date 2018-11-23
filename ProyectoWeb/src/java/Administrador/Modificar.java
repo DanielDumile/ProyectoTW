@@ -72,18 +72,23 @@ public class Modificar extends HttpServlet {
                         //Se obtiene el valor que esta entre los tags
                         String texto = campo.getChildTextTrim("texto");  
                         String respuesta = campo.getChildTextTrim("respuesta");
-
-                        out.print("<button class='button4' onclick=''>Modificar</button>");
+                        
+                        out.println("");
+                        out.println("<input type='text' name='pregunta' value='pregunta"+i+"' hidden>");
+                        out.println("<input type='text' name='respuesta' value='respuesta"+i+"' hidden>");
+                        
+                        out.print("<button class='button4' type='submit'>Modificar</button>");
                         out.println("<p class='Subtitulos'><b>Pregunta:</b> "+texto+"<br></p>");
 
                         out.print("<p class='Subtitulos'><b>Respuesta:</b> "+respuesta+"<br></p>");
 
                         out.println("<hr />");
-                    out.println("</form>");
+                    
                     
                     
                     
                 }
+                    out.println("</form>");
                     out.println("<br />");
                     out.println("<p class='Titulos'>Preguntas Hot Object</p>");
                     out.println("<hr />");

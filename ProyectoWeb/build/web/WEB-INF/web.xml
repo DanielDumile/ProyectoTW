@@ -16,6 +16,10 @@
         <servlet-name>Modificar</servlet-name>
         <servlet-class>Administrador.Modificar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Cambios</servlet-name>
+        <servlet-class>Administrador.Cambios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Modificar</servlet-name>
         <url-pattern>/Modificar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cambios</servlet-name>
+        <url-pattern>/Cambios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,7 +1,7 @@
 <!DOCTYPE root
 [
 <!ELEMENT root (pregunta)*>
-<!ELEMENT pregunta (tipo,texto,respuesta,opcion*)>
+<!ELEMENT pregunta (tipo,texto,opcion*,respuesta)>
 <!ELEMENT opcion (#PCDATA)>
 <!ELEMENT tipo (#PCDATA)>
 <!ELEMENT texto (#PCDATA)>

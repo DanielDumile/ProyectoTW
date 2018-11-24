@@ -51,45 +51,55 @@ public class AltaTF extends HttpServlet {
             String id = request.getParameter("ID");
             String respuestaCorrecta= request.getParameter("Correcta");
             String pregunta = request.getParameter("pregunta");
-            File fichero=new File(ruta);
-            if (fichero.isFile())
-            {
-                try{
-                    SAXBuilder builder=new SAXBuilder();
-                    Document doc=(Document) builder.build(fichero);
-                    
-                    Element raiz=doc.getRootElement();
-                    Element ePregunta=new Element("pregunta");
-                    Element eTexto = new Element("texto");
-                    Element eRespuesta = new Element("respuesta");
-                    ePregunta.setAttribute("id", id);
-                    eTexto.setText(pregunta);
-                    eRespuesta.setText(respuestaCorrecta);
-                    ePregunta.addContent(eTexto);
-                    ePregunta.addContent(eRespuesta);
-                    
-                    raiz.addContent(ePregunta);
-                    XMLOutputter xmlOutput = new XMLOutputter();
-                    xmlOutput.setFormat(Format.getPrettyFormat());
-                    xmlOutput.output(doc, new FileWriter(ruta));
-                    System.out.println("EXITO ");
-                    } catch (JDOMException ex) {
-                    Logger.getLogger(AltaTF.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }else {
-                    System.out.println("error");
+            ValidacionId obj = new ValidacionId();
+            if(!obj.validar(id,ruta)){
+                response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
             }
-            response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
-            // TODO output your page here. You may use following sample code. 
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AltaTF</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AltaTF at " + respuestaCorrecta + " "+id+" "+pregunta+"</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            else{
+                File fichero=new File(ruta);
+                if (fichero.isFile())
+                {
+                    try{
+                        SAXBuilder builder=new SAXBuilder();
+                        Document doc=(Document) builder.build(fichero);
+
+                        Element raiz=doc.getRootElement();
+                        Element ePregunta=new Element("pregunta");
+                        Element eTexto = new Element("texto");
+                        Element eRespuesta = new Element("respuesta");
+                        Element eTipo = new Element("tipo");
+                        ePregunta.setAttribute("id", id);
+                        eTexto.setText(pregunta);
+                        eRespuesta.setText(respuestaCorrecta);
+                        eTipo.setText("TrueFalse");
+                        ePregunta.addContent(eTipo);
+                        ePregunta.addContent(eTexto);
+                        ePregunta.addContent(eRespuesta);
+
+
+                        raiz.addContent(ePregunta);
+                        XMLOutputter xmlOutput = new XMLOutputter();
+                        xmlOutput.setFormat(Format.getPrettyFormat());
+                        xmlOutput.output(doc, new FileWriter(ruta));
+                        System.out.println("EXITO ");
+                        } catch (JDOMException ex) {
+                        Logger.getLogger(AltaTF.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else {
+                        System.out.println("error");
+                }
+                response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
+                // TODO output your page here. You may use following sample code. 
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet AltaTF</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Servlet AltaTF at " + respuestaCorrecta + " "+id+" "+pregunta+"</h1>");
+                out.println("</body>");
+                out.println("</html>");
+            }
         }
     }
 

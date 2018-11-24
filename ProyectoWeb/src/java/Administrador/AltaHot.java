@@ -46,59 +46,80 @@ import org.w3c.dom.NodeList;
             sesion.setAttribute("rutaXML",ruta);
             String id = request.getParameter("ID");
             String[] respuestaCorrecta= request.getParameterValues("Correcta");//request.getParameter("Correcta");
+            String[] opciones = request.getParameterValues("opciones");
             String pregunta = request.getParameter("pregunta");
-            
-            
-            File fichero=new File(ruta);
-            if (fichero.isFile())
-            {
-                try{
-                    SAXBuilder builder=new SAXBuilder();
-                    Document doc=(Document) builder.build(fichero);
-                    
-                    Element raiz=doc.getRootElement();
-                    Element ePregunta=new Element("pregunta");
-                    Element eTexto = new Element("texto");
-                    Element eRespuesta = new Element("respuesta");
-                    ePregunta.setAttribute("id", id);
-                    eTexto.setText(pregunta);
-                    String auxRespuesta="";
-                    for(int i =0; i < respuestaCorrecta.length; i++){
-                        auxRespuesta+=respuestaCorrecta[i];
-                        if(i != respuestaCorrecta.length-1)
-                            auxRespuesta+=',';
+            ValidacionId obj = new ValidacionId();
+            if(!obj.validar(id,ruta)){
+                response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
+            }
+            else{
+                File fichero=new File(ruta);
+                if (fichero.isFile())
+                {
+                    try{
+                        SAXBuilder builder=new SAXBuilder();
+                        Document doc=(Document) builder.build(fichero);
+
+                        Element raiz=doc.getRootElement();
+                        Element ePregunta=new Element("pregunta");
+                        Element eTexto = new Element("texto");
+                        Element eRespuesta = new Element("respuesta");
+                        Element eTipo=new Element("tipo");
+                        ePregunta.setAttribute("id", id);
+                        eTexto.setText(pregunta);
+                        eTipo.setText("HotObject");
+                        String auxRespuesta="";
+                        for(int i =0; i < respuestaCorrecta.length; i++){
+                            auxRespuesta+=respuestaCorrecta[i];
+                            if(i != respuestaCorrecta.length-1)
+                                auxRespuesta+=',';
+                        }
+                        System.out.println(auxRespuesta);
+                        eRespuesta.setText(auxRespuesta);
+
+                        ePregunta.addContent(eTipo);
+                        ePregunta.addContent(eTexto);
+
+                        for(int i =0; i < opciones.length;i++){
+                            Element aux = new Element("opcion");
+                            aux.setAttribute("id",String.valueOf(i+1));
+                            aux.setText(opciones[i]);
+                            ePregunta.addContent(aux);
+                        }
+                        ePregunta.addContent(eRespuesta);
+
+                        raiz.addContent(ePregunta);
+                        XMLOutputter xmlOutput = new XMLOutputter();
+                        xmlOutput.setFormat(Format.getPrettyFormat());
+                        xmlOutput.output(doc, new FileWriter(ruta));
+                        System.out.println("EXITO ");
+                        } catch (JDOMException ex) {
+                        Logger.getLogger(AltaTF.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    System.out.println(auxRespuesta);
-                    eRespuesta.setText(auxRespuesta);
-                    ePregunta.addContent(eTexto);
-                    ePregunta.addContent(eRespuesta);
-                    
-                    raiz.addContent(ePregunta);
-                    XMLOutputter xmlOutput = new XMLOutputter();
-                    xmlOutput.setFormat(Format.getPrettyFormat());
-                    xmlOutput.output(doc, new FileWriter(ruta));
-                    System.out.println("EXITO ");
-                    } catch (JDOMException ex) {
-                    Logger.getLogger(AltaTF.class.getName()).log(Level.SEVERE, null, ex);
+                }else {
+                        System.out.println("error");
                 }
-            }else {
-                    System.out.println("error");
+                response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
+
+                // TODO output your page here. You may use following sample code. 
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet AltaTF</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Servlet AltaHot at " + respuestaCorrecta.toString() + " "+id+" "+pregunta+"</h1><br>");
+                for(int i =0; i< respuestaCorrecta.length; i++){
+                    out.println(respuestaCorrecta[i]+"<br>");
+                }
+                for(int i =0; i< opciones.length; i++){
+                    out.println(opciones[i]+"<br>");
+                }
+                out.println("</body>");
+                out.println("</html>");
             }
-            response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
             
-            // TODO output your page here. You may use following sample code. 
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AltaTF</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AltaHot at " + respuestaCorrecta.toString() + " "+id+" "+pregunta+"</h1><br>");
-            for(int i =0; i< respuestaCorrecta.length; i++){
-                out.println(respuestaCorrecta[i]+"<br>");
-            }
-            out.println("</body>");
-            out.println("</html>");
+            
         }
     }
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

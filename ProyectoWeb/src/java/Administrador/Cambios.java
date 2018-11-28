@@ -50,7 +50,7 @@ public class Cambios extends HttpServlet {
 
 
 "            \n" +
-"            <form v-on:submit=\"TF\" action=\"AltaTF\" method=\"post\">\n" +
+"            <form v-on:submit=\"TF\" action=\"ModificarPregunta\" method=\"post\">\n" +
 "                \n" +
 "                <p class=\"Titulos\">Modificar Pregunta</p>\n" +
 "                \n" +

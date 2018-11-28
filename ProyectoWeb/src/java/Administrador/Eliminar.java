@@ -61,7 +61,7 @@ public class Eliminar extends HttpServlet {
                 Element rootNode = document.getRootElement();
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
-                out.println("<form method='post' action='s'>");
+                out.println("<form method='post' action='EliminarPregunta'>");
                     out.println("<p class='Titulos'>Preguntas True or Flase</p>");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )
@@ -74,6 +74,7 @@ public class Eliminar extends HttpServlet {
                         String respuesta = campo.getChildTextTrim("respuesta");
                         
                         out.println("");
+                        
                         out.println("<input type='text' name='pregunta' value='pregunta"+i+"' hidden>");
                         out.println("<input type='text' name='respuesta' value='respuesta"+i+"' hidden>");
                         

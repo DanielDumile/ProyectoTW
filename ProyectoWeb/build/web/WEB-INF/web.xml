@@ -8,6 +8,14 @@
         <servlet-name>Ver</servlet-name>
         <servlet-class>Administrador.Ver</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarPregunta</servlet-name>
+        <servlet-class>Administrador.EliminarPregunta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarPregunta</servlet-name>
+        <servlet-class>Administrador.ModificarPregunta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>Ver</servlet-name>
         <url-pattern>/Ver</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarPregunta</servlet-name>
+        <url-pattern>/EliminarPregunta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarPregunta</servlet-name>
+        <url-pattern>/ModificarPregunta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

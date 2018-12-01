@@ -105,3 +105,23 @@ function Ver(){
    
     
 }
+
+function Poner(id,i){
+    
+    var Sel = document.getElementById('ID');
+    var elem = document.getElementById('Visible');
+    elem.value = i;
+    Sel.value=id;
+    
+
+    
+}
+
+function EliminarPregunta(){
+    
+    if(confirm("Esta seguro de eliminar la pregunta")){
+    document.getElementById("f1").submit(); 
+}
+
+}
+    

@@ -1,0 +1,13 @@
+<!DOCTYPE root
+[
+<!ELEMENT root (examen)*>
+<!ELEMENT examen (idp)>
+<!ELEMENT idp (#PCDATA)*>
+<!ATTLIST examen id CDATA #REQUIRED>
+]>
+<root>
+	<examen id="1">
+            <idp> 1 </idp>
+            <idp> 55 </idp>
+  	</examen>
+</root>

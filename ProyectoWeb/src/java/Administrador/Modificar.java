@@ -92,10 +92,9 @@ public class Modificar extends HttpServlet {
                     
                     out.println("<br />");
         
-                    out.println("<center><p class='Subtitulos'><b>Se modificara la pregunta seleccionada </b>");
-                   
+
                     out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' disabled hidden/><center>");
-                    out.print("<center><input type='button' value='Modificar' class='button5' onclick='ModificarPregunta()' /></center>");
+                    out.print("<center><input type='button' value='Modificar la pregunta seleccionada' class='button5' onclick='ModificarPregunta()' /></center>");
                     out.println("<br />");
       
                     out.print("<center><input type='button' value='Regresar' class='button5' onclick='Regresar()' /></center>");

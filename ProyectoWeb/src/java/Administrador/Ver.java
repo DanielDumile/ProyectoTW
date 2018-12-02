@@ -61,7 +61,7 @@ public class Ver extends HttpServlet {
                 Element rootNode = document.getRootElement();
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
-                out.println("<form method='post' action='s'>");
+                out.println("<form method='post' name='f1' id='f1' action='s'>");
                     out.println("<p class='Titulos'>Lista de preguntas</p>");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )
@@ -70,30 +70,30 @@ public class Ver extends HttpServlet {
                         Element campo = (Element) list.get(i);
                         String id = campo.getAttributeValue("id");
                         //Se obtiene el valor que esta entre los tags
+                        String tipo = campo.getChildTextTrim("tipo");
                         String texto = campo.getChildTextTrim("texto");  
                         String respuesta = campo.getChildTextTrim("respuesta");
                         
                         out.println("");
-                        out.println("<input type='text' name='pregunta' value='pregunta"+i+"' hidden>");
-                        out.println("<input type='text' name='respuesta' value='respuesta"+i+"' hidden>");
-                        
-                        out.print("<button class='button4' type='submit'>Ver Pregunta</button>");
-                        out.println("<p class='Subtitulos'><b>Pregunta:</b> "+texto+"<br></p>");
-
+                  
+                        out.print("<input type='button' value='Seleccionar' id="+i+" onclick='Poner("+id+","+i+","+list.size()+")'class='button4'>");
+                        out.println("<p class='Subtitulos'><b>Pregunta "+(i+1)+":</b> "+texto+"<br></p>");
+                        out.println("<p class='Subtitulos'><b>Tipo de Pregunta:</b> "+tipo+"<br></p>");
                         out.print("<p class='Subtitulos'><b>Respuesta:</b> "+respuesta+"<br></p>");
 
-                        out.println("<hr />");
-                    
-                    
-                    
+                        out.println("<hr />");    
                     
                 }
                     out.println("</form>");
                     out.println("<br />");
-                   
+                    
                     out.println("<br />");
+        
+                    out.println("<center><input type='text' class='text1' name='ID' id='ID' value=' ' disabled hidden/><center>");
+                    out.print("<center><input type='button' value='Visualizar la pregunta seleccionada' class='button5' onclick='VerPregunta()' /></center>");
                     out.println("<br />");
-                    out.print("<center><button class='button5' onclick='Regresar()'>Regresar</button></center>");
+      
+                    out.print("<center><input type='button' value='Regresar' class='button5' onclick='Regresar()' /></center>");
                     out.println("<script src=\"Scripts/index.js\"></script>");
             }catch ( JDOMException io ) {
                 System.out.println(io.getMessage());

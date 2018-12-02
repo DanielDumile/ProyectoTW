@@ -1,3 +1,18 @@
+Vue.component('Encabezado', {
+  // declara las propiedades
+  props: ['Pregunta'],
+  // como 'data', las propiedades pueden ser utilizadas dentro de las
+  // plantillas y está disponibles en la vm como this.message
+  template: '<p class="Subtitulos3"> {{Pregunta}} </p>'
+        
+});
+
+new Vue({
+ el: '#Top' 
+});
+
+
+
 new Vue({
   el: '#Botones',
 
@@ -19,7 +34,7 @@ var vm = new Vue({
     a: 0,
     b: 1
   }
-})
+});
 
 /*----------------------------------------------------*/
 //Login
@@ -45,6 +60,14 @@ new Vue({
   }
   
 });
+
+
+ 
+/*----------------------------------------------------*/
+//Plantilla preguntas True False
+
+
+
 /*----------------------------------------------------*/
 
 function Desarrolladores(){
@@ -148,6 +171,16 @@ function EliminarPregunta(){
 }
 
 function ModificarPregunta(){
+     var id = document.getElementById("ID").value;
+   if(id === " "){
+        
+        alert('No selecciono ninguna pregunta');
+    }else{
+    document.getElementById("f1").submit(); 
+    }
+}
+
+function VerPregunta(){
      var id = document.getElementById("ID").value;
    if(id === " "){
         

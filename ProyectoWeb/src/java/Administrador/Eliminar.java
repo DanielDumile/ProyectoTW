@@ -74,7 +74,7 @@ public class Eliminar extends HttpServlet {
                        
                         //Se obtiene el valor que esta entre los tags
                         String texto = campo.getChildTextTrim("texto");
-                         String tipo = campo.getChildTextTrim("tipo");
+                        String tipo = campo.getChildTextTrim("tipo");
                         String respuesta = campo.getChildTextTrim("respuesta");
                         
                         out.println("");
@@ -91,11 +91,10 @@ public class Eliminar extends HttpServlet {
                     out.println("<br />");
                     
                     out.println("<br />");
-        
-                    out.println("<center><p class='Subtitulos'><b>Se eliminara la pregunta seleccionada </b>");
+
                    
                     out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' disabled hidden/><center>");
-                    out.print("<center><input type='button' value='Eliminar' class='button5' onclick='EliminarPregunta()' /></center>");
+                    out.print("<center><input type='button' value='Eliminar la pregunta seleccionada' class='button5' onclick='EliminarPregunta()' /></center>");
                     out.println("<br />");
       
                     out.print("<center><input type='button' value='Regresar' class='button5' onclick='Regresar()' /></center>");

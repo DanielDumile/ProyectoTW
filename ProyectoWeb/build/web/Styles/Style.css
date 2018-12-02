@@ -83,6 +83,36 @@ body{
     
 }
 
+#Preguntas{
+    
+  background: #e5e5e5;
+  height: 700px;
+  /*IMPORTANTE*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#Contenido{
+    
+    background: white;
+    width: 700px;
+    height: 500px;
+    border: 2px solid grey;
+    border-radius: 12px;
+    border-bottom: 6px solid #4CAF50;
+    box-shadow: 10px 10px 5px grey;
+}
+
+#Top{
+    
+    background: #4CAF50;
+    width: 700px;
+    height: 100px;
+    border-radius: 12px;
+}
+
+
 .Inicio{
     
     text-align: center;
@@ -100,6 +130,15 @@ body{
     
     font-family: "Nirmala UI Semilight";
     font-size: 20px;
+    
+}
+
+.Subtitulos3{
+    
+    font-family: "Nirmala UI Semilight";
+    font-size: 20px;
+    float: next;
+    color: white;
     
 }
 
@@ -302,6 +341,7 @@ body{
     
     
 }
+
 
 
 

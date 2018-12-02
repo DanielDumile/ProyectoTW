@@ -79,7 +79,7 @@ public class Modificar extends HttpServlet {
                         
                         out.println("");
   
-                        out.print("<input type='button' value='Seleccionar' onclick='Poner("+id+","+(i+1)+")'class='button4'>");
+                       out.print("<input type='button' value='Seleccionar' id="+i+" onclick='Poner("+id+","+i+","+list.size()+")'class='button4'>");
                         out.println("<p class='Subtitulos'><b>Pregunta "+(i+1)+":</b> "+texto+"<br></p>");
                         out.println("<p class='Subtitulos'><b>Tipo de Pregunta:</b> "+tipo+"<br></p>");
                         out.print("<p class='Subtitulos'><b>Respuesta:</b> "+respuesta+"<br></p>");
@@ -92,9 +92,9 @@ public class Modificar extends HttpServlet {
                     
                     out.println("<br />");
         
-                    out.println("<center><p class='Subtitulos'><b>Pregunta a modificar: </b>");
-                    out.println("<input type='text' class='text1' name='Visible' id='Visible' disabled/></center></p>");
-                    out.println("<center><input type='text' class='text1' name='ID'  id='ID' disabled hidden/><center>");
+                    out.println("<center><p class='Subtitulos'><b>Se modificara la pregunta seleccionada </b>");
+                   
+                    out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' disabled hidden/><center>");
                     out.print("<center><input type='button' value='Modificar' class='button5' onclick='ModificarPregunta()' /></center>");
                     out.println("<br />");
       

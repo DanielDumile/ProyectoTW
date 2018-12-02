@@ -106,11 +106,24 @@ function Ver(){
     
 }
 
-function Poner(id,i){
+function Poner(id,i,total){
+    
+    var Value;
+    for(var j = 0; j < total; j++){
+        Value = document.getElementById(j);
+        document.getElementById(j).style.backgroundColor = '#a93226';
+        document.getElementById(j).style.color = 'white';
+        Value.value='Seleccionar';
+        
+        
+    }
+    Value = document.getElementById(i);
+    document.getElementById(i).style.backgroundColor = 'white';
+    document.getElementById(i).style.color = 'black';
+    Value.value='Seleccionada';
     
     var Sel = document.getElementById('ID');
-    var elem = document.getElementById('Visible');
-    elem.value = i;
+  
     Sel.value=id;
     
 
@@ -119,16 +132,29 @@ function Poner(id,i){
 
 function EliminarPregunta(){
     
-    if(confirm("Esta seguro de eliminar la pregunta")){
-    document.getElementById("f1").submit(); 
+    var id = document.getElementById("ID").value;
+    if(id ===" "){
+        
+        alert('No selecciono ninguna pregunta');
+    }else{
+        
+         if(confirm("Esta seguro de eliminar la pregunta")){
+            document.getElementById("f1").submit(); 
+        }
+       
     }
+    
+   
 }
 
 function ModificarPregunta(){
-    
-   
+     var id = document.getElementById("ID").value;
+   if(id === " "){
+        
+        alert('No selecciono ninguna pregunta');
+    }else{
     document.getElementById("f1").submit(); 
-    
+    }
 }
 
 function Index(){

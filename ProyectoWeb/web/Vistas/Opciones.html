@@ -10,7 +10,6 @@
         
         <link rel="stylesheet" href="../Styles/Style.css" type="text/css">
         <script src="../Frameworks/vue.js"></script>
-        <script src="../Scripts/index.js"></script>
         
     </head>
     
@@ -31,7 +30,7 @@
          <!--Div Barra de Navegación-->
         <div id="Barra"> 
             <ul>
-                <li><a class="Activo" href="../index.html">Inicio</a></li>
+                <li><a class="Activo" href="index.html">Inicio</a></li>
                 <li><a>Información de la plataforma</a>
                 <li onclick="Desarrolladores()"><a>Desarrolladores</a></li>
             </ul>
@@ -43,13 +42,13 @@
          <!--Div Login (Formulario con Vue.js)-->
         <div id="Opciones">
             
-            <p class="Titulos">Eliga el menú que desee:</p>
-            <p> <button v-on:click="Regresar()" class="button3">Agregar Pregunta</button>
-                <input type="button" class="button3" value="Menú de Examen" /></p>
-    
+            <p class="Titulos">Eliga el menú correspondiente: </p>
+            <p><input type="button" value="Menú de Preguntas" class="button1" onclick="Regresar()" />
+                <input type="button" value="Menú de Examen" class="button1" onclick=""/></p>
+            <input type="button" value="Regresar" class="button3" onclick="Index()"/>
         </div>
          
-       
+       <script src="../Scripts/index.js"></script>
        
     </body>
 </html>

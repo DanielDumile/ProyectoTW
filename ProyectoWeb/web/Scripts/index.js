@@ -121,10 +121,12 @@ function EliminarPregunta(){
     
     if(confirm("Esta seguro de eliminar la pregunta")){
     document.getElementById("f1").submit(); 
+    }
 }
 
-function Inicio (){
+function Index(){
     
-   location.href ="/ProyectoWeb/index.html"; 
-
+     location.href = "/ProyectoWeb/index.html"; 
+    
 }
+

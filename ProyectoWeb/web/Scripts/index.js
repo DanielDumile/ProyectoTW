@@ -124,6 +124,13 @@ function EliminarPregunta(){
     }
 }
 
+function ModificarPregunta(){
+    
+   
+    document.getElementById("f1").submit(); 
+    
+}
+
 function Index(){
     
      location.href = "/ProyectoWeb/index.html"; 

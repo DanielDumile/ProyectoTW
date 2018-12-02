@@ -61,7 +61,7 @@ public class Ver extends HttpServlet {
                 Element rootNode = document.getRootElement();
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
-                out.println("<form method='post' name='f1' id='f1' action='s'>");
+                out.println("<form method='post' name='f1' id='f1' action='MostrarPregunta'>");
                     out.println("<p class='Titulos'>Lista de preguntas</p>");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )
@@ -84,12 +84,13 @@ public class Ver extends HttpServlet {
                         out.println("<hr />");    
                     
                 }
+                    out.println("<center><input type='text' class='text1' name='ID' id='ID' value=' ' hidden/><center>");
                     out.println("</form>");
                     out.println("<br />");
                     
                     out.println("<br />");
         
-                    out.println("<center><input type='text' class='text1' name='ID' id='ID' value=' ' disabled hidden/><center>");
+                    
                     out.print("<center><input type='button' value='Visualizar la pregunta seleccionada' class='button5' onclick='VerPregunta()' /></center>");
                     out.println("<br />");
       

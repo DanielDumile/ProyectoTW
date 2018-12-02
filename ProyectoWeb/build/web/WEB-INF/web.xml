@@ -16,6 +16,10 @@
         <servlet-name>ModificarPregunta</servlet-name>
         <servlet-class>Administrador.ModificarPregunta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MostrarPregunta</servlet-name>
+        <servlet-class>Administrador.MostrarPregunta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>ModificarPregunta</servlet-name>
         <url-pattern>/ModificarPregunta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarPregunta</servlet-name>
+        <url-pattern>/MostrarPregunta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

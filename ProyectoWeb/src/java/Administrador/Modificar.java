@@ -62,7 +62,7 @@ public class Modificar extends HttpServlet {
                 Element rootNode = document.getRootElement();
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
-                out.println("<form method='post' name='f1' id='f1' action='ModificarPregunta'>");
+                out.println("<form method='post' name='f1' id='f1' action='Cambios'>");
                     out.println("<p class='Titulos'>Lista de Preguntas</p>");
                     out.println("<hr />");
                     
@@ -87,13 +87,14 @@ public class Modificar extends HttpServlet {
                         out.println("<hr />");    
                     
                 }
+                    out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' hidden/><center>");
                     out.println("</form>");
                     out.println("<br />");
                     
                     out.println("<br />");
         
 
-                    out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' disabled hidden/><center>");
+                    
                     out.print("<center><input type='button' value='Modificar la pregunta seleccionada' class='button5' onclick='ModificarPregunta()' /></center>");
                     out.println("<br />");
       

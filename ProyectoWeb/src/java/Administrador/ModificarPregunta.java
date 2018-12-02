@@ -90,8 +90,8 @@ public class ModificarPregunta extends HttpServlet {
         }
     }
 
-    private static void addElementTF(Document doc, String id) {
-        /*
+    private static void addElementTF(Document doc, String id, String respuestaCorrecta, String pregunta) {
+        
         Element raiz = doc.getRootElement();
         Element ePregunta = new Element("pregunta");
         Element eTexto = new Element("texto");
@@ -105,7 +105,7 @@ public class ModificarPregunta extends HttpServlet {
         ePregunta.addContent(eTexto);
         ePregunta.addContent(eRespuesta);
         raiz.addContent(ePregunta);
-        */
+        
     }
 
     private static void addElementHot(Document doc, String id) {
@@ -154,9 +154,10 @@ public class ModificarPregunta extends HttpServlet {
             HttpSession sesion = request.getSession();
             //sesion.setAttribute("user",usuario);
             sesion.setAttribute("rutaXML", ruta);
-            String id = request.getParameter("id");
-            String tipo = request.getParameter("tipo");
-
+            String tipo =(String) sesion.getAttribute("tipo");
+            
+            String id = request.getParameter("IDV");
+            
             deleteElement(id, ruta);
 
             File fichero = new File(ruta);
@@ -164,15 +165,14 @@ public class ModificarPregunta extends HttpServlet {
                 try {
                     SAXBuilder builder = new SAXBuilder();
                     Document doc = (Document) builder.build(fichero);
-
+                    
                     if (tipo.equals("TrueFalse")) {
-                        addElementTF(doc, id);
+                        String respuestaCorrecta= request.getParameter("Correcta");
+                        String pregunta = request.getParameter("pregunta");
+                        addElementTF(doc, id,respuestaCorrecta,pregunta);
                     } else {
                         addElementHot(doc, id);
                     }
-                    /*
-                    
-                     */
                     XMLOutputter xmlOutput = new XMLOutputter();
                     xmlOutput.setFormat(Format.getPrettyFormat());
                     xmlOutput.output(doc, new FileWriter(ruta));

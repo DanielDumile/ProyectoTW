@@ -87,13 +87,14 @@ public class Eliminar extends HttpServlet {
                         out.println("<hr />");    
                     
                 }
+                    out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' hidden/><center>");
                     out.println("</form>");
                     out.println("<br />");
                     
                     out.println("<br />");
 
                    
-                    out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' disabled hidden/><center>");
+                    
                     out.print("<center><input type='button' value='Eliminar la pregunta seleccionada' class='button5' onclick='EliminarPregunta()' /></center>");
                     out.println("<br />");
       

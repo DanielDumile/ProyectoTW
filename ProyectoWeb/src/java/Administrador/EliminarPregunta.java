@@ -56,7 +56,6 @@ public class EliminarPregunta extends HttpServlet {
         File xmlFile = new File(ruta);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
-
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             org.w3c.dom.Document doc = dBuilder.parse(xmlFile);
@@ -89,7 +88,6 @@ public class EliminarPregunta extends HttpServlet {
         } catch (ParserConfigurationException | SAXException | TransformerException ex) {
             Logger.getLogger(EliminarPregunta.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -103,9 +101,7 @@ public class EliminarPregunta extends HttpServlet {
             HttpSession sesion = request.getSession();
             //sesion.setAttribute("user",usuario);
             sesion.setAttribute("rutaXML", ruta);
-            String respuesta = request.getParameter("respuesta");
-            String pregunta = request.getParameter("pregunta");
-            String id = request.getParameter("id");
+            String id = request.getParameter("ID");
             deleteElement(id,ruta);
             response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
             // TODO output your page here. You may use following sample code. 
@@ -115,7 +111,6 @@ public class EliminarPregunta extends HttpServlet {
             out.println("<title>Servlet EliminarPregunta </title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EliminarPregunta at " + respuesta + " " + id + " " + pregunta + "</h1>");
             out.println("</body>");
             out.println("</html>");
 

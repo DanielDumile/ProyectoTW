@@ -5,10 +5,14 @@
  */
 package Administrador;
 
+import inicio.LoginBean;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,12 +23,14 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
 /**
  *
- * @author stark
+ * @author USER
  */
-public class Cambios extends HttpServlet {
+public class MostrarPregunta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,6 +45,7 @@ public class Cambios extends HttpServlet {
             throws ServletException, IOException {
         ServletContext context = request.getServletContext();
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
             String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
 
@@ -59,16 +66,14 @@ public class Cambios extends HttpServlet {
                 //System.out.println("Escogido en consola "+id_pregunta);
                 out.println("<html>\n"
                         + "    <head>\n"
-                        + "        <title>Cambiar</title>\n"
+                        + "        <title>Pregunta</title>\n"
                         + "        <meta charset=\"UTF-8\">\n"
                         + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
                         + "        <link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\">\n"
                         + "        <script src=\"Frameworks/vue.js\"></script>\n"
-                        + "        <script src=\"Scripts/Validaciones.js\"></script>"
                         + "        \n"
                         + "    </head>\n"
-                        + "    <body> "
-                        + "     <center>");
+                        + "    <body>");
                 for (int i = 0; i < list.size(); i++) {
                     //Se obtiene el elemento 'user1'
                     Element campo = (Element) list.get(i);
@@ -79,60 +84,52 @@ public class Cambios extends HttpServlet {
                     System.out.println(id);
                     if (id_pregunta.equals(id)) {
                         if (tipo.equals("TrueFalse")) {
-                            sesion.setAttribute("tipo", "TrueFalse");
                             String texto = campo.getChildTextTrim("texto");
                             String respuesta = campo.getChildTextTrim("respuesta");
-                            out.println("<div id=\"TrueFalse\">\n"
-                                    + "            <img class=\"Ad\" src=\"Imagenes/TF.png\" alt=\"Examen\"/>\n"
+                            out.println("        <div id=\"Preguntas\">\n"
                                     + "            \n"
-                                    + "            \n"
-                                    + "            <form v-on:submit=\"TF\" action=\"ModificarPregunta\" method=\"post\">\n"
+                                    + "            <div id=\"Contenido\">\n"
                                     + "                \n"
-                                    + "                <p class=\"Titulos\">Preguntas tipo: True or False</p>\n"
+                                    + "                <div id=\"Top\">\n"
+                                    + "                    \n"
+                                    + "                    <br />\n"
+                                    //+ " <h1> "+texto+"</h1><br>"
+                                    + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
+                                    + "                    <input type=\"text\" value=\"" + id + "\" hidden />\n"
+                                    + "                </div>\n"
                                     + "                \n"
-                                    + "                <hr />\n"
-                                    + "       \n"
-                                    + "                <p class=\"Subtitulos\">ID de Pregunta:   \n"
-                                    + "                <input class=\"Form2\n"
-                                    + "                       \" v-model=\"ID\" name=\"ID\" value='"+id+"' disabled></p>\n"
-                                   + " <input type = 'text' value='"+id+"' name='IDV' hidden>"
-                                    + "                \n"
-                                    + "                <p class=\"Subtitulos\">Pregunta: </p>\n"
-                                    + "                <p><textarea cols=\"40\" rows=\"5\" v-model=\"pregunta\" required name=\"pregunta\" placeholder=\""+texto+"\"></textarea></p>\n"
-                                    + "                \n"
-                                    + "                <p class=\"Subtitulos\">Distractores:</p>\n"
-                                    + "                <p>Seleccione en cual respuesta sera la correcta</p>\n");
+                                    + "                <br />\n"
+                                    + "                <br />\n"
+                                    + "                \n");
                                     if(respuesta.equals("Verdadero")){
-                                        out.println( "                <p><input class=\"Form\" v-model=\"T\" required name=\"T\" placeholder=\"Opción 1\" disabled value=\"True\"> <input type=\"radio\" name=\"Correcta\" value=\"Verdadero\" checked></p>\n"
-                                    + "                <p><input class=\"Form\" v-model=\"F\" required name=\"F\" placeholder=\"Opción 2\" disabled value=\"False\"> <input type=\"radio\" name=\"Correcta\" value=\"Falso\"></p>\n"
-                                    );
+                                        out.println("                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Verdadero\" name=\"Valor\"/ checked disabled> Verdadero</p>\n"
+                                    + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Falso\" name=\"Valor\"/ disabled> Falso</p>\n");
                                     }
                                     else{
-                                        out.println( "                <p><input class=\"Form\" v-model=\"T\" required name=\"T\" placeholder=\"Opción 1\" disabled value=\"True\"> <input type=\"radio\" name=\"Correcta\" value=\"Verdadero\" ></p>\n"
-                                    + "                <p><input class=\"Form\" v-model=\"F\" required name=\"F\" placeholder=\"Opción 2\" disabled value=\"False\"> <input type=\"radio\" name=\"Correcta\" value=\"Falso\" checked></p>\n"
-                                    );
+                                        out.println("                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Verdadero\" name=\"Valor\"/  disabled> Verdadero</p>\n"
+                                    + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Falso\" name=\"Valor\"/ checked disabled> Falso</p>\n");
                                     }
-                                    out.println("                \n"
-                                    + "                <br />\n"
+                                    out.println("                 \n"
+                                    + "                <img class=\"Ad4\" src=\"Imagenes/VF.png\" alt=\"Examen\" />\n"
                                     + "                \n"
-                                    + "                <button class=\"button1\" type=\"submit\">Subir pregunta</button>   \n"
-                                    + "                \n"
-                                    + "            </form>\n"
-                                    + "                <br />\n"
-                                    + "                <button class=\"button3\" onclick=\"Regresar()\">Regresar</button>   \n"
-                                    + "                \n"
+                                    + "                 <div id=\"Bottom\">\n"
+                                    + "                     <br />\n"
+                                    + "                     <input type=\"button\" class=\"button2\" value=\"Regresar\" onclick='Regresar()' />\n"
+                                    + "                    \n"
+                                    //+ "                     <input type=\"button\" class=\"button2\" value=\"Calificar\" />\n"
+                                    + "                </div>\n"
+                                    + "            </div>\n"
                                     + "            \n"
-                                    + "        </div>");
+                                    + "        </div>\n");
                         }
                         break;
                     }
                 }
 
-                out.println("</center>"
-                        + " <script src=\"Scripts/index.js\"></script>\n"
-                        + "    </body>\n"
-                        + "</html>\n"
-                        + "");
+                out.println("<script src=\"Scripts/index.js\"></script>\n"
+                            + "    </body>\n"
+                            + "</html>\n"
+                            + "");
             } catch (JDOMException io) {
                 System.out.println(io.getMessage());
             }

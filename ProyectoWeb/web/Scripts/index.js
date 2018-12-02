@@ -61,7 +61,7 @@ function Desarrolladores(){
 
 function Cerrar(){
     
-   location.href ="/ProyectoWeb/index.html"; 
+   location.href ="/ProyectoWeb/Vistas/Opciones.html"; 
 
 }
 
@@ -123,5 +123,8 @@ function EliminarPregunta(){
     document.getElementById("f1").submit(); 
 }
 
-}
+function Inicio (){
     
+   location.href ="/ProyectoWeb/index.html"; 
+
+}

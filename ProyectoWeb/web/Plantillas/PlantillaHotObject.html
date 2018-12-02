@@ -1,16 +1,123 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Pregunta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../Styles/Style.css" type="text/css">
+        <script src="../Frameworks/vue.js"></script>
+        
+        <style>
+            
+            .checkeable input {
+                display: none;
+                float: left;
+            }
+            
+            .checkeable img {
+                width: 100px;
+                height: 100px;
+                border: 5px solid transparent;
+                position: relative;
+                left: 35px;
+                bottom: 20px;
+      
+            }
+            
+            .checkeable input {
+                display: none;
+                float: left;
+            }
+            
+            .checkeable input:checked  + img {
+              border-color: grey;
+              opacity: 0.5;
+             
+            }
+            
+        </style>
+        
     </head>
     <body>
-        <div>TODO write content</div>
+        <div id="Preguntas">
+            
+            <div id="Contenido">
+                
+                <div id="Top" style="background-color:#f0b60f">
+                    
+                    <br />
+                    <Encabezado Pregunta="Aqui ira la pregunta jalada del XML" ></Encabezado> 
+                    <input type="text" value="Aqui ira el id de la pregunta para comparar la respuesta del usuario" hidden />
+                </div>
+                
+                <br />
+                <br />
+                
+                <p>
+                    <label class="checkeable">
+                        <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                        <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+
+                    <label class="checkeable">
+                      <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                      <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+
+                    <label class="checkeable">
+                        <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                        <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+
+                    <label class="checkeable">
+                      <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                      <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+                </p>
+                
+                <p>
+                    <label class="checkeable">
+                        <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                        <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+
+                    <label class="checkeable">
+                      <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                      <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+                    <label class="checkeable">
+                        <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                        <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+
+                    <label class="checkeable">
+                      <input type="checkbox" name="Respuesta" value="Aqui ira el numero de respuesta"/>
+                      <img src="Aqui ira la dirección de la imagen" />
+                    </label>
+                    
+                    <img class="Ad6" src="../Imagenes/HOT.png" alt="Examen" />
+                </p>
+                
+                 
+                
+                
+                 <div id="Bottom2">
+                     <br />
+                     <input type="button" class="button2" value="Siguiente" />
+                    
+                     <input type="button" class="button2" value="Calificar" />
+                </div>
+            </div>
+            
+            <div id="Left" style="border:4px solid #f0b60f;">
+                <p>Lea cuidadosamente la pregunta
+                y seleccione las imegenes que se relacionen con la pregunta</p>
+                <p>Seleccione <b>Calificar</b> para obtener puntaje</p>
+                <p>Seleccione <b>Siguiente</b> para pasar a la otra pregunta</p>
+            </div>
+        </div>
+        <script src="../Scripts/index.js"></script>
+       
     </body>
 </html>

@@ -123,6 +123,18 @@ body{
     
 }
 
+#Bottom2{
+    background-color: #f0b60f;
+    width: 700px;
+    height: 70px;
+    border-radius: 12px;
+    position: relative;
+    bottom: -20px;
+    
+    
+    
+}
+
 #Left{
     background: white;
     width: 300px;
@@ -142,6 +154,19 @@ body{
     position: relative;
     left: -80px;
     float: right;
+    
+    height: 150px;
+    width: 150px;
+    
+}
+
+.Ad6{
+    
+    position: relative;
+    left: -50px;
+    bottom: 20px;
+    float: right;
+    
     
     height: 150px;
     width: 150px;

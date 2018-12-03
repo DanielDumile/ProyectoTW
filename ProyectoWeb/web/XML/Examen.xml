@@ -1,13 +1,14 @@
 <!DOCTYPE root
 [
 <!ELEMENT root (examen)*>
-<!ELEMENT examen (nombre,idp*)>
+<!ELEMENT examen (texto,idp*)>
+<!ELEMENT texto (#PCDATA)>
 <!ELEMENT idp (#PCDATA)>
 <!ATTLIST examen id CDATA #REQUIRED>
 ]>
 <root>
 	<examen id="1">
-            <nombre> Examen 1 </nombre>
+            <texto> Examen 1 </texto>
             <idp> 1 </idp>
             <idp> 55 </idp>
   	</examen>

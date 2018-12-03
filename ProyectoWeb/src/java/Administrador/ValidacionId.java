@@ -43,4 +43,29 @@ public class ValidacionId {
         }
         return true;
     }
+    
+    public boolean validarExamen(String id,String ruta) throws IOException{
+        //HttpSession sesion=request.getSession();
+        SAXBuilder builder = new SAXBuilder();
+        File xmlFile = new File(ruta);
+        try{//Se crea el documento a traves del archivo  
+            Document document = (Document) builder.build( xmlFile );
+            //Se obtiene la raiz 
+            Element rootNode = document.getRootElement();
+            //Se obtiene la lista de hijos de la raiz 'usuarios'
+            List list = rootNode.getChildren( "examen" );
+            for ( int i = 0; i < list.size(); i++ )
+            {
+               //Se obtiene el elemento 'user1'
+                Element campo = (Element) list.get(i);
+                //Se obtiene el valor que esta entre los tags
+                if(id.equals(campo.getAttributeValue("id"))){
+                    return false;
+                }
+            }  
+        }catch ( JDOMException io ) {
+            System.out.println(io.getMessage());
+        }
+        return true;
+    }
 }

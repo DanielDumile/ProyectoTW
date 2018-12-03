@@ -24,6 +24,14 @@
         <servlet-name>AltaExamen</servlet-name>
         <servlet-class>Examen.AltaExamen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarExamen</servlet-name>
+        <servlet-class>Examen.EliminarExamen</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarExamen</servlet-name>
+        <servlet-class>Examen.ModificarExamen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>AltaExamen</servlet-name>
         <url-pattern>/AltaExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarExamen</servlet-name>
+        <url-pattern>/EliminarExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarExamen</servlet-name>
+        <url-pattern>/ModificarExamen</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -74,14 +74,13 @@ public class Cambios extends HttpServlet {
                     Element campo = (Element) list.get(i);
                     String id = campo.getAttributeValue("id");
                     String tipo = campo.getChildTextTrim("tipo");
+                    String texto = campo.getChildTextTrim("texto");
+                    String respuesta = campo.getChildTextTrim("respuesta");
                     //Se obtiene el valor que esta entre los tags
-                    //out.println(id);
-                    System.out.println(id);
                     if (id_pregunta.equals(id)) {
                         if (tipo.equals("TrueFalse")) {
                             sesion.setAttribute("tipo", "TrueFalse");
-                            String texto = campo.getChildTextTrim("texto");
-                            String respuesta = campo.getChildTextTrim("respuesta");
+                            
                             out.println("<div id=\"TrueFalse\">\n"
                                     + "            <img class=\"Ad\" src=\"Imagenes/TF.png\" alt=\"Examen\"/>\n"
                                     + "            \n"
@@ -94,25 +93,65 @@ public class Cambios extends HttpServlet {
                                     + "       \n"
                                     + "                <p class=\"Subtitulos\">ID de Pregunta:   \n"
                                     + "                <input class=\"Form2\n"
-                                    + "                       \" v-model=\"ID\" name=\"ID\" value='"+id+"' disabled></p>\n"
-                                   + " <input type = 'text' value='"+id+"' name='IDV' hidden>"
+                                    + "                       \" v-model=\"ID\" name=\"ID\" value='" + id + "' disabled></p>\n"
+                                    + " <input type = 'text' value='" + id + "' name='IDV' hidden>"
+                                    + "                \n"
+                                    + "                <p class=\"Subtitulos\">Pregunta: </p>\n"
+                                    + "                <p><textarea cols=\"40\" rows=\"5\" v-model=\"pregunta\" required name=\"pregunta\" placeholder=\"" + texto + "\"></textarea></p>\n"
+                                    + "                \n"
+                                    + "                <p class=\"Subtitulos\">Distractores:</p>\n"
+                                    + "                <p>Seleccione en cual respuesta sera la correcta</p>\n");
+                            if (respuesta.equals("Verdadero")) {
+                                out.println("                <p><input class=\"Form\" v-model=\"T\" required name=\"T\" placeholder=\"Opción 1\" disabled value=\"True\"> <input type=\"radio\" name=\"Correcta\" value=\"Verdadero\" checked></p>\n"
+                                        + "                <p><input class=\"Form\" v-model=\"F\" required name=\"F\" placeholder=\"Opción 2\" disabled value=\"False\"> <input type=\"radio\" name=\"Correcta\" value=\"Falso\"></p>\n"
+                                );
+                            } else {
+                                out.println("                <p><input class=\"Form\" v-model=\"T\" required name=\"T\" placeholder=\"Opción 1\" disabled value=\"True\"> <input type=\"radio\" name=\"Correcta\" value=\"Verdadero\" ></p>\n"
+                                        + "                <p><input class=\"Form\" v-model=\"F\" required name=\"F\" placeholder=\"Opción 2\" disabled value=\"False\"> <input type=\"radio\" name=\"Correcta\" value=\"Falso\" checked></p>\n"
+                                );
+                            }
+                            out.println("                \n"
+                                    + "                <br />\n"
+                                    + "                \n"
+                                    + "                <button class=\"button1\" type=\"submit\">Subir pregunta</button>   \n"
+                                    + "                \n"
+                                    + "            </form>\n"
+                                    + "                <br />\n"
+                                    + "                <button class=\"button3\" onclick=\"Regresar()\">Regresar</button>   \n"
+                                    + "                \n"
+                                    + "            \n"
+                                    + "        </div>");
+                        } else {
+                            sesion.setAttribute("tipo", "HotObject");
+                            List lista = campo.getChildren("opcion");
+                            out.println("<div id=\"Hot\">\n"
+                                    + "            <img class=\"Ad1\" src=\"Imagenes/Object.png\" alt=\"Examen\"/>\n"
+                                    + "            \n"
+                                    + "            <form v-on:submit=\"Hot\" action=\"ModificarPregunta\" method=\"post\">\n"
+                                    + "                \n"
+                                    + "                <p class=\"Titulos\">Preguntas tipo: Hot Object</p>\n"
+                                    + "                \n"
+                                    + "                <hr />\n"
+                                    + "                \n"
+                                    + "                <p class=\"Subtitulos\">ID de Pregunta:   \n"
+                                    + "                <input class=\"Form2\n"
+                                    + "                       \" v-model=\"ID\" name=\"ID\" value ='"+id+"' disabled></p>\n"
+                                    + " <input type = 'text' value='" + id + "' name='IDV' hidden>"
                                     + "                \n"
                                     + "                <p class=\"Subtitulos\">Pregunta: </p>\n"
                                     + "                <p><textarea cols=\"40\" rows=\"5\" v-model=\"pregunta\" required name=\"pregunta\" placeholder=\""+texto+"\"></textarea></p>\n"
                                     + "                \n"
-                                    + "                <p class=\"Subtitulos\">Distractores:</p>\n"
-                                    + "                <p>Seleccione en cual respuesta sera la correcta</p>\n");
-                                    if(respuesta.equals("Verdadero")){
-                                        out.println( "                <p><input class=\"Form\" v-model=\"T\" required name=\"T\" placeholder=\"Opción 1\" disabled value=\"True\"> <input type=\"radio\" name=\"Correcta\" value=\"Verdadero\" checked></p>\n"
-                                    + "                <p><input class=\"Form\" v-model=\"F\" required name=\"F\" placeholder=\"Opción 2\" disabled value=\"False\"> <input type=\"radio\" name=\"Correcta\" value=\"Falso\"></p>\n"
-                                    );
-                                    }
-                                    else{
-                                        out.println( "                <p><input class=\"Form\" v-model=\"T\" required name=\"T\" placeholder=\"Opción 1\" disabled value=\"True\"> <input type=\"radio\" name=\"Correcta\" value=\"Verdadero\" ></p>\n"
-                                    + "                <p><input class=\"Form\" v-model=\"F\" required name=\"F\" placeholder=\"Opción 2\" disabled value=\"False\"> <input type=\"radio\" name=\"Correcta\" value=\"Falso\" checked></p>\n"
-                                    );
-                                    }
-                                    out.println("                \n"
+                                    + "                <p class=\"Subtitulos\">Hot Object:</p>\n"
+                                    + "                <p>Seleccione que respuestas seran correctas</p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H1\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(0)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"1\"></p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H2\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(1)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"2\"></p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H3\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(2)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"3\"></p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H4\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(3)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"4\"></p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H5\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(4)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"5\"></p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H6\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(5)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"6\"></p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H7\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(6)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"7\"></p>\n"
+                                    + "                <p><input class=\"Form\" v-model=\"H8\" type=\"file\" required name=\"opciones\" placeholder=\"" + ((Element) lista.get(7)).getTextTrim() + "\" > <input type=\"checkbox\" name=\"Correcta\" value=\"8\"></p>\n"
+                                    + "                \n"
                                     + "                <br />\n"
                                     + "                \n"
                                     + "                <button class=\"button1\" type=\"submit\">Subir pregunta</button>   \n"

@@ -108,8 +108,8 @@ public class ModificarPregunta extends HttpServlet {
         
     }
 
-    private static void addElementHot(Document doc, String id) {
-        /*
+    private static void addElementHot(Document doc, String id, String pregunta, String[] opciones, String[] respuestaCorrecta) {
+        
         Element raiz = doc.getRootElement();
         Element ePregunta = new Element("pregunta");
         Element eTexto = new Element("texto");
@@ -125,7 +125,7 @@ public class ModificarPregunta extends HttpServlet {
                 auxRespuesta += ',';
             }
         }
-        System.out.println(auxRespuesta);
+        //System.out.println(auxRespuesta);
         eRespuesta.setText(auxRespuesta);
 
         ePregunta.addContent(eTipo);
@@ -140,7 +140,7 @@ public class ModificarPregunta extends HttpServlet {
         ePregunta.addContent(eRespuesta);
 
         raiz.addContent(ePregunta);
-        */
+        
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -171,7 +171,10 @@ public class ModificarPregunta extends HttpServlet {
                         String pregunta = request.getParameter("pregunta");
                         addElementTF(doc, id,respuestaCorrecta,pregunta);
                     } else {
-                        addElementHot(doc, id);
+                        String[] respuestaCorrecta= request.getParameterValues("Correcta");//request.getParameter("Correcta");
+                        String[] opciones = request.getParameterValues("opciones");
+                        String pregunta = request.getParameter("pregunta");
+                        addElementHot(doc, id,pregunta,opciones,respuestaCorrecta);
                     }
                     XMLOutputter xmlOutput = new XMLOutputter();
                     xmlOutput.setFormat(Format.getPrettyFormat());

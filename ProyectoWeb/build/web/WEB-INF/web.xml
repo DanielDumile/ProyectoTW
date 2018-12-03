@@ -20,6 +20,10 @@
         <servlet-name>MostrarPregunta</servlet-name>
         <servlet-class>Administrador.MostrarPregunta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaExamen</servlet-name>
+        <servlet-class>Examen.AltaExamen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>MostrarPregunta</servlet-name>
         <url-pattern>/MostrarPregunta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaExamen</servlet-name>
+        <url-pattern>/AltaExamen</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

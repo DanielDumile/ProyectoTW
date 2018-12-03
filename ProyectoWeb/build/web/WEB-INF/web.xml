@@ -32,6 +32,10 @@
         <servlet-name>ModificarExamen</servlet-name>
         <servlet-class>Examen.ModificarExamen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultaExamen</servlet-name>
+        <servlet-class>Examen.ConsultaExamen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ModificarExamen</servlet-name>
         <url-pattern>/ModificarExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaExamen</servlet-name>
+        <url-pattern>/ConsultaExamen</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

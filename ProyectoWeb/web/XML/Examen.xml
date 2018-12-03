@@ -9,7 +9,7 @@
 <root>
 	<examen id="1">
             <texto> Examen 1 </texto>
-            <idp> 1 </idp>
-            <idp> 55 </idp>
+            <idp> 999 </idp>
+            <idp> 2108 </idp>
   	</examen>
 </root>

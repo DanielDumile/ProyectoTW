@@ -48,8 +48,8 @@ public class ConsultaExamen extends HttpServlet {
             HttpSession sesion = request.getSession();
             sesion.setAttribute("rutaXML", ruta);
 
-            //String idExamen = request.getParameter("ID");
-            String idExamen = "1";
+            String idExamen = request.getParameter("ID");
+            //String idExamen = "1";
 
             HashSet<String> idPreguntas = new HashSet<>();
             //CONSULTAMOS AL EXAMEN Y A LAS PREGUNTAS QUE TIENE DENTRO
@@ -111,7 +111,7 @@ public class ConsultaExamen extends HttpServlet {
 
                         out.println("");
 
-                        out.print("<input type='button' value='Seleccionar' id=" + i + " onclick='Poner(" + id + "," + i + "," + list2.size() + ")'class='button4'>");
+                        out.print("<input type='button' value='Seleccionar' id="+i+" onclick='Poner("+id+","+i+","+list2.size()+")'class='button4'>");
                         out.println("<p class='Subtitulos'><b>Pregunta " + (i + 1) + ":</b> " + texto + "<br></p>");
                         out.println("<p class='Subtitulos'><b>Tipo de Pregunta:</b> " + tipo + "<br></p>");
                         out.print("<p class='Subtitulos'><b>Respuesta:</b> " + respuesta + "<br></p>");
@@ -125,7 +125,7 @@ public class ConsultaExamen extends HttpServlet {
 
                 out.println("<br />");
 
-                //out.print("<center><input type='button' value='Visualizar la pregunta seleccionada' class='button5' onclick='VerPregunta()' /></center>");
+                out.print("<center><input type='button' value='Visualizar la pregunta seleccionada' class='button5' onclick='VerPregunta()' /></center>");
                 out.println("<br />");
 
                 out.print("<center><input type='button' value='Regresar' class='button5' onclick='Regresar()' /></center>");

@@ -170,6 +170,7 @@ function EliminarPregunta(){
    
 }
 
+
 function ModificarPregunta(){
      var id = document.getElementById("ID").value;
    if(id === " "){

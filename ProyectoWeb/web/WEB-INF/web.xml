@@ -48,6 +48,10 @@
         <servlet-name>BorrarExamen</servlet-name>
         <servlet-class>Examen.BorrarExamen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModE</servlet-name>
+        <servlet-class>Examen.ModE</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>BorrarExamen</servlet-name>
         <url-pattern>/BorrarExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModE</servlet-name>
+        <url-pattern>/ModE</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

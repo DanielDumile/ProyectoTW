@@ -271,7 +271,11 @@ function Calificar(){
 
 function Siguiente(){
     
-    document.getElementById("indice").value = document.getElementById("indice").value+ 1;
+    var index = document.getElementById("indice");
+    var aux = parseInt(document.getElementById("indice").value);
+    aux = aux + 1;
+    
+    index.value = aux;
     
     document.getElementById("formi").submit();
     

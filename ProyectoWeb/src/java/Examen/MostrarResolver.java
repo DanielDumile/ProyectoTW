@@ -66,6 +66,7 @@ public class MostrarResolver extends HttpServlet {
                 out.println("<form method='post' name='f1' id='f1' action='ResolverExamen'>");
                      out.println("<p class='Titulos'>Lista de examenes</p>");
                     out.println("<p class='Subtitulos'>Seleccione el examen que desee resolver</p>");
+                    out.println("<input type='text' id='indice' name='indice' hidden value='0'>");
                     out.println("<br />");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )

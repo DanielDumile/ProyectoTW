@@ -269,3 +269,15 @@ function Calificar(){
     
 }
 
+function Siguiente(){
+    
+    var index = document.getElementById("indice").value;
+    
+    index += 1;
+    
+    document.getElementByid("indice").value = index;
+    document.getElementById("formi").submit(); 
+    
+    
+}
+

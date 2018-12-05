@@ -45,7 +45,7 @@ public class ModE extends HttpServlet {
         
             HttpSession sesion=request.getSession();
             sesion.setAttribute("rutaXML",ruta);
-
+            
             //Consulta de preguntas
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -63,7 +63,7 @@ public class ModE extends HttpServlet {
                 Element rootNode = document.getRootElement();
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "examen" );
-                out.println("<form method='post' name='f1' id='f1' action='EliminarExamen'>");
+                out.println("<form method='post' name='f1' id='f1' action='CambiosExamen'>");
                     out.println("<p class='Titulos'>Lista de examenes</p>");
                     out.println("<p class='Subtitulos'>Seleccione el examen que desee modificar</p>");
                     out.println("<br />");
@@ -91,7 +91,7 @@ public class ModE extends HttpServlet {
                     out.println("<br />");
         
                     
-                    out.print("<center><input type='button' value='Modificar el examen seleccionado' class='button5' onclick='EliminarPregunta()' /></center>");
+                    out.print("<center><input type='button' value='Modificar el examen seleccionado' class='button5' onclick='ModificarPregunta()' /></center>");
                     out.println("<br />");
       
                     out.print("<center><input type='button' value='Regresar' class='button5' onclick='RegresarExamen()' /></center>");

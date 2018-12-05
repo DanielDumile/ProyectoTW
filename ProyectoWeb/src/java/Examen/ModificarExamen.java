@@ -139,7 +139,7 @@ public class ModificarExamen extends HttpServlet {
             } else {
                 System.out.println("error");
             }
-            response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
+            response.sendRedirect("/ProyectoWeb/Vistas/Examen.html");
             // TODO output your page here. You may use following sample code. 
             out.println("<!DOCTYPE html>");
             out.println("<html>");

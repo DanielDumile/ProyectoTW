@@ -58,7 +58,7 @@ public class AltaExamen extends HttpServlet {
             
             ValidacionId obj = new ValidacionId();
             if(!obj.validarExamen(id,ruta)){
-                response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
+                response.sendRedirect("/ProyectoWeb/Vistas/Examen.html");
             }
             else{
                 File fichero=new File(ruta);
@@ -93,7 +93,7 @@ public class AltaExamen extends HttpServlet {
                 }else {
                         System.out.println("error");
                 }
-                response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
+                response.sendRedirect("/ProyectoWeb/Vistas/Examen.html");
 
                 // TODO output your page here. You may use following sample code. 
                 out.println("<!DOCTYPE html>");

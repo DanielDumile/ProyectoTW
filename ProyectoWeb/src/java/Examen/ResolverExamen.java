@@ -122,6 +122,7 @@ public class ResolverExamen extends HttpServlet {
                     String texto = campo.getChildTextTrim("texto");
                     String respuesta = campo.getChildTextTrim("respuesta");
                     System.out.println(id);
+                    
                     if (id_pregunta.equals(id)) {
                         if (tipo.equals("TrueFalse")) {
                             out.println("<div id=\"Preguntas\">\n"

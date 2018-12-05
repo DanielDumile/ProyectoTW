@@ -98,7 +98,7 @@ public class EliminarExamen extends HttpServlet {
             sesion.setAttribute("rutaXML", ruta);
             String id = request.getParameter("ID");
             deleteElement(id,ruta);
-            response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
+            response.sendRedirect("/ProyectoWeb/Vistas/Examen.html");
             // TODO output your page here. You may use following sample code. 
             out.println("<!DOCTYPE html>");
             out.println("<html>");

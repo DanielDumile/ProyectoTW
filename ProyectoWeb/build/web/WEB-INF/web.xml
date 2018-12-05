@@ -52,6 +52,14 @@
         <servlet-name>ModE</servlet-name>
         <servlet-class>Examen.ModE</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MostrarResolver</servlet-name>
+        <servlet-class>Examen.MostrarResolver</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewExamen</servlet-name>
+        <servlet-class>Examen.NewExamen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -143,6 +151,14 @@
     <servlet-mapping>
         <servlet-name>ModE</servlet-name>
         <url-pattern>/ModE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarResolver</servlet-name>
+        <url-pattern>/MostrarResolver</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewExamen</servlet-name>
+        <url-pattern>/NewExamen</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

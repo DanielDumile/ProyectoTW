@@ -64,7 +64,9 @@ public class ModE extends HttpServlet {
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "examen" );
                 out.println("<form method='post' name='f1' id='f1' action='EliminarExamen'>");
-                    out.println("<p class='Titulos'>Lista de preguntas</p>");
+                    out.println("<p class='Titulos'>Lista de examenes</p>");
+                    out.println("<p class='Subtitulos'>Seleccione el examen que desee modificar</p>");
+                    out.println("<br />");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )
                     {
@@ -92,7 +94,7 @@ public class ModE extends HttpServlet {
                     out.print("<center><input type='button' value='Modificar el examen seleccionado' class='button5' onclick='EliminarPregunta()' /></center>");
                     out.println("<br />");
       
-                    out.print("<center><input type='button' value='Regresar' class='button5' onclick='Regresar()' /></center>");
+                    out.print("<center><input type='button' value='Regresar' class='button5' onclick='RegresarExamen()' /></center>");
                     out.println("<script src=\"Scripts/index.js\"></script>");
             }catch ( JDOMException io ) {
                 System.out.println(io.getMessage());

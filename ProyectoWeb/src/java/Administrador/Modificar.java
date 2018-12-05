@@ -63,7 +63,9 @@ public class Modificar extends HttpServlet {
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
                 out.println("<form method='post' name='f1' id='f1' action='Cambios'>");
-                    out.println("<p class='Titulos'>Lista de Preguntas</p>");
+                    out.println("<p class='Titulos'>Lista de preguntas</p>");
+                    out.println("<p class='Subtitulos'>Seleccione la pregunta que desee modificar</p>");
+                    out.println("<br />");
                     out.println("<hr />");
                     
                     for ( int i = 0; i < list.size(); i++ )

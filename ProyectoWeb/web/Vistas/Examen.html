@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>Menú de Examenes</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="../Styles/StyleAdministrador.css" type="text/css" />
+        <script src="../Frameworks/vue.js"></script>
+        
+    </head>
+    <body>
+       
+        <button class="button2" type="button" onclick="Cerrar()">Regresar</button>
+        <p class="Principal">Menú de Examenes</p>
+       
+        <div class="Admin">
+       
+            <p>Interfaz para la administración de examenes </p>
+           
+        </div>
+        
+        <br />
+        <hr />
+        
+        <div class="btn-group">
+            
+            <div id="Botones">
+                
+                <button v-on:click="show = !show" class="buttox">Nuevo Examen</button>
+                <button v-on:click="show2 = !show2" class="buttox">Modificar Examen</button>
+                <button v-on:click="show3 = !show3" class="buttox">Eliminar Examen</button>
+                <button v-on:click="show4 = !show4" class="buttox">Ver Examen</button>
+                <button v-on:click="show5 = !show5" class="buttox">Resolver Examen</button>
+               
+                
+                <br />
+                <br />
+                
+                <center>
+
+                <transition name="slide-fade">
+  
+                    <p v-if="show">
+
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                                
+                        <label class="Titulo">Crear un Nuevo Examen</label> 
+                        <br />
+                        <br />
+                        <label class="Texto">Agregue preguntas a un examen para poder aplicarlas</label>
+                        <br />
+                        <br />
+
+                         
+                        <button class="button1" onclick="TrueorFalse()">Nuevo Examen</button>
+                        <br />
+                        <br />
+                        <img class="Ad9" src="../Imagenes/E.png" alt="Examen"/>
+                    </p>
+                    
+                    <p else v-if="show2">
+                    
+                        <br />
+                        <br />
+                        <br />
+                                               
+                        <label class="Titulo"> Modificar Examen</label>         
+                        <br />
+                        <br />
+                        <label class="Texto">Verifique la lista de examenes a modificar</label>
+                        <br />
+                        <br />
+                        <button class="button1" onclick="ModificarExamen()">Mostrar Lista</button>
+                       
+                        <br />
+                        <br />
+                        <img class="Ad2" src="../Imagenes/Mod_1.png" alt="Mod"/>
+                   
+                    </p>
+                    
+                    <p else v-if="show3">
+                    
+                        <br />
+                        <br />
+                        <br />
+                                               
+                        <label class="Titulo"> Eliminar Examen</label>         
+                        <br />
+                        <br />
+                        <label class="Texto">Verifique la lista de examenes para eliminar</label>
+                        <br />
+                        <br />
+                        <button class="button1" onclick="EliminarExamen()">Mostrar Lista</button>
+                       
+                        <br />
+                        <br />
+                        <img class="Ad2" src="../Imagenes/El.png" alt="Mod"/>
+                   
+                    </p>
+                    
+                    <p else v-if="show4">
+                    
+                        <br />
+                        <br />
+                        <br />
+                                               
+                        <label class="Titulo"> Ver Examen</label>         
+                        <br />
+                        <br />
+                        <label class="Texto">Verifique la lista de examenes para consultar</label>
+                        <br />
+                        <br />
+                        <button class="button1" onclick="VerExamen()">Mostrar Lista</button>
+                       
+                        <br />
+                        <br />
+                        <img class="Ad2" src="../Imagenes/obs.png" alt="Mod"/>
+                   
+                    </p>
+                    
+                    <p else v-if="show5">
+                    
+                        <br />
+                        <br />
+                        <br />
+                                               
+                        <label class="Titulo"> Realizar Examen</label>         
+                        <br />
+                        <br />
+                        <label class="Texto">Verifique la lista de examenes para resolver</label>
+                        <br />
+                        <br />
+                        <button class="button1" onclick="RealizarExamen()">Mostrar Lista</button>
+                       
+                        <br />
+                        <br />
+                        <img class="Ad2" src="../Imagenes/Realizar.png" alt="Mod"/>
+                   
+                    </p>
+                   
+                </transition>
+                    
+                </center>
+                
+                
+                
+            </div>
+            
+            
+            
+             
+        </div>
+     
+        <script src="../Scripts/index.js"></script>
+    </body>
+</html>

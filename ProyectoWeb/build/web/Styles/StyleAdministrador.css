@@ -168,3 +168,33 @@ body{
     height: 100px;
   
 }
+
+
+.btn-group .buttox {
+    background-color: #117db8; /* Green */
+    border: 1px solid #1f618d;
+    color: white;
+    padding: 15px 113px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    float: left;
+    font-family:  "Nirmala UI Semilight";
+}
+
+.btn-group .buttox:hover {
+    background-color: #1f618d;
+}
+
+.Ad9{
+
+        float: none;
+    position: relative;
+    
+    
+    height: 160px;
+    width: 150px;
+
+}

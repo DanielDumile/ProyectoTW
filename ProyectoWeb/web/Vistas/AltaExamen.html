@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Nuevo Examen</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="../Styles/Style.css" type="text/css">
+        <script src="../Frameworks/vue.js"></script>
+        <script src="../Scripts/Validaciones.js"></script>
+    </head>
+    <body>
+    <center>
+        <div id="TrueFalse">
+            
+            <p class="Titulos">Creación de un nuevo examen</p>
+                <img class="Ad22" src="../Imagenes/preguntas.png" alt="Examen"/>
+            
+            <form v-on:submit="TF" action="../AltaExamen" method="post">
+                <hr />
+       
+                <p class="Subtitulos">ID del examen:   
+                <input class="Form2
+                       " v-model="ID" name="ID" required></p>
+                <p class="Subtitulos">Este servira como identifiador del examen</p>
+                
+                <p class="Subtitulos">Nombre del Examen: </p>
+                <p><textarea cols="40" rows="5" v-model="texto" required name="texto" placeholder="Esribe una pregunta de cualquier tema"></textarea></p>
+                
+                <p class="Subtitulos">Preguntas disponibles</p>
+                <p>Seleccione las preguntas que quiera en su examen</p>
+                <p><input class="Form" v-model="Pregunta" required name="Pregunta" placeholder="Aqui ira el texto de la pregunta" disabled value="True"> 
+                    <input type="checkbox" name="idPreguntas" value="Aqui ira el id de las preguntas"           
+                </p>
+                
+                <br />
+                <br />
+                <button class="button1" type="submit">Subir pregunta</button>   
+                
+            </form>
+                <br />
+                <button class="button3" onclick="RegresarExamen()">Regresar</button>   
+                
+            
+        </div>
+    </center>
+    <script src="../Scripts/index.js"></script>
+    </body>
+</html>

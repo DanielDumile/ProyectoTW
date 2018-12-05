@@ -128,7 +128,7 @@ public class ConsultaExamen extends HttpServlet {
                 out.print("<center><input type='button' value='Visualizar la pregunta seleccionada' class='button5' onclick='VerPregunta()' /></center>");
                 out.println("<br />");
 
-                out.print("<center><input type='button' value='Regresar' class='button5' onclick='Regresar()' /></center>");
+                out.print("<center><input type='button' value='Regresar' class='button5' onclick='RegresarExamen()' /></center>");
                 out.println("<script src=\"Scripts/index.js\"></script>");
             } catch (JDOMException io) {
                 System.out.println(io.getMessage());

@@ -74,7 +74,8 @@ body{
 /*Estilos de Pagina Principal*/
 #Login{
     
-    text-align: center;   
+    position: relative;
+    left: 200px;
 }
 
 #Opciones{
@@ -214,6 +215,14 @@ body{
 .Form{
     
     width: 290px;
+    height: 30px;
+    font-size: 20px;
+    
+}
+
+.Form3{
+    
+    width: 450px;
     height: 30px;
     font-size: 20px;
     
@@ -404,6 +413,27 @@ body{
     
 }
 
+.Ad11{
+    
+    float:left;
+    position: relative;
+    
+    
+ 
+    top: -400px;
+    left: 800px;
+    
+}
 
+.Ad22{
+    
+    float: none;
+    position: relative;
+    
+    top: -30px;
+    height: 140px;
+    width: 140px;
+    
+}
 
 

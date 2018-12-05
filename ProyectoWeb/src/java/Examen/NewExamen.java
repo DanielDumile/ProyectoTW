@@ -1,5 +1,11 @@
-package Administrador;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Examen;
 
+import static com.sun.faces.facelets.util.Path.context;
 import inicio.LoginBean;
 import java.io.File;
 import java.io.FileWriter;
@@ -21,9 +27,12 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-public class Eliminar extends HttpServlet {
-    
-    
+/**
+ *
+ * @author stark
+ */
+public class NewExamen extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,23 +46,29 @@ public class Eliminar extends HttpServlet {
             throws ServletException, IOException {
         ServletContext context = request.getServletContext();
         response.setContentType("text/html;charset=UTF-8");
-        
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             String ruta=context.getRealPath("/")+"XML/PreguntaTF.xml";        
         
             HttpSession sesion=request.getSession();
             sesion.setAttribute("rutaXML",ruta);
-
-            //Consulta de preguntas
+            
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Eliminar Preguntas</title>"); 
-            out.println("<link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\" />");
-      
+            out.println("<title>Nuevo Examen</title>");
+            out.println("<meta charset=\"UTF-8\">\n" +
+"        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+"        \n" +
+"        <link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\">\n" +
+"        <script src=\"Frameworks/vue.js\"></script>\n" +
+"        <script src=\"Scripts/Validaciones.js\"></script>"
+                    + "<script src=\"Scripts/index.js\"></script>");
+                        
             out.println("</head>");
             out.println("<body>");
-
+            
             SAXBuilder builder = new SAXBuilder();
             File xmlFile = new File(ruta);
             try{//Se crea el documento a traves del archivo  
@@ -62,13 +77,29 @@ public class Eliminar extends HttpServlet {
                 Element rootNode = document.getRootElement();
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
-                out.println("<form method='post' name='f1' id='f1' action='EliminarPregunta'>");
-                    out.println("<p class='Titulos'>Lista de preguntas</p>");
-                    out.println("<p class='Subtitulos'>Seleccione la pregunta que desee eliminar</p>");
-                    out.println("<br />");
-                    out.println("<hr />");
+            
+            out.println("<center>\n" +
+"        <div id=\"TrueFalse\">\n" +
+"            <p class=\"Titulos\">Creación de un nuevo examen</p>\n" +
+"                <img class=\"Ad22\" src=\"Imagenes/preguntas.png\" alt=\"Examen\"/>\n" +
+"            \n" +
+"            \n" +
+"            <form v-on:submit=\"TF\" action=\"AltaExamen\" method=\"post\">\n" +
+"                \n" +
+"                <hr />\n" +
+"       \n" +
+"                <p class=\"Subtitulos\">ID del examen:   \n" +
+"                <input class=\"Form2\n" +
+"                       \" v-model=\"ID\" name=\"ID\" required></p>\n" +
+"                <p class=\"Subtitulos\">Este servira como identifiador del examen</p>\n" +
+"                \n" +
+"                <p class=\"Subtitulos\">Nombre del Examen: </p>\n" +
+"                <p><textarea cols=\"40\" rows=\"5\" v-model=\"texto\" required name=\"texto\" placeholder=\"Escribe el nombre del examen\"></textarea></p>\n" +
+"                \n" +
+"                <p class=\"Subtitulos\">Preguntas disponibles</p>\n" +
+"                <p>Seleccione las preguntas que quiera en su examen</p>\n");
                     
-                    for ( int i = 0; i < list.size(); i++ )
+                  for ( int i = 0; i < list.size(); i++ )
                     {
                        //Se obtiene el elemento 'user1'
                         Element campo = (Element) list.get(i);
@@ -77,33 +108,27 @@ public class Eliminar extends HttpServlet {
                         //Se obtiene el valor que esta entre los tags
                         String texto = campo.getChildTextTrim("texto");
                         String tipo = campo.getChildTextTrim("tipo");
-                        String respuesta = campo.getChildTextTrim("respuesta");
-                        
-                        out.println("");
-  
-                        out.print("<input type='button' value='Seleccionar' id="+i+" onclick='Poner("+id+","+i+","+list.size()+")'class='button4'>");
-                        out.println("<p class='Subtitulos'><b>Pregunta "+(i+1)+":</b> "+texto+"<br></p>");
-                        out.println("<p class='Subtitulos'><b>Tipo de Pregunta:</b> "+tipo+"<br></p>");
-                        out.print("<p class='Subtitulos'><b>Respuesta:</b> "+respuesta+"<br></p>");
 
-                        out.println("<hr />");    
-                    
-                }
-                    out.println("<center><input type='text' class='text1' name='ID'  id='ID' value=' ' hidden/><center>");
-                    out.println("</form>");
-                    out.println("<br />");
-                    
-                    out.println("<br />");
+                
+                    out.println("<p><input class=\"Form\" v-model=\"Pregunta\" required name=\"Pregunta\" style=\"width: 800px\" placeholder=\""+texto+"\" disabled value=\"Pregunta: "+texto+" --> Tipo: "+tipo+"\"> \n" +
+                    "<input type=\"checkbox\" name=\"idPreguntas\" value=\""+id+"\"  </p>");
 
-                   
-                    
-                    out.print("<center><input type='button' value='Eliminar la pregunta seleccionada' class='button5' onclick='EliminarPregunta()' /></center>");
-                    out.println("<br />");
-      
-                    out.print("<center><input type='button' value='Regresar' class='button5' onclick='Regresar()' /></center>");
-                    out.println("<script src=\"Scripts/index.js\"></script>");
-           
-            }catch ( JDOMException io ) {
+                    }
+out.println("<br />"
+        + "<br />\n" +
+"                \n" +
+"                <button class=\"button1\" type=\"submit\">Subir pregunta</button>   \n" +
+"                \n" +
+"            </form>\n" +
+"                <br />\n" +
+"                <button class=\"button3\" onclick=\"RegresarExamen()\">Regresar</button>   \n" +
+"                \n" +
+"            \n" +
+"        </div>\n" +
+"    </center>\n" +
+"    <script src=\"../Scripts/index.js\"></script>");
+
+}catch ( JDOMException io ) {
                 System.out.println(io.getMessage());
             }
             out.println("</body>");
@@ -120,6 +145,7 @@ public class Eliminar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -133,6 +159,7 @@ public class Eliminar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -143,8 +170,9 @@ public class Eliminar extends HttpServlet {
      *
      * @return a String containing servlet description
      */
+    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
+
 }

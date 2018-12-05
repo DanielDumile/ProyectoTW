@@ -48,7 +48,7 @@ public class Ver extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Eliminar Preguntas</title>"); 
+            out.println("<title>Ver Pregunta</title>"); 
             out.println("<link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\" />");
             out.println("</head>");
             out.println("<body>");
@@ -62,7 +62,9 @@ public class Ver extends HttpServlet {
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "pregunta" );
                 out.println("<form method='post' name='f1' id='f1' action='MostrarPregunta'>");
-                    out.println("<p class='Titulos'>Lista de preguntas</p>");
+                   out.println("<p class='Titulos'>Lista de preguntas</p>");
+                    out.println("<p class='Subtitulos'>Seleccione la pregunta que desee ver</p>");
+                    out.println("<br />");
                     out.println("<hr />");
                     for ( int i = 0; i < list.size(); i++ )
                     {

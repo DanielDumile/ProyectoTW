@@ -20,7 +20,8 @@ new Vue({
     show: false,
     show2: false,
     show3: false,
-    show4: false
+    show4: false,
+    show5: false
   },
   
 });
@@ -101,6 +102,12 @@ function Regresar(){
 
 }
 
+function RegresarExamen(){
+    
+    location.href ="/ProyectoWeb/Vistas/Examen.html"; 
+    
+}
+
 function HotObject(){
     
    location.href ="/ProyectoWeb/Vistas/HotObject.html"; 
@@ -115,10 +122,33 @@ function Modificar(){
     
 }
 
+function ModificarExamen(){
+    
+    location.href ="/ProyectoWeb/ModE"; 
+    
+}
+
 function Eliminar(){
     
    location.href = "/ProyectoWeb/Eliminar"; 
    
+    
+}
+
+function RealizarExamen(){
+    
+    location.href = "/ProyectoWeb/MostrarResolver"; 
+}
+
+function VerExamen(){
+    
+    location.href = "/ProyectoWeb/MostrarExamenes"; 
+}
+
+function EliminarExamen(){
+    
+    location.href = "/ProyectoWeb/BorrarExamen"; 
+    
     
 }
 
@@ -194,6 +224,12 @@ function VerPregunta(){
 function Index(){
     
      location.href = "/ProyectoWeb/index.html"; 
+    
+}
+
+function Examen(){
+    
+     location.href = "/ProyectoWeb/Vistas/Examen.html"; 
     
 }
 

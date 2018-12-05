@@ -115,7 +115,8 @@ public class ResolverExamen extends HttpServlet {
                         + "<script src=\"Scripts/index.js\"></script>\n"
                         + "        \n"
                         + "    </head>\n"
-                        + "    <body>");
+                        + "    <body>"
+                        +"<form id='formi' action='ResolverExamen' method='post' >");
                 for (int i = 0; i < list.size(); i++) {
                     Element campo = (Element) list.get(i);
                     String id = campo.getAttributeValue("id");
@@ -134,7 +135,8 @@ public class ResolverExamen extends HttpServlet {
                                     + "                    \n"
                                     + "                    <br />\n"
                                     + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
-                                    + "                    <input type=\"text\" value=\"" + id + "\" hidden />\n"
+                                    + "                    <input type=\"text\" value=\"" + id + "\" name='ID' hidden />\n"
+                                    + "     <input type='text' id='indice' name='indice' value='"+indice+"' hidden>"
                                     + "                </div>\n"
                                     + "                \n"
                                     + "                <br />\n"
@@ -148,7 +150,7 @@ public class ResolverExamen extends HttpServlet {
                                     + "                \n"
                                     + "                 <div id=\"Bottom\">\n"
                                     + "                     <br />\n"
-                                    + "                     <input type=\"button\" class=\"button2\" value=\"Siguiente\" />\n"
+                                    + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
                                     + "                    \n"
                                     + "                     <input type=\"button\" class=\"button2\" onclick=\"Calificar()\" value=\"Calificar\" />\n"
                                     + "                </div>\n"
@@ -200,7 +202,8 @@ public class ResolverExamen extends HttpServlet {
                                     + "                    \n"
                                     + "                    <br />\n"
                                     + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
-                                    + "                    <input type=\"text\" value=\"" + id + "\" hidden />\n"
+                                    + "                    <input type=\"text\" value=\"" + id + "\" name='ID' hidden />\n"
+                                    + "     <input type='text' id='indice' name='indice' value='"+indice+"' hidden>"
                                     + "                </div>\n"
                                     + "                \n"
                                     + "                <br />\n"
@@ -252,7 +255,7 @@ public class ResolverExamen extends HttpServlet {
                                     + "                </p>\n"
                                     + "<div id=\"Bottom2\">\n"
                                     + "                     <br />\n"
-                                    + "                     <input type=\"button\" class=\"button2\" value=\"Siguiente\" />\n"
+                                    + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
                                     + "                    \n"
                                     + "                     <input type=\"button\" class=\"button2\" value=\"Calificar\" />\n"
                                     + "                </div>\n"

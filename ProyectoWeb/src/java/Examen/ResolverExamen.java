@@ -48,14 +48,14 @@ public class ResolverExamen extends HttpServlet {
             HttpSession sesion = request.getSession();
             sesion.setAttribute("rutaXML", ruta);
             //int indice = Integer.parseInt((String)sesion.getAttribute("indice"));
-            
+
             //Estas puedens ser por session
             int indice = Integer.parseInt(request.getParameter("indice"));
             String idExamen = request.getParameter("ID");
-            
+
             //Variables necesarias
             String id_pregunta = "";
-            int cant_preguntas=0;
+            int cant_preguntas = 0;
             //String idExamen = "1";
 
             HashSet<String> idPreguntas = new HashSet<>();
@@ -89,196 +89,205 @@ public class ResolverExamen extends HttpServlet {
             } catch (JDOMException io) {
                 System.out.println(io.getMessage());
             }
-            
-            if(indice == cant_preguntas){
-            
-            }
 
-            //SACAMOS A TODAS LAS PREGUNTAS PERO SOLO PONEMOS A LA QUE NOS INTERESA
-            SAXBuilder builder2 = new SAXBuilder();
-            File xmlFile2 = new File(ruta2);
-            try {//Se crea el documento a traves del archivo  
-                Document doc = (Document) builder.build(xmlFile2);
-                //Se obtiene la raiz 
-                Element rootNode = doc.getRootElement();
-                //Se obtiene la lista de hijos de la raiz 'usuarios'
-                List list = rootNode.getChildren("pregunta");
-                //out.println("El id escogido es "+ id_pregunta);
-                //System.out.println("Escogido en consola "+id_pregunta);
-                out.println("<html>\n"
-                        + "    <head>\n"
-                        + "        <title>Pregunta</title>\n"
-                        + "        <meta charset=\"UTF-8\">\n"
-                        + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                        + "        <link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\">\n"
-                        + "        <script src=\"Frameworks/vue.js\"></script>"
-                        + "<script src=\"Scripts/index.js\"></script>\n"
-                        + "        \n"
-                        + "    </head>\n"
-                        + "    <body>"
-                        +"<form id='formi' action='ResolverExamen' method='post' >");
-                for (int i = 0; i < list.size(); i++) {
-                    Element campo = (Element) list.get(i);
-                    String id = campo.getAttributeValue("id");
-                    String tipo = campo.getChildTextTrim("tipo");
-                    String texto = campo.getChildTextTrim("texto");
-                    String respuesta = campo.getChildTextTrim("respuesta");
-                    System.out.println(id);
-                    
-                    if (id_pregunta.equals(id)) {
-                        if (tipo.equals("TrueFalse")) {
-                            out.println("<div id=\"Preguntas\">\n"
-                                    + "            \n"
-                                    + "            <div id=\"Contenido\">\n"
-                                    + "                \n"
-                                    + "                <div id=\"Top\">\n"
-                                    + "                    \n"
-                                    + "                    <br />\n"
-                                    + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
-                                    + "                    <input type=\"text\" value=\"" + id + "\" name='ID' hidden />\n"
-                                    + "     <input type='text' id='indice' name='indice' value='"+indice+"' hidden>"
-                                    + "                </div>\n"
-                                    + "                \n"
-                                    + "                <br />\n"
-                                    + "                <br />\n"
-                                    + "                \n"
-                                    + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Verdadero\" name=\"Valor\"/> Verdadero</p>\n"
-                                    + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Falso\" name=\"Valor\"/> Falso</p>\n"
-                                    + "                 \n"
-                                    + "                <img class=\"Ad4\" src=\"Imagenes/VF.png\" alt=\"Examen\" /> <input type=\"text\" id=\"Resp\" value=\""+respuesta+"\" hidden/>\n"
-                                                        
-                                    + "                \n"
-                                    + "                 <div id=\"Bottom\">\n"
-                                    + "                     <br />\n"
-                                    + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
-                                    + "                    \n"
-                                    + "                     <input type=\"button\" class=\"button2\" onclick=\"Calificar()\" value=\"Calificar\" />\n"
-                                    + "                </div>\n"
-                                    + "            </div>\n"
-                                    + "            \n"
-                                    + "            <div id=\"Left\">\n"
-                                    + "                <p>Lea cuidadosamente la pregunta\n"
-                                    + "                y seleccione si es verdadera o falsa</p>\n"
-                                    + "                <p>Seleccione <b>Calificar</b> para obtener puntaje</p>\n"
-                                    + "                <p>Seleccione <b>Siguiente</b> para pasar a la otra pregunta</p>\n"
-                                    + "            </div>\n"
-                                    + "        </div>");
-                        } else {
-                            List lista = campo.getChildren("opcion");
-                            out.println("<style>\n"
-                                    + "            \n"
-                                    + "            .checkeable input {\n"
-                                    + "                display: none;\n"
-                                    + "                float: left;\n"
-                                    + "            }\n"
-                                    + "            \n"
-                                    + "            .checkeable img {\n"
-                                    + "                width: 100px;\n"
-                                    + "                height: 100px;\n"
-                                    + "                border: 5px solid transparent;\n"
-                                    + "                position: relative;\n"
-                                    + "                left: 35px;\n"
-                                    + "                bottom: 20px;\n"
-                                    + "      \n"
-                                    + "            }\n"
-                                    + "            \n"
-                                    + "            .checkeable input {\n"
-                                    + "                display: none;\n"
-                                    + "                float: left;\n"
-                                    + "            }\n"
-                                    + "            \n"
-                                    + "            .checkeable input:checked  + img {\n"
-                                    + "              border-color: grey;\n"
-                                    + "              opacity: 0.5;\n"
-                                    + "             \n"
-                                    + "            }\n"
-                                    + "            \n"
-                                    + "        </style>");
-                            out.println("<div id=\"Preguntas\">\n"
-                                    + "            \n"
-                                    + "            <div id=\"Contenido\" style=\"border-bottom: 6px solid #f0b60f;\">\n"
-                                    + "                \n"
-                                    + "                <div id=\"Top\" style=\"background-color:#f0b60f\">\n"
-                                    + "                    \n"
-                                    + "                    <br />\n"
-                                    + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
-                                    + "                    <input type=\"text\" value=\"" + id + "\" name='ID' hidden />\n"
-                                    + "     <input type='text' id='indice' name='indice' value='"+indice+"' hidden>"
-                                    + "                </div>\n"
-                                    + "                \n"
-                                    + "                <br />\n"
-                                    + "                <br />\n"
-                                    + "                \n"
-                                    + "                <p>\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"" + 1 + "\"/>\n"
-                                    + "                        <img src=\"" + ((Element) lista.get(0)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"" + 2 + "\"/>\n"
-                                    + "                      <img src=\"" + ((Element) lista.get(1)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                    + "                        <img src=\"" + ((Element) lista.get(2)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                    + "                      <img src=\"" + ((Element) lista.get(3)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "                </p>\n"
-                                    + "                \n"
-                                    + "                <p>\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                    + "                        <img src=\"" + ((Element) lista.get(4)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                    + "                      <img src=\"" + ((Element) lista.get(5)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                    + "                        <img src=\"" + ((Element) lista.get(6)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "\n"
-                                    + "                    <label class=\"checkeable\">\n"
-                                    + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                    + "                      <img src=\"A" + ((Element) lista.get(7)).getTextTrim() + "\" />\n"
-                                    + "                    </label>\n"
-                                    + "                    \n"
-                                    + "                    <img class=\"Ad6\" src=\"Imagenes/HOT.png\" alt=\"Examen\" />\n"
-                                    + "                </p>\n"
-                                    + "<div id=\"Bottom2\">\n"
-                                    + "                     <br />\n"
-                                    + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
-                                    + "                    \n"
-                                    + "                     <input type=\"button\" class=\"button2\" value=\"Calificar\" />\n"
-                                    + "                </div>\n"
-                                    + "            </div>\n"
-                                    + "            \n"
-                                    + "            <div id=\"Left\" style=\"border:4px solid #f0b60f;\">\n"
-                                    + "                <p>Lea cuidadosamente la pregunta\n"
-                                    + "                y seleccione las imegenes que se relacionen con la pregunta</p>\n"
-                                    + "                <p>Seleccione <b>Calificar</b> para obtener puntaje</p>\n"
-                                    + "                <p>Seleccione <b>Siguiente</b> para pasar a la otra pregunta</p>\n"
-                                    + "            </div>\n"
-                                    + "        </div>");
+            if (indice >= cant_preguntas) {
+                //Consulta de preguntas
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<script src=\"Scripts/index.js\"></script><title>Resolver Examen</title>");
+                out.println("<link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\" />");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<script>RegresarExamen();</script>");
+                out.println("</body>");
+                out.println("</html>");
+            } else {
+                //SACAMOS A TODAS LAS PREGUNTAS PERO SOLO PONEMOS A LA QUE NOS INTERESA
+                SAXBuilder builder2 = new SAXBuilder();
+                File xmlFile2 = new File(ruta2);
+                try {//Se crea el documento a traves del archivo  
+                    Document doc = (Document) builder.build(xmlFile2);
+                    //Se obtiene la raiz 
+                    Element rootNode = doc.getRootElement();
+                    //Se obtiene la lista de hijos de la raiz 'usuarios'
+                    List list = rootNode.getChildren("pregunta");
+                    //out.println("El id escogido es "+ id_pregunta);
+                    //System.out.println("Escogido en consola "+id_pregunta);
+                    out.println("<html>\n"
+                            + "    <head>\n"
+                            + "        <title>Pregunta</title>\n"
+                            + "        <meta charset=\"UTF-8\">\n"
+                            + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                            + "        <link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\">\n"
+                            + "        <script src=\"Frameworks/vue.js\"></script>"
+                            + "<script src=\"Scripts/index.js\"></script>\n"
+                            + "        \n"
+                            + "    </head>\n"
+                            + "    <body>"
+                            + "<form id='formi' action='ResolverExamen' method='post' >");
+                    for (int i = 0; i < list.size(); i++) {
+                        Element campo = (Element) list.get(i);
+                        String id = campo.getAttributeValue("id");
+                        String tipo = campo.getChildTextTrim("tipo");
+                        String texto = campo.getChildTextTrim("texto");
+                        String respuesta = campo.getChildTextTrim("respuesta");
+                        System.out.println(id);
+
+                        if (id_pregunta.equals(id)) {
+                            if (tipo.equals("TrueFalse")) {
+                                out.println("<div id=\"Preguntas\">\n"
+                                        + "            \n"
+                                        + "            <div id=\"Contenido\">\n"
+                                        + "                \n"
+                                        + "                <div id=\"Top\">\n"
+                                        + "                    \n"
+                                        + "                    <br />\n"
+                                        + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
+                                        + "                    <input type=\"text\" value=\"" + idExamen + "\" name='ID' hidden />\n"
+                                        + "     <input type='text' id='indice' name='indice' value='" + String.valueOf(indice) + "' hidden>"
+                                        + "                </div>\n"
+                                        + "                \n"
+                                        + "                <br />\n"
+                                        + "                <br />\n"
+                                        + "                \n"
+                                        + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Verdadero\" name=\"Valor\"/> Verdadero</p>\n"
+                                        + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Falso\" name=\"Valor\"/> Falso</p>\n"
+                                        + "                 \n"
+                                        + "                <img class=\"Ad4\" src=\"Imagenes/VF.png\" alt=\"Examen\" /> <input type=\"text\" id=\"Resp\" value=\"" + respuesta + "\" hidden/>\n"
+                                        + "                \n"
+                                        + "                 <div id=\"Bottom\">\n"
+                                        + "                     <br />\n"
+                                        + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
+                                        + "                    \n"
+                                        + "                     <input type=\"button\" class=\"button2\" onclick=\"Calificar()\" value=\"Calificar\" />\n"
+                                        + "                </div>\n"
+                                        + "            </div>\n"
+                                        + "            \n"
+                                        + "            <div id=\"Left\">\n"
+                                        + "                <p>Lea cuidadosamente la pregunta\n"
+                                        + "                y seleccione si es verdadera o falsa</p>\n"
+                                        + "                <p>Seleccione <b>Calificar</b> para obtener puntaje</p>\n"
+                                        + "                <p>Seleccione <b>Siguiente</b> para pasar a la otra pregunta</p>\n"
+                                        + "            </div>\n"
+                                        + "        </div>");
+                            } else {
+                                List lista = campo.getChildren("opcion");
+                                out.println("<style>\n"
+                                        + "            \n"
+                                        + "            .checkeable input {\n"
+                                        + "                display: none;\n"
+                                        + "                float: left;\n"
+                                        + "            }\n"
+                                        + "            \n"
+                                        + "            .checkeable img {\n"
+                                        + "                width: 100px;\n"
+                                        + "                height: 100px;\n"
+                                        + "                border: 5px solid transparent;\n"
+                                        + "                position: relative;\n"
+                                        + "                left: 35px;\n"
+                                        + "                bottom: 20px;\n"
+                                        + "      \n"
+                                        + "            }\n"
+                                        + "            \n"
+                                        + "            .checkeable input {\n"
+                                        + "                display: none;\n"
+                                        + "                float: left;\n"
+                                        + "            }\n"
+                                        + "            \n"
+                                        + "            .checkeable input:checked  + img {\n"
+                                        + "              border-color: grey;\n"
+                                        + "              opacity: 0.5;\n"
+                                        + "             \n"
+                                        + "            }\n"
+                                        + "            \n"
+                                        + "        </style>");
+                                out.println("<div id=\"Preguntas\">\n"
+                                        + "            \n"
+                                        + "            <div id=\"Contenido\" style=\"border-bottom: 6px solid #f0b60f;\">\n"
+                                        + "                \n"
+                                        + "                <div id=\"Top\" style=\"background-color:#f0b60f\">\n"
+                                        + "                    \n"
+                                        + "                    <br />\n"
+                                        + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
+                                        + "                    <input type=\"text\" value=\"" + idExamen + "\" name='ID' hidden />\n"
+                                        + "     <input type='text' id='indice' name='indice' value='" + String.valueOf(indice) + "' hidden>"
+                                        + "                </div>\n"
+                                        + "                \n"
+                                        + "                <br />\n"
+                                        + "                <br />\n"
+                                        + "                \n"
+                                        + "                <p>\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"" + 1 + "\"/>\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(0)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"" + 2 + "\"/>\n"
+                                        + "                      <img src=\"" + ((Element) lista.get(1)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(2)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
+                                        + "                      <img src=\"" + ((Element) lista.get(3)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "                </p>\n"
+                                        + "                \n"
+                                        + "                <p>\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(4)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
+                                        + "                      <img src=\"" + ((Element) lista.get(5)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(6)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "\n"
+                                        + "                    <label class=\"checkeable\">\n"
+                                        + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
+                                        + "                      <img src=\"A" + ((Element) lista.get(7)).getTextTrim() + "\" />\n"
+                                        + "                    </label>\n"
+                                        + "                    \n"
+                                        + "                    <img class=\"Ad6\" src=\"Imagenes/HOT.png\" alt=\"Examen\" />\n"
+                                        + "                </p>\n"
+                                        + "<div id=\"Bottom2\">\n"
+                                        + "                     <br />\n"
+                                        + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
+                                        + "                    \n"
+                                        + "                     <input type=\"button\" class=\"button2\" value=\"Calificar\" />\n"
+                                        + "                </div>\n"
+                                        + "            </div>\n"
+                                        + "            \n"
+                                        + "            <div id=\"Left\" style=\"border:4px solid #f0b60f;\">\n"
+                                        + "                <p>Lea cuidadosamente la pregunta\n"
+                                        + "                y seleccione las imegenes que se relacionen con la pregunta</p>\n"
+                                        + "                <p>Seleccione <b>Calificar</b> para obtener puntaje</p>\n"
+                                        + "                <p>Seleccione <b>Siguiente</b> para pasar a la otra pregunta</p>\n"
+                                        + "            </div>\n"
+                                        + "        </div>");
+                            }
+                            break;
                         }
-                        break;
                     }
-                }
 
-                out.println("<script src=\"Scripts/index.js\"></script>\n"
-                        + "    </body>\n"
-                        + "</html>\n"
-                        + "");
-            } catch (JDOMException io) {
-                System.out.println(io.getMessage());
+                    out.println("</form> <script src=\"Scripts/index.js\"></script>\n"
+                            + "    </body>\n"
+                            + "</html>\n"
+                            + "");
+                } catch (JDOMException io) {
+                    System.out.println(io.getMessage());
+                }
             }
         }
     }

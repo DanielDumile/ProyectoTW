@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+    </head>
+    <body>
+        
+        <script>
+            
+        function Check(){ 
+              
+               var resultado;
+ 
+            var porNombre=document.getElementsByName("P");
+           
+            // Recorremos todos los valores del radio button para encontrar el
+            // seleccionado
+            for(var i=0;i<porNombre.length;i++) {
+                
+                if(porNombre[i].checked){
+                    resultado=porNombre[i].value;
+                    
+                    
+                }
+            }
+            
+            if(resultado === "1"){
+                
+                alert('Respuesta Correcta');
+                
+            }else{
+                
+                alert('Respuesta Incorrecta');
+                
+            }
+        }
+            
+        </script>
+        <input type="radio" name="P" value="1">
+         <input type="radio" name="P" value="2">
+         <input type="button" name="Button" value="Valor" onclick="Check()">
+    </body>
+</html>

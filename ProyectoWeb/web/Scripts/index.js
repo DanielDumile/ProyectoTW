@@ -108,6 +108,12 @@ function RegresarExamen(){
     
 }
 
+function NewExamen(){
+    
+    location.href ="/ProyectoWeb/NewExamen"; 
+    
+}
+
 function HotObject(){
     
    location.href ="/ProyectoWeb/Vistas/HotObject.html"; 

@@ -1,11 +1,18 @@
 <!DOCTYPE root
 [
 <!ELEMENT root (pregunta)*>
-<!ELEMENT pregunta (tipo,texto,opcion*,respuesta)>
+<!ELEMENT pregunta (tipo,texto,opcion*,respuesta,intentos,multimedia*,inicial*,evaluar*,correcta*,incorrecta*,intentar*)>
 <!ELEMENT opcion (#PCDATA)>
 <!ELEMENT tipo (#PCDATA)>
 <!ELEMENT texto (#PCDATA)>
 <!ELEMENT respuesta (#PCDATA)>
+<!ELEMENT intentos (#PCDATA)>
+<!ELEMENT multimedia (#PCDATA)>
+<!ELEMENT inicial (#PCDATA)>
+<!ELEMENT evaluar (#PCDATA)>
+<!ELEMENT correcta (#PCDATA)>
+<!ELEMENT incorrecta (#PCDATA)>
+<!ELEMENT intentar (#PCDATA)>
 <!ATTLIST pregunta id CDATA #REQUIRED>
 <!ATTLIST opcion id CDATA #REQUIRED>
 ]>

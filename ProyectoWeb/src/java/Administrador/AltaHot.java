@@ -42,12 +42,30 @@ import org.w3c.dom.NodeList;
             String ruta=context.getRealPath("/")+"XML/PreguntaTF.xml";
             
             HttpSession sesion=request.getSession();
-            //sesion.setAttribute("user",usuario);
             sesion.setAttribute("rutaXML",ruta);
             String id = request.getParameter("ID");
             String[] respuestaCorrecta= request.getParameterValues("Correcta");//request.getParameter("Correcta");
             String[] opciones = request.getParameterValues("opciones");
-            String pregunta = request.getParameter("pregunta");
+            String pregunta = request.getParameter("pregunta");  
+            //Nuevos
+            String intentos = request.getParameter("intentos");
+
+            String multimedia,checkMultimedia;
+            checkMultimedia= request.getParameter("checkMultimedia");
+            if(!checkMultimedia.equals("NO")){
+                multimedia = request.getParameter("multimedia");
+            }
+            //Opciones del feedback
+            String inicial,evaluar,correcta,incorrecta,intentar;
+            String checkFeedback=request.getParameter("checkFeedback");
+            if(!checkFeedback.equals("NO")){
+                inicial= request.getParameter("inicial");
+                evaluar= request.getParameter("evaluar");
+                correcta= request.getParameter("correcta");
+                incorrecta= request.getParameter("incorrecta");
+                intentar= request.getParameter("intentar");
+            }
+
             ValidacionId obj = new ValidacionId();
             if(!obj.validar(id,ruta)){
                 response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
@@ -65,6 +83,8 @@ import org.w3c.dom.NodeList;
                         Element eTexto = new Element("texto");
                         Element eRespuesta = new Element("respuesta");
                         Element eTipo=new Element("tipo");
+                        Element eIntentos = new Element("intentos");
+
                         ePregunta.setAttribute("id", id);
                         eTexto.setText(pregunta);
                         eTipo.setText("HotObject");
@@ -87,6 +107,35 @@ import org.w3c.dom.NodeList;
                             ePregunta.addContent(aux);
                         }
                         ePregunta.addContent(eRespuesta);
+                        ePregunta.addContent(eIntentos);
+                        if(!checkMultimedia.equals("NO")){
+                            Element eMultimedia = new Element("multimedia");
+                            ePregunta.addContent(eMultimedia);
+                        }
+
+
+                        //Feedback
+                        if(!checkFeedback.equals("NO")){
+                            Element eInicial = new Element("inicial");
+                            eInicial.setText(inicial);
+                            ePregunta.addContent(eInicial);
+
+                            Element eEvaluar = new Element("evaluar");
+                            eEvaluar.setText(evaluar);
+                            ePregunta.addContent(eEvaluar);
+
+                            Element eCorrecta = new Element("correcta");
+                            eCorrecta.setText(correcta);
+                            ePregunta.addContent(eCorrecta);
+
+                            Element eIncorrecta = new Element("incorrecta");
+                            eIncorrecta.setText(incorrecta);
+                            ePregunta.addContent(eIncorrecta);
+
+                            Element eIntentar = new Element("intentar");
+                            eIntentar.setText(intentar);
+                            ePregunta.addContent(eIntentar);
+                        }
 
                         raiz.addContent(ePregunta);
                         XMLOutputter xmlOutput = new XMLOutputter();

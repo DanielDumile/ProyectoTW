@@ -90,56 +90,124 @@ public class ModificarPregunta extends HttpServlet {
         }
     }
 
-    private static void addElementTF(Document doc, String id, String respuestaCorrecta, String pregunta) {
+    private static void addElementTF(Document doc, String id,  String pregunta,String respuestaCorrecta,
+        String intentos,String checkMultimedia,String multimedia,String checkFeedback,String inicial,String evaluar,String correcta,String incorrecta,String intentar) {
         
-        Element raiz = doc.getRootElement();
-        Element ePregunta = new Element("pregunta");
-        Element eTexto = new Element("texto");
-        Element eRespuesta = new Element("respuesta");
-        Element eTipo = new Element("tipo");
-        ePregunta.setAttribute("id", id);
-        eTexto.setText(pregunta);
-        eRespuesta.setText(respuestaCorrecta);
-        eTipo.setText("TrueFalse");
-        ePregunta.addContent(eTipo);
-        ePregunta.addContent(eTexto);
-        ePregunta.addContent(eRespuesta);
-        raiz.addContent(ePregunta);
+        Element raiz=doc.getRootElement();
+                        //Elementos normales
+                        Element ePregunta=new Element("pregunta");
+                        //Adentro de pregunta
+                        Element eTexto = new Element("texto");
+                        Element eRespuesta = new Element("respuesta");
+                        Element eTipo = new Element("tipo");
+                        Element eIntentos = new Element("intentos");
+                        
+                        ePregunta.setAttribute("id", id);
+                        
+                        eTexto.setText(pregunta);
+                        eRespuesta.setText(respuestaCorrecta);
+                        eTipo.setText("TrueFalse");
+                        eIntentos.setText(intentos);
+                        eMultimedia.setText(multimedia);
+                        
+                        ePregunta.addContent(eTipo);
+                        ePregunta.addContent(eTexto);
+                        ePregunta.addContent(eRespuesta);
+                        ePregunta.addContent(eIntentos);
+                        if(!checkMultimedia.equals("NO")){
+                            Element eMultimedia = new Element("multimedia");
+                            ePregunta.addContent(eMultimedia);
+                        }     
+
+                        if(!checkFeedback.equals("NO")){
+                            Element eInicial = new Element("inicial");
+                            eInicial.setText(inicial);
+                            ePregunta.addContent(eInicial);
+
+                            Element eEvaluar = new Element("evaluar");
+                            eEvaluar.setText(evaluar);
+                            ePregunta.addContent(eEvaluar);
+
+                            Element eCorrecta = new Element("correcta");
+                            eCorrecta.setText(correcta);
+                            ePregunta.addContent(eCorrecta);
+
+                            Element eIncorrecta = new Element("incorrecta");
+                            eIncorrecta.setText(incorrecta);
+                            ePregunta.addContent(eIncorrecta);
+
+                            Element eIntentar = new Element("intentar");
+                            eIntentar.setText(intentar);
+                            ePregunta.addContent(eIntentar);
+                        }
+                        raiz.addContent(ePregunta);
         
     }
 
-    private static void addElementHot(Document doc, String id, String pregunta, String[] opciones, String[] respuestaCorrecta) {
+    private static void addElementHot(Document doc, String id, String pregunta, String[] opciones, 
+        String[] respuestaCorrecta,String intentos,String checkMultimedia,String multimedia,String checkFeedback,
+        String inicial,String evaluar,String correcta,String incorrecta,String intentar) {
         
-        Element raiz = doc.getRootElement();
-        Element ePregunta = new Element("pregunta");
-        Element eTexto = new Element("texto");
-        Element eRespuesta = new Element("respuesta");
-        Element eTipo = new Element("tipo");
-        ePregunta.setAttribute("id", id);
-        eTexto.setText(pregunta);
-        eTipo.setText("HotObject");
-        String auxRespuesta = "";
-        for (int i = 0; i < respuestaCorrecta.length; i++) {
-            auxRespuesta += respuestaCorrecta[i];
-            if (i != respuestaCorrecta.length - 1) {
-                auxRespuesta += ',';
-            }
-        }
-        //System.out.println(auxRespuesta);
-        eRespuesta.setText(auxRespuesta);
+        Element raiz=doc.getRootElement();
+                        Element ePregunta=new Element("pregunta");
+                        Element eTexto = new Element("texto");
+                        Element eRespuesta = new Element("respuesta");
+                        Element eTipo=new Element("tipo");
+                        Element eIntentos = new Element("intentos");
 
-        ePregunta.addContent(eTipo);
-        ePregunta.addContent(eTexto);
+                        ePregunta.setAttribute("id", id);
+                        eTexto.setText(pregunta);
+                        eTipo.setText("HotObject");
+                        String auxRespuesta="";
+                        for(int i =0; i < respuestaCorrecta.length; i++){
+                            auxRespuesta+=respuestaCorrecta[i];
+                            if(i != respuestaCorrecta.length-1)
+                                auxRespuesta+=',';
+                        }
+                        System.out.println(auxRespuesta);
+                        eRespuesta.setText(auxRespuesta);
 
-        for (int i = 0; i < opciones.length; i++) {
-            Element aux = new Element("opcion");
-            aux.setAttribute("id", String.valueOf(i + 1));
-            aux.setText(opciones[i]);
-            ePregunta.addContent(aux);
-        }
-        ePregunta.addContent(eRespuesta);
+                        ePregunta.addContent(eTipo);
+                        ePregunta.addContent(eTexto);
 
-        raiz.addContent(ePregunta);
+                        for(int i =0; i < opciones.length;i++){
+                            Element aux = new Element("opcion");
+                            aux.setAttribute("id",String.valueOf(i+1));
+                            aux.setText(opciones[i]);
+                            ePregunta.addContent(aux);
+                        }
+                        ePregunta.addContent(eRespuesta);
+                        ePregunta.addContent(eIntentos);
+                        if(!checkMultimedia.equals("NO")){
+                            Element eMultimedia = new Element("multimedia");
+                            ePregunta.addContent(eMultimedia);
+                        }
+
+
+                        //Feedback
+                        if(!checkFeedback.equals("NO")){
+                            Element eInicial = new Element("inicial");
+                            eInicial.setText(inicial);
+                            ePregunta.addContent(eInicial);
+
+                            Element eEvaluar = new Element("evaluar");
+                            eEvaluar.setText(evaluar);
+                            ePregunta.addContent(eEvaluar);
+
+                            Element eCorrecta = new Element("correcta");
+                            eCorrecta.setText(correcta);
+                            ePregunta.addContent(eCorrecta);
+
+                            Element eIncorrecta = new Element("incorrecta");
+                            eIncorrecta.setText(incorrecta);
+                            ePregunta.addContent(eIncorrecta);
+
+                            Element eIntentar = new Element("intentar");
+                            eIntentar.setText(intentar);
+                            ePregunta.addContent(eIntentar);
+                        }
+
+                        raiz.addContent(ePregunta);
         
     }
 
@@ -167,13 +235,51 @@ public class ModificarPregunta extends HttpServlet {
                     Document doc = (Document) builder.build(fichero);
                     
                     if (tipo.equals("TrueFalse")) {
+                        String id = request.getParameter("ID");
                         String respuestaCorrecta= request.getParameter("Correcta");
                         String pregunta = request.getParameter("pregunta");
-                        addElementTF(doc, id,respuestaCorrecta,pregunta);
+                        //Nuevos
+                        String intentos = request.getParameter("intentos");
+                        
+                        String multimedia="",checkMultimedia;
+                        checkMultimedia= request.getParameter("checkMultimedia");
+                        if(!checkMultimedia.equals("NO")){
+                            multimedia = request.getParameter("multimedia");
+                        }
+                        //Opciones del feedback
+                        String inicial="",evaluar="",correcta="",incorrecta="",intentar="";
+                        String checkFeedback=request.getParameter("checkFeedback");
+                        if(!checkFeedback.equals("NO")){
+                            inicial= request.getParameter("inicial");
+                            evaluar= request.getParameter("evaluar");
+                            correcta= request.getParameter("correcta");
+                            incorrecta= request.getParameter("incorrecta");
+                            intentar= request.getParameter("intentar");
+                        }
+                        addElementTF(doc, id,pregunta,respuestaCorrecta,intentos,checkMultimedia,multimedia,checkFeedback,inicial,evaluar,correcta,incorrecta,intentar);
                     } else {
+                        String id = request.getParameter("ID");
                         String[] respuestaCorrecta= request.getParameterValues("Correcta");//request.getParameter("Correcta");
                         String[] opciones = request.getParameterValues("opciones");
-                        String pregunta = request.getParameter("pregunta");
+                        String pregunta = request.getParameter("pregunta");  
+                        //Nuevos
+                        String intentos = request.getParameter("intentos");
+
+                        String multimedia,checkMultimedia;
+                        checkMultimedia= request.getParameter("checkMultimedia");
+                        if(!checkMultimedia.equals("NO")){
+                            multimedia = request.getParameter("multimedia");
+                        }
+                        //Opciones del feedback
+                        String inicial,evaluar,correcta,incorrecta,intentar;
+                        String checkFeedback=request.getParameter("checkFeedback");
+                        if(!checkFeedback.equals("NO")){
+                            inicial= request.getParameter("inicial");
+                            evaluar= request.getParameter("evaluar");
+                            correcta= request.getParameter("correcta");
+                            incorrecta= request.getParameter("incorrecta");
+                            intentar= request.getParameter("intentar");
+                        }
                         addElementHot(doc, id,pregunta,opciones,respuestaCorrecta);
                     }
                     XMLOutputter xmlOutput = new XMLOutputter();

@@ -46,11 +46,30 @@ public class AltaTF extends HttpServlet {
             String ruta=context.getRealPath("/")+"XML/PreguntaTF.xml";
             
             HttpSession sesion=request.getSession();
-            //sesion.setAttribute("user",usuario);
             sesion.setAttribute("rutaXML",ruta);
+
             String id = request.getParameter("ID");
             String respuestaCorrecta= request.getParameter("Correcta");
             String pregunta = request.getParameter("pregunta");
+            //Nuevos
+            String intentos = request.getParameter("intentos");
+            
+            String multimedia,checkMultimedia;
+            checkMultimedia= request.getParameter("checkMultimedia");
+            if(!checkMultimedia.equals("NO")){
+                multimedia = request.getParameter("multimedia");
+            }
+            //Opciones del feedback
+            String inicial,evaluar,correcta,incorrecta,intentar;
+            String checkFeedback=request.getParameter("checkFeedback");
+            if(!checkFeedback.equals("NO")){
+                inicial= request.getParameter("inicial");
+                evaluar= request.getParameter("evaluar");
+                correcta= request.getParameter("correcta");
+                incorrecta= request.getParameter("incorrecta");
+                intentar= request.getParameter("intentar");
+            }
+
             ValidacionId obj = new ValidacionId();
             if(!obj.validar(id,ruta)){
                 response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
@@ -64,19 +83,52 @@ public class AltaTF extends HttpServlet {
                         Document doc=(Document) builder.build(fichero);
 
                         Element raiz=doc.getRootElement();
+                        //Elementos normales
                         Element ePregunta=new Element("pregunta");
+                        //Adentro de pregunta
                         Element eTexto = new Element("texto");
                         Element eRespuesta = new Element("respuesta");
                         Element eTipo = new Element("tipo");
+                        Element eIntentos = new Element("intentos");
+                        
                         ePregunta.setAttribute("id", id);
+                        
                         eTexto.setText(pregunta);
                         eRespuesta.setText(respuestaCorrecta);
                         eTipo.setText("TrueFalse");
+                        eIntentos.setText(intentos);
+                        eMultimedia.setText(multimedia);
+                        
                         ePregunta.addContent(eTipo);
                         ePregunta.addContent(eTexto);
                         ePregunta.addContent(eRespuesta);
+                        ePregunta.addContent(eIntentos);
+                        if(!checkMultimedia.equals("NO")){
+                            Element eMultimedia = new Element("multimedia");
+                            ePregunta.addContent(eMultimedia);
+                        }     
 
+                        if(!checkFeedback.equals("NO")){
+                            Element eInicial = new Element("inicial");
+                            eInicial.setText(inicial);
+                            ePregunta.addContent(eInicial);
 
+                            Element eEvaluar = new Element("evaluar");
+                            eEvaluar.setText(evaluar);
+                            ePregunta.addContent(eEvaluar);
+
+                            Element eCorrecta = new Element("correcta");
+                            eCorrecta.setText(correcta);
+                            ePregunta.addContent(eCorrecta);
+
+                            Element eIncorrecta = new Element("incorrecta");
+                            eIncorrecta.setText(incorrecta);
+                            ePregunta.addContent(eIncorrecta);
+
+                            Element eIntentar = new Element("intentar");
+                            eIntentar.setText(intentar);
+                            ePregunta.addContent(eIntentar);
+                        }
                         raiz.addContent(ePregunta);
                         XMLOutputter xmlOutput = new XMLOutputter();
                         xmlOutput.setFormat(Format.getPrettyFormat());

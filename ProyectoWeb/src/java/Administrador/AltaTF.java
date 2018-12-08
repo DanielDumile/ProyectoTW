@@ -56,6 +56,86 @@ public class AltaTF extends HttpServlet {
     private int maxMemSize = 4 * 1024;
     private File file;
 
+    //Variables globlales a utilizar
+    String id = "";
+    String respuestaCorrecta = "";
+    String pregunta = "";
+    //Nuevos
+    String multimedia="NO";
+    String intentos = "";
+    String inicial = "NO", evaluar = "", correcta = "", incorrecta = "", intentar = "";
+
+    public void getValores(List fileItems) throws Exception {
+        Iterator i = fileItems.iterator();
+
+        while (i.hasNext()) {
+            FileItem fi = (FileItem) i.next();
+            if (!fi.isFormField()) {
+                // Get the uploaded file parameters
+                String fieldName = fi.getFieldName();
+                //out.println("fieldName: " + fieldName + "<br />");
+                String fileName = fi.getName();
+                //out.println("fileName: " + fileName + "<br />");
+                String contentType = fi.getContentType();
+                //out.println("contentType: " + contentType + "<br />");
+                boolean isInMemory = fi.isInMemory();
+                long sizeInBytes = fi.getSize();
+                multimedia=fileName;
+                // Write the file
+                if (fileName.lastIndexOf("\\") >= 0) {
+                    file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
+                } else {
+                    file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
+                }
+                fi.write(file);            
+                //out.println("Archivo subido: " + fileName + "<br />");
+                
+            } else {
+                String fieldName = fi.getFieldName();
+                String fieldValue = fi.getString();
+                switch(fieldName){
+                    case "ID":{
+                        id=fieldValue;
+                        break;
+                    }
+                    case "Correcta":{
+                        respuestaCorrecta=fieldValue;
+                        break;
+                    }
+                    case "pregunta":{
+                        pregunta = fieldValue;
+                        break;
+                    }
+                    case "intentos":{
+                        intentos = fieldValue;
+                        break;
+                    }
+                    case "inicial":{
+                        inicial = fieldValue;
+                        break;
+                    }
+                    case "evaluar":{
+                        evaluar = fieldValue;
+                        break;
+                    }
+                    case "correcta":{
+                        correcta = fieldValue;
+                        break;
+                    }
+                    case "incorrecta":{
+                        incorrecta = fieldValue;
+                        break;
+                    }
+                    case "intentar":{
+                        intentar = fieldValue;
+                        break;
+                    }
+                }
+                //out.println("Archivo subido: " + fieldName + " cosas " + fieldValue + "<br />");
+            }
+        }
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletContext context = request.getServletContext();
@@ -88,73 +168,15 @@ public class AltaTF extends HttpServlet {
                 List fileItems = upload.parseRequest(request);
                 //request.getParameter("file")
                 // Process the uploaded file items
-                Iterator i = fileItems.iterator();
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet upload</title>");
-                out.println("</head>");
-                out.println("<body>");
-
-                while (i.hasNext()) {
-                    FileItem fi = (FileItem) i.next();
-                    if (!fi.isFormField()) {
-                        // Get the uploaded file parameters
-                        String fieldName = fi.getFieldName();
-                        out.println("fieldName: " + fieldName + "<br />");
-                        String fileName = fi.getName();
-                        out.println("fileName: " + fileName + "<br />");
-                        String contentType = fi.getContentType();
-                        out.println("contentType: " + contentType + "<br />");
-                        boolean isInMemory = fi.isInMemory();
-                        long sizeInBytes = fi.getSize();
-                        /*
-                        // Write the file
-                        if (fileName.lastIndexOf("\\") >= 0) {
-                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
-                        } else {
-                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
-                        }
-                        fi.write(file);
-                        */
-                        out.println("Archivo subido: " + fileName + "<br />");
-                    } else {
-                        String fieldName = fi.getFieldName();
-                        String fieldValue = fi.getString();
-                        out.println("Archivo subido: " + fieldName + " cosas " + fieldValue + "<br />");
-                    }
-                }
-                out.println("</body>");
-                out.println("</html>");
+                getValores(fileItems);
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-            /*
+            
             String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
 
             HttpSession sesion = request.getSession();
             sesion.setAttribute("rutaXML", ruta);
-
-            String id = request.getParameter("ID");
-            String respuestaCorrecta = request.getParameter("Correcta");
-            String pregunta = request.getParameter("pregunta");
-            //Nuevos
-            String intentos = request.getParameter("intentos");
-
-            String multimedia, checkMultimedia;
-            checkMultimedia = request.getParameter("checkMultimedia");
-            if (!checkMultimedia.equals("NO")) {
-                multimedia = request.getParameter("multimedia");
-            }
-            //Opciones del feedback
-            String inicial = "", evaluar = "", correcta = "", incorrecta = "", intentar = "";
-            String checkFeedback = request.getParameter("checkFeedback");
-            if (!checkFeedback.equals("NO")) {
-                inicial = request.getParameter("inicial");
-                evaluar = request.getParameter("evaluar");
-                correcta = request.getParameter("correcta");
-                incorrecta = request.getParameter("incorrecta");
-                intentar = request.getParameter("intentar");
-            }
 
             ValidacionId obj = new ValidacionId();
             if (!obj.validar(id, ruta)) {
@@ -186,12 +208,13 @@ public class AltaTF extends HttpServlet {
                         ePregunta.addContent(eTexto);
                         ePregunta.addContent(eRespuesta);
                         ePregunta.addContent(eIntentos);
-                        if (!checkMultimedia.equals("NO")) {
+                        if (!multimedia.equals("NO")) {
                             Element eMultimedia = new Element("multimedia");
+                            eMultimedia.setText(multimedia);
                             ePregunta.addContent(eMultimedia);
                         }
 
-                        if (!checkFeedback.equals("NO")) {
+                        if (!inicial.equals("NO")) {
                             Element eInicial = new Element("inicial");
                             eInicial.setText(inicial);
                             ePregunta.addContent(eInicial);
@@ -235,7 +258,7 @@ public class AltaTF extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
             }
-            */
+            
         }
     }
 

@@ -2,16 +2,16 @@
 
 <html>
     <head>
-        <title>Hot Object</title>
+        <title>True or False</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../Styles/Style.css" type="text/css">
         <script src="../Frameworks/vue.js"></script>
         
     </head>
-    
     <script>
-         function OnOff(){
+            
+            function OnOff(){
                 
                 if(document.F1.Activar.checked){
                     
@@ -32,20 +32,19 @@
                 }
                 
             }    
-    </script>
+        </script>
         
         <body onload="OnOff()">
         
-        <form action="../AltaHot" method="post" name="F1">
-        
-            <div id="Preguntas2">
+        <form action="../AltaTF" method="post" name="F1">
+        <div id="Preguntas2">
              
-            <div id="Contenido2" style="border-bottom: 6px solid #f0b60f;height: 700px; position: relative; top: 40px">
+            <div id="Contenido2">
                 
-                <div id="Top2" style="background-color: #f0b60f">
+                <div id="Top2">
                     <br />
                     <b>
-                        <p class="Subtitulos3">Crear Nueva Pregunta Hot Object</p> 
+                        <p class="Subtitulos3">Crear Nueva Pregunta True or False</p> 
                     </b>
                    
                 </div>
@@ -67,31 +66,25 @@
                 <p class="Subtitulos3" style="color: black; float: right; position: relative; top: 10px; left: 300px;">
                     <input class="Form2
                        " type="file" name="multimedia" style="width: 270px; height: 25px;"></p>
-               
+                
                 <p class="Subtitulos3" style="color: black">Pregunta: </p>
                 <p class="Subtitulos3"><textarea cols="40" rows="3" v-model="pregunta" required name="pregunta" placeholder="Escribe una pregunta de cualquier tema"></textarea></p>
                 
-                <!--<img class="Ad4" src="../Imagenes/VF.png" alt="Examen" />-->
+                <img class="Ad4" src="../Imagenes/VF.png" alt="Examen" />
                 
-                <p class="Subtitulos3" style="color: black">Suba imagenes de las opciones y seleccione cuales seran correctas:</p>
+                <p class="Subtitulos3" style="color: black">Seleccione en cual respuesta sera la correcta</p>
                 
-                <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 1" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="1" style="position: relative; left: 20px;"></p>
-                <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 2"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="2" style="position: relative; left: 20px;"></p>
-                <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 3" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="3" style="position: relative; left: 20px;"></p>
-                <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 4"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="4" style="position: relative; left: 20px;"></p>
-                <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 5" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="5" style="position: relative; left: 20px;"></p>
-                <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 6"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="6" style="position: relative; left: 20px;"></p>
-                <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 7" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="7" style="position: relative; left: 20px;"></p>
-                <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 8"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="8" style="position: relative; left: 20px;"></p>
-               
+                <p class="Subtitulos3" style="color: black"><input type="radio" value="Verdadero" name="Correcta" checked/> Verdadero</p>
                 
+                <p class="Subtitulos3" style="color: black"><input type="radio" value="Falso" name="Correcta"/> Falso</p>
+ 
             </div>
 
-            <div id="Left2"style="border:4px solid #f0b60f; top: -50px;">
+            <div id="Left2">
                 
                 <p class="Subtitulos3" style="color: black"><b>FeedBack</b></p>
                 <p class="Subtitulos3" style="color: black">Proporcione retroalimentación en las diferentes situaciones de la pregunta</p>
-                <hr style="border-color: #f0b60f;"/>
+                <hr style="border-color: green;"/>
                
                 
                 <p class="Subtitulos3" style="text-align: left; color:black;"><b>El FeedBack es opcional pero muy importante:</b></p>
@@ -107,8 +100,8 @@
                        " name="incorrecta" style="width: 200px; position: relative; left: 30px"> </p>
                 <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack al intentar: <input class="Form2
                        " name="intentar" style="width: 200px; position: relative; left: 33px"></p>
-                <input type="submit" class="button3"value="Subir Pregunta" style="float: right; position: relative; right: 200px; width: 300px; top: 80px;">
-                <input type="button" class="button1"value="Regresar" onclick="Regresar()"style="float: right; position: relative; right: -100px; width: 300px; top: 130px;">
+                <input type="submit" class="button3"value="Subir Pregunta" style="float: right; position: relative; right: 600px; width: 300px; top: 80px;">
+                <input type="button" class="button1"value="Regresar" onclick="Regresar()" style="float: right; position: relative; right: 300px; width: 300px; top: 130px;">
             </div>
             
             

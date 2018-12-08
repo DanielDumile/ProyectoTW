@@ -108,7 +108,6 @@ public class ModificarPregunta extends HttpServlet {
                         eRespuesta.setText(respuestaCorrecta);
                         eTipo.setText("TrueFalse");
                         eIntentos.setText(intentos);
-                        eMultimedia.setText(multimedia);
                         
                         ePregunta.addContent(eTipo);
                         ePregunta.addContent(eTexto);
@@ -235,7 +234,6 @@ public class ModificarPregunta extends HttpServlet {
                     Document doc = (Document) builder.build(fichero);
                     
                     if (tipo.equals("TrueFalse")) {
-                        String id = request.getParameter("ID");
                         String respuestaCorrecta= request.getParameter("Correcta");
                         String pregunta = request.getParameter("pregunta");
                         //Nuevos
@@ -258,20 +256,19 @@ public class ModificarPregunta extends HttpServlet {
                         }
                         addElementTF(doc, id,pregunta,respuestaCorrecta,intentos,checkMultimedia,multimedia,checkFeedback,inicial,evaluar,correcta,incorrecta,intentar);
                     } else {
-                        String id = request.getParameter("ID");
                         String[] respuestaCorrecta= request.getParameterValues("Correcta");//request.getParameter("Correcta");
                         String[] opciones = request.getParameterValues("opciones");
                         String pregunta = request.getParameter("pregunta");  
                         //Nuevos
                         String intentos = request.getParameter("intentos");
 
-                        String multimedia,checkMultimedia;
+                        String multimedia="",checkMultimedia;
                         checkMultimedia= request.getParameter("checkMultimedia");
                         if(!checkMultimedia.equals("NO")){
                             multimedia = request.getParameter("multimedia");
                         }
                         //Opciones del feedback
-                        String inicial,evaluar,correcta,incorrecta,intentar;
+                        String inicial="",evaluar="",correcta="",incorrecta="",intentar="";
                         String checkFeedback=request.getParameter("checkFeedback");
                         if(!checkFeedback.equals("NO")){
                             inicial= request.getParameter("inicial");
@@ -280,7 +277,7 @@ public class ModificarPregunta extends HttpServlet {
                             incorrecta= request.getParameter("incorrecta");
                             intentar= request.getParameter("intentar");
                         }
-                        addElementHot(doc, id,pregunta,opciones,respuestaCorrecta);
+                        addElementHot(doc, id,pregunta,opciones,respuestaCorrecta,intentos,checkMultimedia,multimedia,checkFeedback,inicial,evaluar,correcta,incorrecta,intentar);
                     }
                     XMLOutputter xmlOutput = new XMLOutputter();
                     xmlOutput.setFormat(Format.getPrettyFormat());

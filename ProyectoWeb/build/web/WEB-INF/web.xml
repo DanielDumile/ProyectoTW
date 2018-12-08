@@ -64,6 +64,10 @@
         <servlet-name>CambiosExamen</servlet-name>
         <servlet-class>Examen.CambiosExamen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NuevoAltaTF</servlet-name>
+        <servlet-class>Administrador.NuevoAltaTF</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>CambiosExamen</servlet-name>
         <url-pattern>/CambiosExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NuevoAltaTF</servlet-name>
+        <url-pattern>/NuevoAltaTF</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

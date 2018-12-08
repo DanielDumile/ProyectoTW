@@ -56,7 +56,7 @@ import org.w3c.dom.NodeList;
                 multimedia = request.getParameter("multimedia");
             }
             //Opciones del feedback
-            String inicial,evaluar,correcta,incorrecta,intentar;
+            String inicial="",evaluar="",correcta="",incorrecta="",intentar="";
             String checkFeedback=request.getParameter("checkFeedback");
             if(!checkFeedback.equals("NO")){
                 inicial= request.getParameter("inicial");

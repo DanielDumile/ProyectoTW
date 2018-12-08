@@ -17,7 +17,7 @@
             <img class="Ad" src="../Imagenes/TF.png" alt="Examen"/>
             
             
-            <form v-on:submit="TF" action="../AltaTF" method="post">
+            <form v-on:submit="TF" action="../AltaTF" method="post" enctype="multipart/form-data">
                 
                 <p class="Titulos">Preguntas tipo: True or False</p>
                 
@@ -36,7 +36,8 @@
                 <p><input class="Form" v-model="F" required name="F" placeholder="Opción 2" disabled value="False"> <input type="radio" name="Correcta" value="Falso"></p>
                 
                 <br />
-                
+                <p class="Subtitulos">Multimedia</p>
+                <p><input type="file" name = "file" id = "file" size = "95"></p>
                 <button class="button1" type="submit">Subir pregunta</button>   
                 
             </form>

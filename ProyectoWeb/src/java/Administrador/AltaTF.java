@@ -24,7 +24,20 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.w3c.dom.NodeList;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import java.io.*;
+import java.util.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class AltaTF extends HttpServlet {
 
@@ -37,78 +50,148 @@ public class AltaTF extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private boolean isMultipart;
+    private String filePath;
+    private int maxFileSize = 50 * 1024;
+    private int maxMemSize = 4 * 1024;
+    private File file;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletContext context = request.getServletContext();
         response.setContentType("text/html;charset=UTF-8");
-        
+
         try (PrintWriter out = response.getWriter()) {
-            String ruta=context.getRealPath("/")+"XML/PreguntaTF.xml";
-            
-            HttpSession sesion=request.getSession();
-            sesion.setAttribute("rutaXML",ruta);
+
+            // Check that we have a file upload request
+            filePath = request.getRealPath("/");
+            isMultipart = ServletFileUpload.isMultipartContent(request);
+
+            if (!isMultipart) {
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet upload</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<p>No se subio el archivo</p>");
+                out.println("</body>");
+                out.println("</html>");
+                return;
+            }
+
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+
+            ServletFileUpload upload = new ServletFileUpload(factory);
+
+            try {
+                // Parse the request to get file items.
+                List fileItems = upload.parseRequest(request);
+                //request.getParameter("file")
+                // Process the uploaded file items
+                Iterator i = fileItems.iterator();
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet upload</title>");
+                out.println("</head>");
+                out.println("<body>");
+
+                while (i.hasNext()) {
+                    FileItem fi = (FileItem) i.next();
+                    if (!fi.isFormField()) {
+                        // Get the uploaded file parameters
+                        String fieldName = fi.getFieldName();
+                        out.println("fieldName: " + fieldName + "<br />");
+                        String fileName = fi.getName();
+                        out.println("fileName: " + fileName + "<br />");
+                        String contentType = fi.getContentType();
+                        out.println("contentType: " + contentType + "<br />");
+                        boolean isInMemory = fi.isInMemory();
+                        long sizeInBytes = fi.getSize();
+                        /*
+                        // Write the file
+                        if (fileName.lastIndexOf("\\") >= 0) {
+                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
+                        } else {
+                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
+                        }
+                        fi.write(file);
+                        */
+                        out.println("Archivo subido: " + fileName + "<br />");
+                    } else {
+                        String fieldName = fi.getFieldName();
+                        String fieldValue = fi.getString();
+                        out.println("Archivo subido: " + fieldName + " cosas " + fieldValue + "<br />");
+                    }
+                }
+                out.println("</body>");
+                out.println("</html>");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+            /*
+            String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
+
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("rutaXML", ruta);
 
             String id = request.getParameter("ID");
-            String respuestaCorrecta= request.getParameter("Correcta");
+            String respuestaCorrecta = request.getParameter("Correcta");
             String pregunta = request.getParameter("pregunta");
             //Nuevos
             String intentos = request.getParameter("intentos");
-            
-            String multimedia,checkMultimedia;
-            checkMultimedia= request.getParameter("checkMultimedia");
-            if(!checkMultimedia.equals("NO")){
+
+            String multimedia, checkMultimedia;
+            checkMultimedia = request.getParameter("checkMultimedia");
+            if (!checkMultimedia.equals("NO")) {
                 multimedia = request.getParameter("multimedia");
             }
             //Opciones del feedback
-            String inicial,evaluar,correcta,incorrecta,intentar;
-            String checkFeedback=request.getParameter("checkFeedback");
-            if(!checkFeedback.equals("NO")){
-                inicial= request.getParameter("inicial");
-                evaluar= request.getParameter("evaluar");
-                correcta= request.getParameter("correcta");
-                incorrecta= request.getParameter("incorrecta");
-                intentar= request.getParameter("intentar");
+            String inicial = "", evaluar = "", correcta = "", incorrecta = "", intentar = "";
+            String checkFeedback = request.getParameter("checkFeedback");
+            if (!checkFeedback.equals("NO")) {
+                inicial = request.getParameter("inicial");
+                evaluar = request.getParameter("evaluar");
+                correcta = request.getParameter("correcta");
+                incorrecta = request.getParameter("incorrecta");
+                intentar = request.getParameter("intentar");
             }
 
             ValidacionId obj = new ValidacionId();
-            if(!obj.validar(id,ruta)){
+            if (!obj.validar(id, ruta)) {
                 response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
-            }
-            else{
-                File fichero=new File(ruta);
-                if (fichero.isFile())
-                {
-                    try{
-                        SAXBuilder builder=new SAXBuilder();
-                        Document doc=(Document) builder.build(fichero);
+            } else {
+                File fichero = new File(ruta);
+                if (fichero.isFile()) {
+                    try {
+                        SAXBuilder builder = new SAXBuilder();
+                        Document doc = (Document) builder.build(fichero);
 
-                        Element raiz=doc.getRootElement();
+                        Element raiz = doc.getRootElement();
                         //Elementos normales
-                        Element ePregunta=new Element("pregunta");
+                        Element ePregunta = new Element("pregunta");
                         //Adentro de pregunta
                         Element eTexto = new Element("texto");
                         Element eRespuesta = new Element("respuesta");
                         Element eTipo = new Element("tipo");
                         Element eIntentos = new Element("intentos");
-                        
+
                         ePregunta.setAttribute("id", id);
-                        
+
                         eTexto.setText(pregunta);
                         eRespuesta.setText(respuestaCorrecta);
                         eTipo.setText("TrueFalse");
                         eIntentos.setText(intentos);
-                        eMultimedia.setText(multimedia);
-                        
+
                         ePregunta.addContent(eTipo);
                         ePregunta.addContent(eTexto);
                         ePregunta.addContent(eRespuesta);
                         ePregunta.addContent(eIntentos);
-                        if(!checkMultimedia.equals("NO")){
+                        if (!checkMultimedia.equals("NO")) {
                             Element eMultimedia = new Element("multimedia");
                             ePregunta.addContent(eMultimedia);
-                        }     
+                        }
 
-                        if(!checkFeedback.equals("NO")){
+                        if (!checkFeedback.equals("NO")) {
                             Element eInicial = new Element("inicial");
                             eInicial.setText(inicial);
                             ePregunta.addContent(eInicial);
@@ -134,24 +217,25 @@ public class AltaTF extends HttpServlet {
                         xmlOutput.setFormat(Format.getPrettyFormat());
                         xmlOutput.output(doc, new FileWriter(ruta));
                         System.out.println("EXITO ");
-                        } catch (JDOMException ex) {
+                    } catch (JDOMException ex) {
                         Logger.getLogger(AltaTF.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else {
-                        System.out.println("error");
+                } else {
+                    System.out.println("error");
                 }
                 response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
                 // TODO output your page here. You may use following sample code. 
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Servlet AltaTF</title>");            
+                out.println("<title>Servlet AltaTF</title>");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>Servlet AltaTF at " + respuestaCorrecta + " "+id+" "+pregunta+"</h1>");
+                out.println("<h1>Servlet AltaTF at " + respuestaCorrecta + " " + id + " " + pregunta + "</h1>");
                 out.println("</body>");
                 out.println("</html>");
             }
+            */
         }
     }
 

@@ -104,6 +104,9 @@ public class ResolverExamen extends HttpServlet {
                 out.println("<input type='text' name='indice' value='" + String.valueOf(indice) + "' hidden>");
                 out.println("</form></body>");
                 out.println("</html>");
+                
+                
+                
             } else {
                 //SACAMOS A TODAS LAS PREGUNTAS PERO SOLO PONEMOS A LA QUE NOS INTERESA
                 SAXBuilder builder2 = new SAXBuilder();
@@ -174,19 +177,18 @@ public class ResolverExamen extends HttpServlet {
                                         + "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:190px;\" >\n"
                                         + "                     <br />\n"
                                         + "                     \n"
-                                        + "                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Calificar()\" id=\"Calificar\" value=\"Calificar\" />"
-                                        + "<input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Siguiente()\" id=\"Siguiente\" value=\"Siguiente\" />\n"
+                                        + "                     <input type=\"button\" class=\"button2\" onclick=\"Calificar()\" value=\"Calificar\" />"
+                                        + "<input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
                                         + "                </div>\n"
                                         + "            </div>\n"
                                         + "            \n");
-
+                                
                                 out.println("<input type='text' value='" + inicial + "' name='inicial' id='inicial' hidden />");
                                 out.println("<input type='text' value='" + evaluar + "' name='evaluar' id='evaluar' hidden />");
                                 out.println("<input type='text' value='" + correcta + "' name='correcta' id='correcta' hidden />");
                                 out.println("<input type='text' value='" + incorrecta + "' name='incorrecta' id='incorrecta' hidden />");
                                 out.println("<input type='text' value='" + intentar + "' name='intentar' id='intentar' hidden />");
-                                out.println("<input type='text' value='No lo ocupo' name='answer' id='answer' hidden />");
-
+                                
                                 out.println("<input type='text' value='" + respuesta + "' name='Resp' id='Resp' hidden />"
                                         + "            <div id=\"Left\" style=\"position: relative; left: 100px; top:-100px;\">\n"
                                         + "                <p>Lea cuidadosamente la pregunta\n"
@@ -197,7 +199,7 @@ public class ResolverExamen extends HttpServlet {
                                         + "            \n"
                                         + "            <div id=\"Left\" style=\"position: relative; left: -205px; top:130px;\">\n"
                                         + "                <p><b>FeedBack</b></p>\n"
-                                        + "                <p><textarea id='feed' readonly style='width: 290px; height: 120px; background-color: white; text­align: center; border:none;'>" + inicial + "</textarea></p>\n"
+                                        + "                <p><input type='text' id='feed' value='"+inicial+"' readonly ></p>\n"
                                         + "            </div>\n"
                                         + "        </div>");
 

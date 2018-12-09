@@ -246,8 +246,6 @@ public class AltaTF extends HttpServlet {
                 } else {
                     System.out.println("error");
                 }
-                multimedia = "NO";
-                inicial = "NO";
                 response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
                 // TODO output your page here. You may use following sample code. 
                 out.println("<!DOCTYPE html>");

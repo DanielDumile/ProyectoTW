@@ -97,12 +97,7 @@ public class MostrarPregunta extends HttpServlet {
                         
                         if (tipo.equals("TrueFalse")) {
                            out.println("");
-                            out.println("<input type='text' value="+inicial+" name='inicial' hidden />");
-                            out.println("<input type='text' value="+evaluar+" name='evaluar' hidden />");
-                            out.println("<input type='text' value="+correcta+" name='correcta' hidden />");
-                            out.println("<input type='text' value="+incorrecta+" name='incorrecta' hidden />");
-                            out.println("<input type='text' value="+intentar+" name='intentar' hidden />");
-                            out.println("<input type='text' value='"+respuesta+"' name='Resp' id='Resp' hidden />");
+                            
                             
                             out.println("<div id=\"Preguntas\">\n" +
 "            \n" +
@@ -127,17 +122,17 @@ public class MostrarPregunta extends HttpServlet {
 "                \n" +
 "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:190px;\" >\n" +
 "                     <br />\n" +
-"                     <p class=\"Subtitulos3\"><b>Intentos : </b><input type='text' value="+intentos+" name='try' class='Subtitulos3' id='try' style='border: none; background-color:#4CAF50; color: white'/></p>\n" +
+"                     <p class=\"Subtitulos3\"><b>Intentos : </b><input type='text' value="+intentos+" disabled name='try' class='Subtitulos3' id='try' width:30px; style='border: none; background-color:#4CAF50; color: white'/></p>\n" +
 "                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Calificar2()\" id=\"Calificar\" value=\"Calificar\" />\n" +
 "                </div>\n" +
 "            </div>\n" +
 "            \n");
                             
                             
-                            out.println("<input type='text' value="+inicial+" name='inicial' id='inicial' hidden />");
-                            out.println("<input type='text' value="+evaluar+" name='evaluar' id='evaluar' hidden />");
-                            out.println("<input type='text' value="+correcta+" name='correcta' id='correcta' hidden />");
-                            out.println("<input type='text' value="+incorrecta+" name='incorrecta' id='incorrecta' hidden />");
+                            out.println("<input type='text' value='"+inicial+"' name='inicial' id='inicial' hidden />");
+                            out.println("<input type='text' value='"+evaluar+"' name='evaluar' id='evaluar' hidden />");
+                            out.println("<input type='text' value='"+correcta+"' name='correcta' id='correcta' hidden />");
+                            out.println("<input type='text' value='"+incorrecta+"' name='incorrecta' id='incorrecta' hidden />");
                             out.println("<input type='text' value='No lo ocupo' name='answer' id='answer' hidden />");
                            
                             out.println("<input type='text' value='"+respuesta+"' name='Resp' id='Resp' hidden />"+
@@ -151,7 +146,7 @@ public class MostrarPregunta extends HttpServlet {
 "            \n" +
 "            <div id=\"Left\" style=\"position: relative; left: -205px; top:130px;\">\n" +
 "                <p><b>FeedBack</b></p>\n" +
-"                <p><input type='textarea' cols='3' rows='3' id='feed' readonly style='background-color: white; border: none; text-align: center;' value='"+inicial+"'</p>\n" +
+"                <p><textarea id='feed' readonly style='width: 290px; height: 120px; background-color: white; text­align: center; border:none;'>"+inicial+"</textarea></p>\n" +
 "            </div>\n" +
 "        </div>");
                             

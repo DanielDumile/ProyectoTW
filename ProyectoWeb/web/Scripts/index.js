@@ -269,14 +269,13 @@ function Calificar2() {
     var Respuesta = document.getElementById("Resp").value;
     var Intentos = parseInt(document.getElementById("try").value);
     var Feedback = document.getElementById("feed");
-    var evaluar = document.getElementById("evaluar");
-    var correcta =document.getElementById("correcta");
-    var incorrecta = document.getElementById("incorrecta");
+    var correcta =document.getElementById("correcta").value;
+    var incorrecta = document.getElementById("incorrecta").value;
     
     if(Intentos === 0){
         
         alert('Se acabaron los intentos');
-        Feedback.value = evaluar.value;
+       
     }else{
 
         for (var i = 0; i < porNombre.length; i++) {
@@ -287,12 +286,17 @@ function Calificar2() {
         }
         var ans = document.getElementById("answer");
         if (resultado === Respuesta) {
+            alert('Correcta');
+            
           ans.value = 'Correcta';
-          Feedback.value = correcta.value;
-
+          Feedback.value = correcta;
+          alert(Feedback.value);
         } else {
             ans.value = 'Incorrecta';
-            Feedback.value=incorrecta.value;
+            alert('Incorrecta');
+            
+            Feedback.value=incorrecta;
+            alert(Feedback.value);
             document.getElementById("try").value--;
 
         }

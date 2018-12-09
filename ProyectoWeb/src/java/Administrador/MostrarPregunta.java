@@ -123,7 +123,8 @@ public class MostrarPregunta extends HttpServlet {
 "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:190px;\" >\n" +
 "                     <br />\n" +
 "                     <p class=\"Subtitulos3\"><b>Intentos : </b><input type='text' value="+intentos+" disabled name='try' class='Subtitulos3' id='try' width:30px; style='border: none; background-color:#4CAF50; color: white'/></p>\n" +
-"                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Calificar2()\" id=\"Calificar\" value=\"Calificar\" />\n" +
+"                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Calificar2()\" id=\"Calificar\" value=\"Calificar\" />"
+                                    + "<input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Regresar()\" id=\"Calificar\" value=\"Regresar\" />\n" +
 "                </div>\n" +
 "            </div>\n" +
 "            \n");

@@ -290,13 +290,13 @@ function Calificar2() {
             
           ans.value = 'Correcta';
           Feedback.value = correcta;
-          alert(Feedback.value);
+          
         } else {
             ans.value = 'Incorrecta';
             alert('Incorrecta');
             
             Feedback.value=incorrecta;
-            alert(Feedback.value);
+            
             document.getElementById("try").value--;
 
         }

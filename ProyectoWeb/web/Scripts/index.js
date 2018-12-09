@@ -245,8 +245,8 @@ function Calificar() {
 
         if (porNombre[i].checked) {
             resultado = porNombre[i].value;
-
-
+            
+            
         }
     }
     var ans = document.getElementById("answer");
@@ -259,8 +259,44 @@ function Calificar() {
         alert('Respuesta Incorrecta');
 
     }
+}
 
+function Calificar2() {
 
+    var resultado;
+
+    var porNombre = document.getElementsByName("Valor");
+    var Respuesta = document.getElementById("Resp").value;
+    var Intentos = parseInt(document.getElementById("try").value);
+    var Feedback = document.getElementById("feed");
+    var evaluar = document.getElementById("evaluar");
+    var correcta =document.getElementById("correcta");
+    var incorrecta = document.getElementById("incorrecta");
+    
+    if(Intentos === 0){
+        
+        alert('Se acabaron los intentos');
+        
+    }else{
+
+        for (var i = 0; i < porNombre.length; i++) {
+
+            if (porNombre[i].checked) {
+                resultado = porNombre[i].value;
+            }
+        }
+        var ans = document.getElementById("answer");
+        if (resultado === Respuesta) {
+          ans.value = 'Correcta';
+          Feedback.value = correcta.value;
+
+        } else {
+            ans.value = 'Incorrecta';
+            Feedback.value=incorrecta.value;
+            document.getElementById("try").value--;
+
+        }
+    }
 }
 
 function Siguiente() {

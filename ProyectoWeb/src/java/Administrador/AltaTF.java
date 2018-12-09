@@ -61,9 +61,9 @@ public class AltaTF extends HttpServlet {
     String respuestaCorrecta = "";
     String pregunta = "";
     //Nuevos
-    String multimedia = "";
+    String multimedia = "TF.png";
     String intentos = "";
-    String inicial = "", evaluar = "", correcta = "", incorrecta = "", intentar = "";
+    String inicial = "Mensaje Inicial", evaluar = "Momento de saber tu calificacion", correcta = "Respuesta Correcta", incorrecta = "Trata de nuevo", intentar = "Buen intento";
 
     public void getValores(List fileItems) throws Exception {
         Iterator i = fileItems.iterator();

@@ -47,7 +47,7 @@ public class AltaHot extends HttpServlet {
     private int maxFileSize = 50 * 1024;
     private int maxMemSize = 4 * 1024;
     private File file;
-    
+
     //Variables globlales a utilizar
     String id = "";
     //String respuestaCorrecta = "";
@@ -55,10 +55,10 @@ public class AltaHot extends HttpServlet {
     ArrayList<String> opciones = new ArrayList<>();
     String pregunta = "";
     //Nuevos
-    String multimedia="NO";
+    String multimedia = "Hot.png";
     String intentos = "";
-    String inicial = "NO", evaluar = "", correcta = "", incorrecta = "", intentar = "";
-    
+    String inicial = "Mensaje Inicial", evaluar = "Momento de saber tu calificacion", correcta = "Respuesta Correcta", incorrecta = "Trata de nuevo", intentar = "Buen intento";
+
     public void getValores(List fileItems) throws Exception {
         Iterator i = fileItems.iterator();
 
@@ -74,60 +74,59 @@ public class AltaHot extends HttpServlet {
                 //out.println("contentType: " + contentType + "<br />");
                 boolean isInMemory = fi.isInMemory();
                 long sizeInBytes = fi.getSize();
-                if(fieldName.equals("opciones")){
+                if (fieldName.equals("opciones")) {
                     opciones.add(fileName);
+                } else {
+                    multimedia = fileName;
                 }
-                else{
-                    multimedia=fileName;
-                }
-                
+
                 // Write the file
                 if (fileName.lastIndexOf("\\") >= 0) {
                     file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
                 } else {
                     file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
                 }
-                fi.write(file);            
+                fi.write(file);
                 //out.println("Archivo subido: " + fileName + "<br />");
-                
+
             } else {
                 String fieldName = fi.getFieldName();
                 String fieldValue = fi.getString();
-                switch(fieldName){
-                    case "ID":{
-                        id=fieldValue;
+                switch (fieldName) {
+                    case "ID": {
+                        id = fieldValue;
                         break;
                     }
-                    case "Correcta":{
+                    case "Correcta": {
                         //respuestaCorrecta=fieldValue;
                         respuestaCorrecta.add(fieldValue);
                         break;
                     }
-                    case "pregunta":{
+                    case "pregunta": {
                         pregunta = fieldValue;
                         break;
                     }
-                    case "intentos":{
+                    case "intentos": {
                         intentos = fieldValue;
                         break;
                     }
-                    case "inicial":{
+                    case "inicial": {
                         inicial = fieldValue;
                         break;
                     }
-                    case "evaluar":{
+                    case "evaluar": {
                         evaluar = fieldValue;
                         break;
                     }
-                    case "correcta":{
+                    case "correcta": {
                         correcta = fieldValue;
                         break;
                     }
-                    case "incorrecta":{
+                    case "incorrecta": {
                         incorrecta = fieldValue;
                         break;
                     }
-                    case "intentar":{
+                    case "intentar": {
                         intentar = fieldValue;
                         break;
                     }
@@ -173,7 +172,7 @@ public class AltaHot extends HttpServlet {
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-            
+
             String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
 
             HttpSession sesion = request.getSession();
@@ -222,34 +221,30 @@ public class AltaHot extends HttpServlet {
                         eIntentos.setText(intentos);
                         ePregunta.addContent(eIntentos);
 
-                        if (!multimedia.equals("NO")) {
-                            Element eMultimedia = new Element("multimedia");
-                            eMultimedia.setText(multimedia);
-                            ePregunta.addContent(eMultimedia);
-                        }
+                        Element eMultimedia = new Element("multimedia");
+                        eMultimedia.setText(multimedia);
+                        ePregunta.addContent(eMultimedia);
 
                         //Feedback
-                        if (!inicial.equals("NO")) {
-                            Element eInicial = new Element("inicial");
-                            eInicial.setText(inicial);
-                            ePregunta.addContent(eInicial);
+                        Element eInicial = new Element("inicial");
+                        eInicial.setText(inicial);
+                        ePregunta.addContent(eInicial);
 
-                            Element eEvaluar = new Element("evaluar");
-                            eEvaluar.setText(evaluar);
-                            ePregunta.addContent(eEvaluar);
+                        Element eEvaluar = new Element("evaluar");
+                        eEvaluar.setText(evaluar);
+                        ePregunta.addContent(eEvaluar);
 
-                            Element eCorrecta = new Element("correcta");
-                            eCorrecta.setText(correcta);
-                            ePregunta.addContent(eCorrecta);
+                        Element eCorrecta = new Element("correcta");
+                        eCorrecta.setText(correcta);
+                        ePregunta.addContent(eCorrecta);
 
-                            Element eIncorrecta = new Element("incorrecta");
-                            eIncorrecta.setText(incorrecta);
-                            ePregunta.addContent(eIncorrecta);
+                        Element eIncorrecta = new Element("incorrecta");
+                        eIncorrecta.setText(incorrecta);
+                        ePregunta.addContent(eIncorrecta);
 
-                            Element eIntentar = new Element("intentar");
-                            eIntentar.setText(intentar);
-                            ePregunta.addContent(eIntentar);
-                        }
+                        Element eIntentar = new Element("intentar");
+                        eIntentar.setText(intentar);
+                        ePregunta.addContent(eIntentar);
 
                         raiz.addContent(ePregunta);
                         XMLOutputter xmlOutput = new XMLOutputter();
@@ -275,7 +270,6 @@ public class AltaHot extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
             }
-            
 
         }
     }

@@ -84,7 +84,7 @@ public class MostrarPregunta extends HttpServlet {
                     
                     //NUEVOS ELEMENTOS AQUI
                     String multimedia = campo.getChildTextTrim("respuesta");
-                    
+                    String inicial = campo.getChildTextTrim("respuesta");
                     //Se obtiene el valor que esta entre los tags
                     //out.println(id);
                     System.out.println(id);

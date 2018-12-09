@@ -271,10 +271,17 @@ function Calificar2() {
     var Feedback = document.getElementById("feed");
     var correcta =document.getElementById("correcta").value;
     var incorrecta = document.getElementById("incorrecta").value;
+    var intentar = document.getElementById("intentar").value;
+    
+    var evaluar = document.getElementById("evaluar").value;
+    
+    Feedback.value = evaluar;
     
     if(Intentos === 0){
         
         alert('Se acabaron los intentos');
+        Feedback.value = intentar;
+        
        
     }else{
 

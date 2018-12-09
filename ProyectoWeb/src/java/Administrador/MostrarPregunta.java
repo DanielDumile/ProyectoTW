@@ -134,6 +134,7 @@ public class MostrarPregunta extends HttpServlet {
                             out.println("<input type='text' value='"+evaluar+"' name='evaluar' id='evaluar' hidden />");
                             out.println("<input type='text' value='"+correcta+"' name='correcta' id='correcta' hidden />");
                             out.println("<input type='text' value='"+incorrecta+"' name='incorrecta' id='incorrecta' hidden />");
+                            out.println("<input type='text' value='"+intentar+"' name='intentar' id='intentar' hidden />");
                             out.println("<input type='text' value='No lo ocupo' name='answer' id='answer' hidden />");
                            
                             out.println("<input type='text' value='"+respuesta+"' name='Resp' id='Resp' hidden />"+

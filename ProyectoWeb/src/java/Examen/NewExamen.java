@@ -97,7 +97,7 @@ public class NewExamen extends HttpServlet {
                         + "                       \" v-model=\"ID\" name=\"ID\" style=\"width: 30px;\" required placeholder=\"#\"></p>\n"
                         + "                 \n"
                         + "                <p class=\"Subtitulos3\" style=\"color: black\">Nombre del Examen </p>\n"
-                        + "                <p class=\"Subtitulos3\"><textarea cols=\"40\" rows=\"3\" v-model=\"pregunta\" required name=\"pregunta\" placeholder=\"Escribe una pregunta de cualquier tema\"></textarea></p>\n"
+                        + "                <p class=\"Subtitulos3\"><textarea cols=\"40\" rows=\"3\" v-model=\"pregunta\" required name=\"texto\" placeholder=\"Escribe el nombre del examen\"></textarea></p>\n"
                         + "                \n"
                         + "                <p class=\"Subtitulos3\" style=\"color: black\">Preguntas Disponibles</p>\n"
                         + "                <p class=\"Subtitulos3\" style=\"color: black\">Seleccione las preguntas que quiera en su examen</p>");

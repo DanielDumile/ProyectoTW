@@ -70,7 +70,37 @@ public class MostrarPregunta extends HttpServlet {
                         + "        <meta charset=\"UTF-8\">\n"
                         + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
                         + "        <link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\">\n"
-                        + "        <script src=\"Frameworks/vue.js\"></script>\n"
+                        + "        <script src=\"Frameworks/vue.js\"></script>"
+                        + "  <style>\n" +
+"            \n" +
+"            .checkeable input {\n" +
+"                display: none;\n" +
+"                float: left;\n" +
+"            }\n" +
+"            \n" +
+"            .checkeable img {\n" +
+"                width: 100px;\n" +
+"                height: 100px;\n" +
+"                border: 5px solid transparent;\n" +
+"                position: relative;\n" +
+"                left: 35px;\n" +
+"                bottom: 20px;\n" +
+"      \n" +
+"            }\n" +
+"            \n" +
+"            .checkeable input {\n" +
+"                display: none;\n" +
+"                float: left;\n" +
+"            }\n" +
+"            \n" +
+"            .checkeable input:checked  + img {\n" +
+"              border-color: grey;\n" +
+"              opacity: 0.5;\n" +
+"             \n" +
+"            }\n" +
+"            \n" +
+"        </style>\n" +
+"        \n"
                         + "        \n"
                         + "    </head>\n"
                         + "    <body>");
@@ -228,9 +258,9 @@ public class MostrarPregunta extends HttpServlet {
 "                \n" +
 "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:20px; background-color:#f0b60f\" >\n" +
 "                     <br />\n" +
-"                     <p class=\"Subtitulos3\"><b>Intentos : </b><input type='text' value="+intentos+" disabled name='try' class='Subtitulos3' id='try' width:30px; style='border: none; background-color:#4CAF50; color: white'/></p>\n" +
-"                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Calificar3()\" id=\"Calificar\" value=\"Calificar\" />"
-                                    + "<input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Regresar()\" id=\"Calificar\" value=\"Regresar\" />\n" +
+"                     <p class=\"Subtitulos3\"><b>Intentos : </b><input type='text' value="+intentos+" disabled name='try' class='Subtitulos3' id='try' width:30px; style='border: none; background-color: #f0b60f; color: white'/></p>\n" +
+"                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: -10px; top:-70px;\" onclick=\"Calificar3()\" id=\"Calificar\" value=\"Calificar\" />"
+                                    + "<input type=\"button\" class=\"button2\"style=\"position: relative; left: -10px; top:-70px;\" onclick=\"Regresar()\" id=\"Calificar\" value=\"Regresar\" />\n" +
 "               </div>\n" +
 "            </div>\n" +
 "            \n" +

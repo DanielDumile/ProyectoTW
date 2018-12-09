@@ -80,6 +80,10 @@
         <servlet-name>Evaluacion</servlet-name>
         <servlet-class>Examen.Evaluacion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletPrueba</servlet-name>
+        <servlet-class>Examen.ServletPrueba</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>Evaluacion</servlet-name>
         <url-pattern>/Evaluacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPrueba</servlet-name>
+        <url-pattern>/ServletPrueba</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

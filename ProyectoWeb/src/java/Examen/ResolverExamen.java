@@ -45,20 +45,21 @@ public class ResolverExamen extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String ruta = context.getRealPath("/") + "XML/Examen.xml";
             String ruta2 = context.getRealPath("/") + "XML/PreguntaTF.xml";
-
+            
+            //Obtenemo nuestro arreglo con los valores para cada pregunta
             HttpSession sesion = request.getSession();
             sesion.setAttribute("rutaXML", ruta);
             ArrayList respuestasSesion = new ArrayList<>();
             respuestasSesion =(ArrayList) sesion.getAttribute("respuestas");
             sesion.setAttribute("preguntas", respuestasSesion);
 
-            //Estas puedens ser por session
+            
             int indice = Integer.parseInt(request.getParameter("indice"));
             String idExamen = request.getParameter("ID");
-
+            int cant_preguntas = Integer.parseInt(request.getParameter("cantidad"));
+            
             //Variables necesarias
             String id_pregunta = "";
-            int cant_preguntas = 0;
             //String idExamen = "1";
             //CONSULTAMOS AL EXAMEN Y A LAS PREGUNTAS QUE TIENE DENTRO
             SAXBuilder builder = new SAXBuilder();
@@ -75,7 +76,6 @@ public class ResolverExamen extends HttpServlet {
                     String id = campo.getAttributeValue("id");
                     if (idExamen.equals(id)) {
                         List lista = campo.getChildren("idp");
-                        cant_preguntas = lista.size();
                         for (int j = 0; j < lista.size(); j++) {
                             if (indice == j) {
                                 Element aux = ((Element) lista.get(j));

@@ -63,7 +63,7 @@ public class MostrarResolver extends HttpServlet {
                 Element rootNode = document.getRootElement();
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren( "examen" );
-                out.println("<form method='post' name='f1' id='f1' action='ResolverExamen'>");
+                out.println("<form method='post' name='f1' id='f1' action='InicioExamen'>");
                      out.println("<p class='Titulos'>Lista de examenes</p>");
                     out.println("<p class='Subtitulos'>Seleccione el examen que desee resolver</p>");
                     out.println("<input type='text' id='indice' name='indice' hidden value='0'>");

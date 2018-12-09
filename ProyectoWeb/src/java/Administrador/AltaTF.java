@@ -61,9 +61,9 @@ public class AltaTF extends HttpServlet {
     String respuestaCorrecta = "";
     String pregunta = "";
     //Nuevos
-    String multimedia = "NO";
+    String multimedia = "";
     String intentos = "";
-    String inicial = "NO", evaluar = "", correcta = "", incorrecta = "", intentar = "";
+    String inicial = "", evaluar = "", correcta = "", incorrecta = "", intentar = "";
 
     public void getValores(List fileItems) throws Exception {
         Iterator i = fileItems.iterator();
@@ -208,13 +208,13 @@ public class AltaTF extends HttpServlet {
                         ePregunta.addContent(eTexto);
                         ePregunta.addContent(eRespuesta);
                         ePregunta.addContent(eIntentos);
-                        if (!multimedia.equals("NO")) {
+                        //if (!multimedia.equals("NO")) {
                             Element eMultimedia = new Element("multimedia");
                             eMultimedia.setText(multimedia);
                             ePregunta.addContent(eMultimedia);
-                        }
+                        //}
 
-                        if (!inicial.equals("NO")) {
+                        //if (!inicial.equals("NO")) {
                             Element eInicial = new Element("inicial");
                             eInicial.setText(inicial);
                             ePregunta.addContent(eInicial);
@@ -234,7 +234,7 @@ public class AltaTF extends HttpServlet {
                             Element eIntentar = new Element("intentar");
                             eIntentar.setText(intentar);
                             ePregunta.addContent(eIntentar);
-                        }
+                        //}
                         raiz.addContent(ePregunta);
                         XMLOutputter xmlOutput = new XMLOutputter();
                         xmlOutput.setFormat(Format.getPrettyFormat());

@@ -7,109 +7,109 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../Styles/Style.css" type="text/css">
         <script src="../Frameworks/vue.js"></script>
-
+        
     </head>
     <script>
-
-        function OnOff() {
-
-            if (document.F1.Activar.checked) {
-
-                document.F1.inicial.disabled = false;
-                document.F1.evaluar.disabled = false;
-                document.F1.correcta.disabled = false;
-                document.F1.incorrecta.disabled = false;
-                document.F1.intentar.disabled = false;
-
-            } else {
-
-                document.F1.inicial.disabled = true;
-                document.F1.evaluar.disabled = true;
-                document.F1.correcta.disabled = true;
-                document.F1.incorrecta.disabled = true;
-                document.F1.intentar.disabled = true;
-
-            }
-
-        }
-    </script>
-
-    <body onload="OnOff()">
-
+            
+            function OnOff(){
+                
+                if(document.F1.Activar.checked){
+                    
+                    document.F1.inicial.disabled=false;
+                     document.F1.evaluar.disabled=false;
+                      document.F1.correcta.disabled=false;
+                       document.F1.incorrecta.disabled=false;
+                        document.F1.intentar.disabled=false;
+                    
+                }else{
+                    
+                    document.F1.inicial.disabled=true;
+                     document.F1.evaluar.disabled=true;
+                      document.F1.correcta.disabled=true;
+                       document.F1.incorrecta.disabled=true;
+                        document.F1.intentar.disabled=true; 
+                    
+                }
+                
+            }    
+        </script>
+        
+        <body onload="OnOff()">
+        
         <form action="../AltaTF" method="post" name="F1" enctype='multipart/form-data'>
-            <div id="Preguntas2">
-
-                <div id="Contenido2">
-
-                    <div id="Top2">
-                        <br />
-                        <b>
-                            <p class="Subtitulos3">Crear Nueva Pregunta True or False</p> 
-                        </b>
-
-                    </div>
-
+        <div id="Preguntas2">
+             
+            <div id="Contenido2">
+                
+                <div id="Top2">
                     <br />
-
-                    <p class="Subtitulos3" style="color: black">ID de Pregunta:   
-                        <input class="Form2
-                               " v-model="ID" name="ID" style="width: 30px;" required placeholder="#"></p>
-
-                    <p class="Subtitulos3" style="color: black; float: right; position: relative; top: -70px; left: -70px;">Numero de Intentos:
-
-                        <input class="Form2
-                               " v-model="intentos" name="intentos" style="width: 30px;" required placeholder="#"></p>
-
-                    <p class="Subtitulos3" style="color: black; float: right; position: relative; top: -20px; left: 35px;">Multimedia:
-                    </p>
-
-                    <p class="Subtitulos3" style="color: black; float: right; position: relative; top: 10px; left: 300px;">
-                        <input class="Form2
-                               " type="file" name="multimedia" style="width: 270px; height: 25px;"></p>
-
-                    <p class="Subtitulos3" style="color: black">Pregunta: </p>
-                    <p class="Subtitulos3"><textarea cols="40" rows="3" v-model="pregunta" required name="pregunta" placeholder="Escribe una pregunta de cualquier tema"></textarea></p>
-
-                    <img class="Ad4" src="../Imagenes/VF.png" alt="Examen" />
-
-                    <p class="Subtitulos3" style="color: black">Seleccione en cual respuesta sera la correcta</p>
-
-                    <p class="Subtitulos3" style="color: black"><input type="radio" value="Verdadero" name="Correcta" checked/> Verdadero</p>
-
-                    <p class="Subtitulos3" style="color: black"><input type="radio" value="Falso" name="Correcta"/> Falso</p>
-
+                    <b>
+                        <p class="Subtitulos3">Crear Nueva Pregunta True or False</p> 
+                    </b>
+                   
                 </div>
-
-                <div id="Left2">
-
-                    <p class="Subtitulos3" style="color: black"><b>FeedBack</b></p>
-                    <p class="Subtitulos3" style="color: black">Proporcione retroalimentación en las diferentes situaciones de la pregunta</p>
-                    <hr style="border-color: green;"/>
-
-
-                    <p class="Subtitulos3" style="text-align: left; color:black;"><b>El FeedBack es opcional pero muy importante:</b></p>
-                    <p class="Subtitulos3" style="text-align: left; color:black;">Activar FeedBack <input type="checkbox" onclick="OnOff()"name="Activar" /></p>
-
-                    <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack inicial: <input class="Form2
-                                                                                                           " name="inicial" style="width: 200px; position: relative; left: 70px"></p>
-                    <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack al evaluar: <input class="Form2
-                                                                                                              " name="evaluar" style="width: 200px; position: relative; left: 35px"></p>
-                    <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack correcto: <input class="Form2
-                                                                                                            " name="correcta" style="width: 200px; position: relative; left: 44px"></p>
-                    <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack incorrecto: <input class="Form2
-                                                                                                              " name="incorrecta" style="width: 200px; position: relative; left: 30px"> </p>
-                    <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack al intentar: <input class="Form2
-                                                                                                               " name="intentar" style="width: 200px; position: relative; left: 33px"></p>
-                    <input type="submit" class="button3"value="Subir Pregunta" style="float: right; position: relative; right: 600px; width: 300px; top: 80px;">
-                    <input type="button" class="button1"value="Regresar" onclick="Regresar()" style="float: right; position: relative; right: 300px; width: 300px; top: 130px;">
-                </div>
-
-
+                
+                <br />
+               
+                <p class="Subtitulos3" style="color: black">ID de Pregunta:   
+                <input class="Form2
+                       " v-model="ID" name="ID" style="width: 30px;" required placeholder="#"></p>
+                
+                <p class="Subtitulos3" style="color: black; float: right; position: relative; top: -70px; left: -70px;">Numero de Intentos:
+                
+                 <input class="Form2
+                       " v-model="intentos" name="intentos" style="width: 30px;" required placeholder="#"></p>
+                
+                <p class="Subtitulos3" style="color: black; float: right; position: relative; top: -20px; left: 35px;">Multimedia:
+                </p>
+                
+                <p class="Subtitulos3" style="color: black; float: right; position: relative; top: 10px; left: 300px;">
+                    <input class="Form2
+                       " type="file" name="multimedia" style="width: 270px; height: 25px;"></p>
+                
+                <p class="Subtitulos3" style="color: black">Pregunta: </p>
+                <p class="Subtitulos3"><textarea cols="40" rows="3" v-model="pregunta" required name="pregunta" placeholder="Escribe una pregunta de cualquier tema"></textarea></p>
+                
+                <img class="Ad4" src="../Imagenes/VF.png" alt="Examen" />
+                
+                <p class="Subtitulos3" style="color: black">Seleccione en cual respuesta sera la correcta</p>
+                
+                <p class="Subtitulos3" style="color: black"><input type="radio" value="Verdadero" name="Correcta" checked/> Verdadero</p>
+                
+                <p class="Subtitulos3" style="color: black"><input type="radio" value="Falso" name="Correcta"/> Falso</p>
+ 
             </div>
 
-
-        </form>
-
+            <div id="Left2">
+                
+                <p class="Subtitulos3" style="color: black"><b>FeedBack</b></p>
+                <p class="Subtitulos3" style="color: black">Proporcione retroalimentación en las diferentes situaciones de la pregunta</p>
+                <hr style="border-color: green;"/>
+               
+                
+                <p class="Subtitulos3" style="text-align: left; color:black;"><b>El FeedBack es opcional pero muy importante:</b></p>
+                <p class="Subtitulos3" style="text-align: left; color:black;">Activar FeedBack <input type="checkbox" onclick="OnOff()"name="Activar" /></p>
+                
+                <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack inicial: <input class="Form2
+                       " name="inicial" style="width: 200px; position: relative; left: 70px"></p>
+                <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack al evaluar: <input class="Form2
+                       " name="evaluar" style="width: 200px; position: relative; left: 35px"></p>
+                <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack correcto: <input class="Form2
+                       " name="correcta" style="width: 200px; position: relative; left: 44px"></p>
+                <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack incorrecto: <input class="Form2
+                       " name="incorrecta" style="width: 200px; position: relative; left: 30px"> </p>
+                <p class="Subtitulos3" style="text-align: left; color:black;">FeedBack al intentar: <input class="Form2
+                       " name="intentar" style="width: 200px; position: relative; left: 33px"></p>
+                <input type="submit" class="button3"value="Subir Pregunta" style="float: right; position: relative; right: 600px; width: 300px; top: 80px;">
+                <input type="button" class="button1"value="Regresar" onclick="Regresar()" style="float: right; position: relative; right: 300px; width: 300px; top: 130px;">
+            </div>
+            
+            
+        </div>
+            
+            
+         </form>
+        
         <script src="../Scripts/index.js"></script>
     </body>
 </html>

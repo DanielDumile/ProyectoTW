@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Nuevo Examen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../Styles/Style.css" type="text/css">
+        <script src="../Frameworks/vue.js"></script>
+        
+    </head>
+    <body>
+
+        <div id="Preguntas">
+            <form action="AltaExamen" method="post" > 
+            <div id="Contenido3">
+                
+                <div id="Top" style="background-color: #117db8;">
+                    
+                    <br />
+                    <Encabezado Pregunta="Crear Nuevo Examen" ></Encabezado> 
+                   
+                </div>
+                
+                <br />
+               
+                <p class="Subtitulos3" style="color: black">ID de Pregunta:   
+                <input class="Form2
+                       " v-model="ID" name="ID" style="width: 30px;" required placeholder="#"></p>
+                 
+                <p class="Subtitulos3" style="color: black">Nombre del Examen </p>
+                <p class="Subtitulos3"><textarea cols="40" rows="3" v-model="pregunta" required name="pregunta" placeholder="Escribe una pregunta de cualquier tema"></textarea></p>
+                 <p class="Subtitulos3" style="color: black">Preguntas Disponibles</p>
+                <p class="Subtitulos3" style="color: black">Seleccione las preguntas que quiera en su examen</p>
+                
+                <p style="position: relative; left: 20px;"><input type="checkbox" name="idPreguntas" value="Aqui ira el id de las preguntas"> Pregunta </p>
+                
+                
+                 
+                </div>
+            </form>
+            </div>
+            
+            
+ 
+        <script src="../Scripts/index.js"></script>
+    </body>
+</html>

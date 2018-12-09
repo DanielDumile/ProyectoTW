@@ -61,7 +61,7 @@ public class AltaTF extends HttpServlet {
     String respuestaCorrecta = "";
     String pregunta = "";
     //Nuevos
-    String multimedia="NO";
+    String multimedia="TF.png";
     String intentos = "";
     String inicial = "NO", evaluar = "", correcta = "", incorrecta = "", intentar = "";
 
@@ -208,11 +208,10 @@ public class AltaTF extends HttpServlet {
                         ePregunta.addContent(eTexto);
                         ePregunta.addContent(eRespuesta);
                         ePregunta.addContent(eIntentos);
-                        if (!multimedia.equals("NO")) {
-                            Element eMultimedia = new Element("multimedia");
-                            eMultimedia.setText(multimedia);
-                            ePregunta.addContent(eMultimedia);
-                        }
+                        
+                        Element eMultimedia = new Element("multimedia");
+                        eMultimedia.setText(multimedia);
+                        ePregunta.addContent(eMultimedia);
 
                         if (!inicial.equals("NO")) {
                             Element eInicial = new Element("inicial");

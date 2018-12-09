@@ -8,6 +8,7 @@ package Examen;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import javax.servlet.ServletContext;
@@ -57,8 +58,6 @@ public class ResolverExamen extends HttpServlet {
             String id_pregunta = "";
             int cant_preguntas = 0;
             //String idExamen = "1";
-
-            HashSet<String> idPreguntas = new HashSet<>();
             //CONSULTAMOS AL EXAMEN Y A LAS PREGUNTAS QUE TIENE DENTRO
             SAXBuilder builder = new SAXBuilder();
             File xmlFile = new File(ruta);
@@ -89,6 +88,7 @@ public class ResolverExamen extends HttpServlet {
             } catch (JDOMException io) {
                 System.out.println(io.getMessage());
             }
+
 
             if (indice >= cant_preguntas) {
                 //Consulta de preguntas

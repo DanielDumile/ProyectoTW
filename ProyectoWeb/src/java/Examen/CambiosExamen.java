@@ -55,6 +55,7 @@ public class CambiosExamen extends HttpServlet {
             HttpSession sesion = request.getSession();
             sesion.setAttribute("rutaXML", ruta);
             
+            
             String idExamen = request.getParameter("ID");
             String textoExamen="";
 
@@ -128,7 +129,7 @@ public class CambiosExamen extends HttpServlet {
                         + "                \n"
                         + " <input type='text' name='IDV' value='"+idExamen+"' hidden>"
                         + "                <p class=\"Subtitulos\">Nombre del Examen: </p>\n"
-                        + "                <p><textarea cols=\"40\" rows=\"5\" v-model=\"texto\" required name=\"texto\" placeholder=\""+textoExamen+"\"></textarea></p>\n"
+                        + "                <p><textarea cols=\"40\" rows=\"5\" v-model=\"texto\" required name=\"texto\">"+textoExamen+"</textarea></p>\n"
                         + "                \n"
                         + "                <p class=\"Subtitulos\">Preguntas disponibles</p>\n"
                         + "                <p>Seleccione las preguntas que quiera en su examen</p>\n");

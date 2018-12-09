@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -35,6 +36,31 @@ import org.jdom.output.XMLOutputter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
+import org.w3c.dom.NodeList;
 
 /**
  *
@@ -51,6 +77,24 @@ public class ModificarPregunta extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private boolean isMultipart;
+    private String filePath;
+    private int maxFileSize = 50 * 1024;
+    private int maxMemSize = 4 * 1024;
+    private File file;
+    //Variables globlales a utilizar
+    String idPregunta = "";
+    String tipo = "";
+
+    String respuestaTF = "";
+    ArrayList<String> respuestaCorrecta = new ArrayList<>();
+    ArrayList<String> opciones = new ArrayList<>();
+    String pregunta = "";
+    //Nuevos
+    String multimedia = "NO";
+    String intentos = "";
+    String inicial = "NO", evaluar = "", correcta = "", incorrecta = "", intentar = "";
+
     private static void deleteElement(String id, String ruta) throws IOException {
 
         File xmlFile = new File(ruta);
@@ -90,124 +134,204 @@ public class ModificarPregunta extends HttpServlet {
         }
     }
 
-    private static void addElementTF(Document doc, String id,  String pregunta,String respuestaCorrecta,
-        String intentos,String checkMultimedia,String multimedia,String checkFeedback,String inicial,String evaluar,String correcta,String incorrecta,String intentar) {
-        
-        Element raiz=doc.getRootElement();
-                        //Elementos normales
-                        Element ePregunta=new Element("pregunta");
-                        //Adentro de pregunta
-                        Element eTexto = new Element("texto");
-                        Element eRespuesta = new Element("respuesta");
-                        Element eTipo = new Element("tipo");
-                        Element eIntentos = new Element("intentos");
-                        
-                        ePregunta.setAttribute("id", id);
-                        
-                        eTexto.setText(pregunta);
-                        eRespuesta.setText(respuestaCorrecta);
-                        eTipo.setText("TrueFalse");
-                        eIntentos.setText(intentos);
-                        
-                        ePregunta.addContent(eTipo);
-                        ePregunta.addContent(eTexto);
-                        ePregunta.addContent(eRespuesta);
-                        ePregunta.addContent(eIntentos);
-                        if(!checkMultimedia.equals("NO")){
-                            Element eMultimedia = new Element("multimedia");
-                            ePregunta.addContent(eMultimedia);
-                        }     
+    private void addElementTF(Document doc) {
+        Element raiz = doc.getRootElement();
+        //Elementos normales
+        Element ePregunta = new Element("pregunta");
+        //Adentro de pregunta
+        Element eTexto = new Element("texto");
+        Element eRespuesta = new Element("respuesta");
+        Element eTipo = new Element("tipo");
+        Element eIntentos = new Element("intentos");
 
-                        if(!checkFeedback.equals("NO")){
-                            Element eInicial = new Element("inicial");
-                            eInicial.setText(inicial);
-                            ePregunta.addContent(eInicial);
+        ePregunta.setAttribute("id", idPregunta);
 
-                            Element eEvaluar = new Element("evaluar");
-                            eEvaluar.setText(evaluar);
-                            ePregunta.addContent(eEvaluar);
+        eTexto.setText(pregunta);
+        eRespuesta.setText(respuestaTF);
+        eTipo.setText("TrueFalse");
+        eIntentos.setText(intentos);
 
-                            Element eCorrecta = new Element("correcta");
-                            eCorrecta.setText(correcta);
-                            ePregunta.addContent(eCorrecta);
+        ePregunta.addContent(eTipo);
+        ePregunta.addContent(eTexto);
+        ePregunta.addContent(eRespuesta);
+        ePregunta.addContent(eIntentos);
+        if (!multimedia.equals("NO")) {
+            Element eMultimedia = new Element("multimedia");
+            eMultimedia.setText(multimedia);
+            ePregunta.addContent(eMultimedia);
+        }
 
-                            Element eIncorrecta = new Element("incorrecta");
-                            eIncorrecta.setText(incorrecta);
-                            ePregunta.addContent(eIncorrecta);
+        if (!inicial.equals("NO")) {
+            Element eInicial = new Element("inicial");
+            eInicial.setText(inicial);
+            ePregunta.addContent(eInicial);
 
-                            Element eIntentar = new Element("intentar");
-                            eIntentar.setText(intentar);
-                            ePregunta.addContent(eIntentar);
-                        }
-                        raiz.addContent(ePregunta);
-        
+            Element eEvaluar = new Element("evaluar");
+            eEvaluar.setText(evaluar);
+            ePregunta.addContent(eEvaluar);
+
+            Element eCorrecta = new Element("correcta");
+            eCorrecta.setText(correcta);
+            ePregunta.addContent(eCorrecta);
+
+            Element eIncorrecta = new Element("incorrecta");
+            eIncorrecta.setText(incorrecta);
+            ePregunta.addContent(eIncorrecta);
+
+            Element eIntentar = new Element("intentar");
+            eIntentar.setText(intentar);
+            ePregunta.addContent(eIntentar);
+        }
+        raiz.addContent(ePregunta);
+
     }
 
-    private static void addElementHot(Document doc, String id, String pregunta, String[] opciones, 
-        String[] respuestaCorrecta,String intentos,String checkMultimedia,String multimedia,String checkFeedback,
-        String inicial,String evaluar,String correcta,String incorrecta,String intentar) {
-        
-        Element raiz=doc.getRootElement();
-                        Element ePregunta=new Element("pregunta");
-                        Element eTexto = new Element("texto");
-                        Element eRespuesta = new Element("respuesta");
-                        Element eTipo=new Element("tipo");
-                        Element eIntentos = new Element("intentos");
+    private void addElementHot(Document doc) {
+        Element raiz = doc.getRootElement();
+        Element ePregunta = new Element("pregunta");
+        Element eTexto = new Element("texto");
+        Element eRespuesta = new Element("respuesta");
+        Element eTipo = new Element("tipo");
+        Element eIntentos = new Element("intentos");
 
-                        ePregunta.setAttribute("id", id);
-                        eTexto.setText(pregunta);
-                        eTipo.setText("HotObject");
-                        String auxRespuesta="";
-                        for(int i =0; i < respuestaCorrecta.length; i++){
-                            auxRespuesta+=respuestaCorrecta[i];
-                            if(i != respuestaCorrecta.length-1)
-                                auxRespuesta+=',';
+        ePregunta.setAttribute("id", idPregunta);
+        eTexto.setText(pregunta);
+        eTipo.setText("HotObject");
+        String auxRespuesta = "";
+        for (int i = 0; i < respuestaCorrecta.size(); i++) {
+            auxRespuesta += respuestaCorrecta.get(i);
+            if (i != respuestaCorrecta.size() - 1) {
+                auxRespuesta += ',';
+            }
+        }
+        System.out.println(auxRespuesta);
+        eRespuesta.setText(auxRespuesta);
+
+        ePregunta.addContent(eTipo);
+        ePregunta.addContent(eTexto);
+
+        for (int i = 0; i < opciones.size(); i++) {
+            Element aux = new Element("opcion");
+            aux.setAttribute("id", String.valueOf(i + 1));
+            aux.setText(opciones.get(i));
+            ePregunta.addContent(aux);
+        }
+        ePregunta.addContent(eRespuesta);
+        eIntentos.setText(intentos);
+        ePregunta.addContent(eIntentos);
+
+        if (!multimedia.equals("NO")) {
+            Element eMultimedia = new Element("multimedia");
+            eMultimedia.setText(multimedia);
+            ePregunta.addContent(eMultimedia);
+        }
+
+        //Feedback
+        if (!inicial.equals("NO")) {
+            Element eInicial = new Element("inicial");
+            eInicial.setText(inicial);
+            ePregunta.addContent(eInicial);
+
+            Element eEvaluar = new Element("evaluar");
+            eEvaluar.setText(evaluar);
+            ePregunta.addContent(eEvaluar);
+
+            Element eCorrecta = new Element("correcta");
+            eCorrecta.setText(correcta);
+            ePregunta.addContent(eCorrecta);
+
+            Element eIncorrecta = new Element("incorrecta");
+            eIncorrecta.setText(incorrecta);
+            ePregunta.addContent(eIncorrecta);
+
+            Element eIntentar = new Element("intentar");
+            eIntentar.setText(intentar);
+            ePregunta.addContent(eIntentar);
+        }
+
+        raiz.addContent(ePregunta);
+
+    }
+
+    public void getValores(List fileItems) throws Exception {
+        Iterator i = fileItems.iterator();
+
+        while (i.hasNext()) {
+            FileItem fi = (FileItem) i.next();
+            if (!fi.isFormField()) {
+                // Get the uploaded file parameters
+                String fieldName = fi.getFieldName();
+                //out.println("fieldName: " + fieldName + "<br />");
+                String fileName = fi.getName();
+                //out.println("fileName: " + fileName + "<br />");
+                String contentType = fi.getContentType();
+                //out.println("contentType: " + contentType + "<br />");
+                boolean isInMemory = fi.isInMemory();
+                long sizeInBytes = fi.getSize();
+                if (fieldName.equals("opciones")) {
+                    opciones.add(fileName);
+                } else {
+                    multimedia = fileName;
+                }
+
+                // Write the file
+                if (fileName.lastIndexOf("\\") >= 0) {
+                    file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
+                } else {
+                    file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
+                }
+                fi.write(file);
+                //out.println("Archivo subido: " + fileName + "<br />");
+
+            } else {
+                String fieldName = fi.getFieldName();
+                String fieldValue = fi.getString();
+                switch (fieldName) {
+                    case "IDV": {
+                        idPregunta = fieldValue;
+                        break;
+                    }
+                    case "Correcta": {
+                        //respuestaCorrecta=fieldValue;
+                        if (tipo.equals("TrueFalse")) {
+                            respuestaTF = fieldValue;
+                        } else {
+                            respuestaCorrecta.add(fieldValue);
                         }
-                        System.out.println(auxRespuesta);
-                        eRespuesta.setText(auxRespuesta);
-
-                        ePregunta.addContent(eTipo);
-                        ePregunta.addContent(eTexto);
-
-                        for(int i =0; i < opciones.length;i++){
-                            Element aux = new Element("opcion");
-                            aux.setAttribute("id",String.valueOf(i+1));
-                            aux.setText(opciones[i]);
-                            ePregunta.addContent(aux);
-                        }
-                        ePregunta.addContent(eRespuesta);
-                        ePregunta.addContent(eIntentos);
-                        if(!checkMultimedia.equals("NO")){
-                            Element eMultimedia = new Element("multimedia");
-                            ePregunta.addContent(eMultimedia);
-                        }
-
-
-                        //Feedback
-                        if(!checkFeedback.equals("NO")){
-                            Element eInicial = new Element("inicial");
-                            eInicial.setText(inicial);
-                            ePregunta.addContent(eInicial);
-
-                            Element eEvaluar = new Element("evaluar");
-                            eEvaluar.setText(evaluar);
-                            ePregunta.addContent(eEvaluar);
-
-                            Element eCorrecta = new Element("correcta");
-                            eCorrecta.setText(correcta);
-                            ePregunta.addContent(eCorrecta);
-
-                            Element eIncorrecta = new Element("incorrecta");
-                            eIncorrecta.setText(incorrecta);
-                            ePregunta.addContent(eIncorrecta);
-
-                            Element eIntentar = new Element("intentar");
-                            eIntentar.setText(intentar);
-                            ePregunta.addContent(eIntentar);
-                        }
-
-                        raiz.addContent(ePregunta);
-        
+                        break;
+                    }
+                    case "pregunta": {
+                        pregunta = fieldValue;
+                        break;
+                    }
+                    case "intentos": {
+                        intentos = fieldValue;
+                        break;
+                    }
+                    case "inicial": {
+                        inicial = fieldValue;
+                        break;
+                    }
+                    case "evaluar": {
+                        evaluar = fieldValue;
+                        break;
+                    }
+                    case "correcta": {
+                        correcta = fieldValue;
+                        break;
+                    }
+                    case "incorrecta": {
+                        incorrecta = fieldValue;
+                        break;
+                    }
+                    case "intentar": {
+                        intentar = fieldValue;
+                        break;
+                    }
+                }
+                //out.println("Archivo subido: " + fieldName + " cosas " + fieldValue + "<br />");
+            }
+        }
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -216,68 +340,55 @@ public class ModificarPregunta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try (PrintWriter out = response.getWriter()) {
+            // Check that we have a file upload request
+            filePath = request.getRealPath("/");
+            isMultipart = ServletFileUpload.isMultipartContent(request);
+
+            if (!isMultipart) {
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet upload</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<p>No se subio el archivo</p>");
+                out.println("</body>");
+                out.println("</html>");
+                return;
+            }
+
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+
+            ServletFileUpload upload = new ServletFileUpload(factory);
+
+            try {
+                // Parse the request to get file items.
+                List fileItems = upload.parseRequest(request);
+                //request.getParameter("file")
+                // Process the uploaded file items
+                getValores(fileItems);
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+
             String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
 
             HttpSession sesion = request.getSession();
             //sesion.setAttribute("user",usuario);
             sesion.setAttribute("rutaXML", ruta);
-            String tipo =(String) sesion.getAttribute("tipo");
-            
-            String id = request.getParameter("IDV");
-            
-            deleteElement(id, ruta);
+            tipo = (String) sesion.getAttribute("tipo");
+
+            deleteElement(idPregunta, ruta);
 
             File fichero = new File(ruta);
             if (fichero.isFile()) {
                 try {
                     SAXBuilder builder = new SAXBuilder();
                     Document doc = (Document) builder.build(fichero);
-                    
-                    if (tipo.equals("TrueFalse")) {
-                        String respuestaCorrecta= request.getParameter("Correcta");
-                        String pregunta = request.getParameter("pregunta");
-                        //Nuevos
-                        String intentos = request.getParameter("intentos");
-                        
-                        String multimedia="",checkMultimedia;
-                        checkMultimedia= request.getParameter("checkMultimedia");
-                        if(!checkMultimedia.equals("NO")){
-                            multimedia = request.getParameter("multimedia");
-                        }
-                        //Opciones del feedback
-                        String inicial="",evaluar="",correcta="",incorrecta="",intentar="";
-                        String checkFeedback=request.getParameter("checkFeedback");
-                        if(!checkFeedback.equals("NO")){
-                            inicial= request.getParameter("inicial");
-                            evaluar= request.getParameter("evaluar");
-                            correcta= request.getParameter("correcta");
-                            incorrecta= request.getParameter("incorrecta");
-                            intentar= request.getParameter("intentar");
-                        }
-                        addElementTF(doc, id,pregunta,respuestaCorrecta,intentos,checkMultimedia,multimedia,checkFeedback,inicial,evaluar,correcta,incorrecta,intentar);
-                    } else {
-                        String[] respuestaCorrecta= request.getParameterValues("Correcta");//request.getParameter("Correcta");
-                        String[] opciones = request.getParameterValues("opciones");
-                        String pregunta = request.getParameter("pregunta");  
-                        //Nuevos
-                        String intentos = request.getParameter("intentos");
 
-                        String multimedia="",checkMultimedia;
-                        checkMultimedia= request.getParameter("checkMultimedia");
-                        if(!checkMultimedia.equals("NO")){
-                            multimedia = request.getParameter("multimedia");
-                        }
-                        //Opciones del feedback
-                        String inicial="",evaluar="",correcta="",incorrecta="",intentar="";
-                        String checkFeedback=request.getParameter("checkFeedback");
-                        if(!checkFeedback.equals("NO")){
-                            inicial= request.getParameter("inicial");
-                            evaluar= request.getParameter("evaluar");
-                            correcta= request.getParameter("correcta");
-                            incorrecta= request.getParameter("incorrecta");
-                            intentar= request.getParameter("intentar");
-                        }
-                        addElementHot(doc, id,pregunta,opciones,respuestaCorrecta,intentos,checkMultimedia,multimedia,checkFeedback,inicial,evaluar,correcta,incorrecta,intentar);
+                    if (tipo.equals("TrueFalse")) {
+                        addElementTF(doc);
+                    } else {
+                        addElementHot(doc);
                     }
                     XMLOutputter xmlOutput = new XMLOutputter();
                     xmlOutput.setFormat(Format.getPrettyFormat());

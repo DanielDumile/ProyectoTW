@@ -61,7 +61,7 @@ public class AltaTF extends HttpServlet {
     String respuestaCorrecta = "";
     String pregunta = "";
     //Nuevos
-    String multimedia="TF.png";
+    String multimedia = "NO";
     String intentos = "";
     String inicial = "NO", evaluar = "", correcta = "", incorrecta = "", intentar = "";
 
@@ -80,53 +80,53 @@ public class AltaTF extends HttpServlet {
                 //out.println("contentType: " + contentType + "<br />");
                 boolean isInMemory = fi.isInMemory();
                 long sizeInBytes = fi.getSize();
-                multimedia=fileName;
+                multimedia = fileName;
                 // Write the file
                 if (fileName.lastIndexOf("\\") >= 0) {
                     file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
                 } else {
                     file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
                 }
-                fi.write(file);            
+                fi.write(file);
                 //out.println("Archivo subido: " + fileName + "<br />");
-                
+
             } else {
                 String fieldName = fi.getFieldName();
                 String fieldValue = fi.getString();
-                switch(fieldName){
-                    case "ID":{
-                        id=fieldValue;
+                switch (fieldName) {
+                    case "ID": {
+                        id = fieldValue;
                         break;
                     }
-                    case "Correcta":{
-                        respuestaCorrecta=fieldValue;
+                    case "Correcta": {
+                        respuestaCorrecta = fieldValue;
                         break;
                     }
-                    case "pregunta":{
+                    case "pregunta": {
                         pregunta = fieldValue;
                         break;
                     }
-                    case "intentos":{
+                    case "intentos": {
                         intentos = fieldValue;
                         break;
                     }
-                    case "inicial":{
+                    case "inicial": {
                         inicial = fieldValue;
                         break;
                     }
-                    case "evaluar":{
+                    case "evaluar": {
                         evaluar = fieldValue;
                         break;
                     }
-                    case "correcta":{
+                    case "correcta": {
                         correcta = fieldValue;
                         break;
                     }
-                    case "incorrecta":{
+                    case "incorrecta": {
                         incorrecta = fieldValue;
                         break;
                     }
-                    case "intentar":{
+                    case "intentar": {
                         intentar = fieldValue;
                         break;
                     }
@@ -172,7 +172,7 @@ public class AltaTF extends HttpServlet {
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-            
+
             String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
 
             HttpSession sesion = request.getSession();
@@ -208,10 +208,11 @@ public class AltaTF extends HttpServlet {
                         ePregunta.addContent(eTexto);
                         ePregunta.addContent(eRespuesta);
                         ePregunta.addContent(eIntentos);
-                        
-                        Element eMultimedia = new Element("multimedia");
-                        eMultimedia.setText(multimedia);
-                        ePregunta.addContent(eMultimedia);
+                        if (!multimedia.equals("NO")) {
+                            Element eMultimedia = new Element("multimedia");
+                            eMultimedia.setText(multimedia);
+                            ePregunta.addContent(eMultimedia);
+                        }
 
                         if (!inicial.equals("NO")) {
                             Element eInicial = new Element("inicial");
@@ -245,6 +246,8 @@ public class AltaTF extends HttpServlet {
                 } else {
                     System.out.println("error");
                 }
+                multimedia = "NO";
+                inicial = "NO";
                 response.sendRedirect("/ProyectoWeb/Vistas/Administrador.html");
                 // TODO output your page here. You may use following sample code. 
                 out.println("<!DOCTYPE html>");
@@ -257,7 +260,7 @@ public class AltaTF extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
             }
-            
+
         }
     }
 

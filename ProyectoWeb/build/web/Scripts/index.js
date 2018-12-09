@@ -245,8 +245,7 @@ function Calificar(){
  
             var porNombre=document.getElementsByName("Valor");
             var Respuesta = document.getElementById("Resp").value;
-            // Recorremos todos los valores del radio button para encontrar el
-            // seleccionado
+
             for(var i=0;i<porNombre.length;i++) {
                 
                 if(porNombre[i].checked){
@@ -279,6 +278,11 @@ function Siguiente(){
     
     document.getElementById("formi").submit();
     
+    
+    
+}
+
+function CalificarHotObject(){
     
     
 }

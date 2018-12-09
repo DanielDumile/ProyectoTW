@@ -10,43 +10,73 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        
+     
     </head>
-    <body>
+    <body>   
         
-        <script>
+           <script>
             
-        function Check(){ 
+        function Ch(){ 
               
-               var resultado;
- 
-            var porNombre=document.getElementsByName("P");
-           
-            // Recorremos todos los valores del radio button para encontrar el
-            // seleccionado
-            for(var i=0;i<porNombre.length;i++) {
+            var Marcadas = document.getElementsByName("P");
+            var Correcta = document.getElementById("Correcta").value;
+            var Array = Correcta.split(",");
+
+            var Contador = 0;
+            var Check = 0;
+            
+            for(var i = 0; i < Marcadas.length; i++){
                 
-                if(porNombre[i].checked){
-                    resultado=porNombre[i].value;
+                for(var j = 0; j < Array.length; j++){
                     
+                    if(Marcadas[i].checked){
+                        Check++;
+  
+                        if(Marcadas[i].value === Array[j]){
+                            
+                            Contador++;
+                    
+                        }
+                        
+                    }else{
+                        
+                        break;
+                    }
+                }
+                
+            }
+            var Division = Check/Array.length;
+            
+            if(Contador === Array.length){
+                
+                if(Division === Contador){
+
+                     alert('Respuesta Correcta');
+                }else{
+                    
+                    alert('Respuesta Incorrecta');
                     
                 }
-            }
-            
-            if(resultado === "1"){
-                
-                alert('Respuesta Correcta');
                 
             }else{
                 
-                alert('Respuesta Incorrecta');
+                 alert('Respuesta Incorrecta');
                 
             }
-        }
+       }
             
         </script>
-        <input type="radio" name="P" value="1">
-         <input type="radio" name="P" value="2">
-         <input type="button" name="Button" value="Valor" onclick="Check()">
+        
+         <input type="checkbox" name="P" value="1">1
+         <input type="checkbox" name="P" value="2">2
+         <input type="checkbox" name="P" value="3">3
+         <input type="checkbox" name="P" value="4">4
+         <input type="checkbox" name="P" value="5">5
+         <input type="checkbox" name="P" value="6">6
+         
+         <input type="text" name="Correcta" id="Correcta" value="2,4,6" />
+         
+         
+         <input type="button" onclick="Ch()" value="Valor" />
     </body>
 </html>

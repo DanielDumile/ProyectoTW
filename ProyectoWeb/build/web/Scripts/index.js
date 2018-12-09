@@ -284,6 +284,51 @@ function Siguiente(){
 
 function CalificarHotObject(){
     
+    var Marcadas = document.getElementsByName("P");
+            var Correcta = document.getElementById("Correcta").value;
+            var Array = Correcta.split(",");
+
+            var Contador = 0;
+            var Check = 0;
+            
+            for(var i = 0; i < Marcadas.length; i++){
+                
+                for(var j = 0; j < Array.length; j++){
+                    
+                    if(Marcadas[i].checked){
+                        Check++;
+  
+                        if(Marcadas[i].value === Array[j]){
+                            
+                            Contador++;
+                    
+                        }
+                        
+                    }else{
+                        
+                        break;
+                    }
+                }
+                
+            }
+            var Division = Check/Array.length;
+            
+            if(Contador === Array.length){
+                
+                if(Division === Contador){
+
+                     alert('Respuesta Correcta');
+                }else{
+                    
+                    alert('Respuesta Incorrecta');
+                    
+                }
+                
+            }else{
+                
+                 alert('Respuesta Incorrecta');
+                
+            }
     
 }
 

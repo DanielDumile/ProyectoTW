@@ -504,4 +504,15 @@ body{
   align-items: center;
 }
 
+#Contenido3{
+    
+    background: white;
+    width: 700px;
+    height: 700px;
+    border: 2px solid grey;
+    border-radius: 12px;
+    border-bottom: 6px solid #117db8;
+    box-shadow: 10px 10px 5px grey;
+   
+}
 

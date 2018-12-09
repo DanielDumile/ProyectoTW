@@ -91,9 +91,9 @@ public class ModificarPregunta extends HttpServlet {
     ArrayList<String> opciones = new ArrayList<>();
     String pregunta = "";
     //Nuevos
-    String multimedia = "NO";
+    String multimedia = "";
     String intentos = "";
-    String inicial = "NO", evaluar = "", correcta = "", incorrecta = "", intentar = "";
+    String inicial = "Mensaje Inicial", evaluar = "Momento de saber tu calificacion", correcta = "Respuesta Correcta", incorrecta = "Trata de nuevo", intentar = "Buen intento";
 
     private static void deleteElement(String id, String ruta) throws IOException {
 
@@ -155,33 +155,33 @@ public class ModificarPregunta extends HttpServlet {
         ePregunta.addContent(eTexto);
         ePregunta.addContent(eRespuesta);
         ePregunta.addContent(eIntentos);
-        if (!multimedia.equals("NO")) {
-            Element eMultimedia = new Element("multimedia");
-            eMultimedia.setText(multimedia);
-            ePregunta.addContent(eMultimedia);
-        }
+        //if (!multimedia.equals("NO")) {
+        Element eMultimedia = new Element("multimedia");
+        eMultimedia.setText(multimedia);
+        ePregunta.addContent(eMultimedia);
+        //}
 
-        if (!inicial.equals("NO")) {
-            Element eInicial = new Element("inicial");
-            eInicial.setText(inicial);
-            ePregunta.addContent(eInicial);
+        //if (!inicial.equals("NO")) {
+        Element eInicial = new Element("inicial");
+        eInicial.setText(inicial);
+        ePregunta.addContent(eInicial);
 
-            Element eEvaluar = new Element("evaluar");
-            eEvaluar.setText(evaluar);
-            ePregunta.addContent(eEvaluar);
+        Element eEvaluar = new Element("evaluar");
+        eEvaluar.setText(evaluar);
+        ePregunta.addContent(eEvaluar);
 
-            Element eCorrecta = new Element("correcta");
-            eCorrecta.setText(correcta);
-            ePregunta.addContent(eCorrecta);
+        Element eCorrecta = new Element("correcta");
+        eCorrecta.setText(correcta);
+        ePregunta.addContent(eCorrecta);
 
-            Element eIncorrecta = new Element("incorrecta");
-            eIncorrecta.setText(incorrecta);
-            ePregunta.addContent(eIncorrecta);
+        Element eIncorrecta = new Element("incorrecta");
+        eIncorrecta.setText(incorrecta);
+        ePregunta.addContent(eIncorrecta);
 
-            Element eIntentar = new Element("intentar");
-            eIntentar.setText(intentar);
-            ePregunta.addContent(eIntentar);
-        }
+        Element eIntentar = new Element("intentar");
+        eIntentar.setText(intentar);
+        ePregunta.addContent(eIntentar);
+        //}
         raiz.addContent(ePregunta);
 
     }
@@ -220,34 +220,34 @@ public class ModificarPregunta extends HttpServlet {
         eIntentos.setText(intentos);
         ePregunta.addContent(eIntentos);
 
-        if (!multimedia.equals("NO")) {
-            Element eMultimedia = new Element("multimedia");
-            eMultimedia.setText(multimedia);
-            ePregunta.addContent(eMultimedia);
-        }
+        //if (!multimedia.equals("NO")) {
+        Element eMultimedia = new Element("multimedia");
+        eMultimedia.setText(multimedia);
+        ePregunta.addContent(eMultimedia);
+        //}
 
         //Feedback
-        if (!inicial.equals("NO")) {
-            Element eInicial = new Element("inicial");
-            eInicial.setText(inicial);
-            ePregunta.addContent(eInicial);
+        //if (!inicial.equals("NO")) {
+        Element eInicial = new Element("inicial");
+        eInicial.setText(inicial);
+        ePregunta.addContent(eInicial);
 
-            Element eEvaluar = new Element("evaluar");
-            eEvaluar.setText(evaluar);
-            ePregunta.addContent(eEvaluar);
+        Element eEvaluar = new Element("evaluar");
+        eEvaluar.setText(evaluar);
+        ePregunta.addContent(eEvaluar);
 
-            Element eCorrecta = new Element("correcta");
-            eCorrecta.setText(correcta);
-            ePregunta.addContent(eCorrecta);
+        Element eCorrecta = new Element("correcta");
+        eCorrecta.setText(correcta);
+        ePregunta.addContent(eCorrecta);
 
-            Element eIncorrecta = new Element("incorrecta");
-            eIncorrecta.setText(incorrecta);
-            ePregunta.addContent(eIncorrecta);
+        Element eIncorrecta = new Element("incorrecta");
+        eIncorrecta.setText(incorrecta);
+        ePregunta.addContent(eIncorrecta);
 
-            Element eIntentar = new Element("intentar");
-            eIntentar.setText(intentar);
-            ePregunta.addContent(eIntentar);
-        }
+        Element eIntentar = new Element("intentar");
+        eIntentar.setText(intentar);
+        ePregunta.addContent(eIntentar);
+        //}
 
         raiz.addContent(ePregunta);
 
@@ -340,6 +340,18 @@ public class ModificarPregunta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try (PrintWriter out = response.getWriter()) {
+
+            String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
+            HttpSession sesion = request.getSession();
+            //sesion.setAttribute("user",usuario);
+            sesion.setAttribute("rutaXML", ruta);
+            tipo = (String) sesion.getAttribute("tipo");
+            if (tipo.equals("TrueFalse")) {
+                multimedia = "TF.png";
+            } else {
+                multimedia = "Hot.png";
+            }
+
             // Check that we have a file upload request
             filePath = request.getRealPath("/");
             isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -369,13 +381,6 @@ public class ModificarPregunta extends HttpServlet {
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-
-            String ruta = context.getRealPath("/") + "XML/PreguntaTF.xml";
-
-            HttpSession sesion = request.getSession();
-            //sesion.setAttribute("user",usuario);
-            sesion.setAttribute("rutaXML", ruta);
-            tipo = (String) sesion.getAttribute("tipo");
 
             deleteElement(idPregunta, ruta);
 

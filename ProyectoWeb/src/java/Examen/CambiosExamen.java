@@ -54,10 +54,9 @@ public class CambiosExamen extends HttpServlet {
 
             HttpSession sesion = request.getSession();
             sesion.setAttribute("rutaXML", ruta);
-            
-            
+
             String idExamen = request.getParameter("ID");
-            String textoExamen="";
+            String textoExamen = "";
 
             HashSet<String> idPreguntas = new HashSet<>();
             //CONSULTAMOS AL EXAMEN Y A LAS PREGUNTAS QUE TIENE DENTRO
@@ -87,7 +86,7 @@ public class CambiosExamen extends HttpServlet {
             } catch (JDOMException io) {
                 System.out.println(io.getMessage());
             }
-            
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -112,28 +111,33 @@ public class CambiosExamen extends HttpServlet {
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren("pregunta");
 
-                out.println("<center>\n"
-                        + "        <div id=\"TrueFalse\">\n"
-                        + "            <p class=\"Titulos\">Creación de un nuevo examen</p>\n"
-                        + "                <img class=\"Ad22\" src=\"Imagenes/preguntas.png\" alt=\"Examen\"/>\n"
-                        + "            \n"
-                        + "            \n"
-                        + "            <form v-on:submit=\"TF\" action=\"ModificarExamen\" method=\"post\">\n"
+                out.println("<div id=\"Preguntas\">\n"
+                        + "            <form action=\"AltaExamen\" method=\"post\" > \n"
+                        + "            <div id=\"Contenido3\">\n"
                         + "                \n"
-                        + "                <hr />\n"
-                        + "       \n"
-                        + "                <p class=\"Subtitulos\">ID del examen:   \n"
+                        + "                <div id=\"Top\" style=\"background-color: #117db8;\">\n"
+                        + "                    \n"
+                        + "                    <br />\n"
+                        + "                    <b>\n"
+                        + "                        <p class=\"Subtitulos3\">Crear Nuevo Examen</p> \n"
+                        + "                    </b> \n"
+                        + "                   \n"
+                        + "                </div>\n"
+                        + "                \n"
+                        + "                <br />\n"
+                        + "               \n"
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">ID de Examen:   \n"
                         + "                <input class=\"Form2\n"
-                        + "                       \" v-model=\"ID\" name=\"ID\" value='"+idExamen+"' disabled required></p>\n"
-                        + "                <p class=\"Subtitulos\">Este servira como identifiador del examen</p>\n"
+                        + "                       \" v-model=\"ID\" name=\"ID\" style=\"width: 30px;\"  value=\""+idExamen+"\" disabled></p>\n"
+                        + "<input type='text' value='"+idExamen+"' name='IDV' hidden>"
+                        + "                 \n"
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">Nombre del Examen </p>\n"
+                        + "                <p class=\"Subtitulos3\"><textarea cols=\"40\" rows=\"3\" v-model=\"pregunta\" required name=\"pregunta\" >"+textoExamen+"</textarea></p>\n"
                         + "                \n"
-                        + " <input type='text' name='IDV' value='"+idExamen+"' hidden>"
-                        + "                <p class=\"Subtitulos\">Nombre del Examen: </p>\n"
-                        + "                <p><textarea cols=\"40\" rows=\"5\" v-model=\"texto\" required name=\"texto\">"+textoExamen+"</textarea></p>\n"
-                        + "                \n"
-                        + "                <p class=\"Subtitulos\">Preguntas disponibles</p>\n"
-                        + "                <p>Seleccione las preguntas que quiera en su examen</p>\n");
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">Preguntas Disponibles</p>\n"
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">Seleccione las preguntas que quiera en su examen</p>");
 
+                out.println("<div style=\"overflow: scroll; width:680px; height:290px; \">");
                 for (int i = 0; i < list.size(); i++) {
                     //Se obtiene el elemento 'user1'
                     Element campo = (Element) list.get(i);
@@ -142,30 +146,18 @@ public class CambiosExamen extends HttpServlet {
                     //Se obtiene el valor que esta entre los tags
                     String texto = campo.getChildTextTrim("texto");
                     String tipo = campo.getChildTextTrim("tipo");
-                    if(idPreguntas.contains(id)){
-                        out.println("<p><input class=\"Form\" v-model=\"Pregunta\" required name=\"Pregunta\" style=\"width: 800px\" placeholder=\"" + texto + "\" disabled value=\"Pregunta: " + texto + " --> Tipo: " + tipo + "\"> \n"
-                            + "<input type=\"checkbox\" name=\"idPreguntas\" value=\"" + id + "\" checked </p>");
-                    }
-                    else{
-                        out.println("<p><input class=\"Form\" v-model=\"Pregunta\" required name=\"Pregunta\" style=\"width: 800px\" placeholder=\"" + texto + "\" disabled value=\"Pregunta: " + texto + " --> Tipo: " + tipo + "\"> \n"
-                            + "<input type=\"checkbox\" name=\"idPreguntas\" value=\"" + id + "\"  </p>");
-                    }
-                    
-
+                    if(idPreguntas.contains((id)))
+                        out.println("<p style=\"position: relative; left: 20px;\"><input type=\"checkbox\" name=\"idPreguntas\" value=\"" + id + "\" checked> Pregunta: " + texto + " --> Tipo:" + tipo + "\n" + "</p>");
+                    else
+                        out.println("<p style=\"position: relative; left: 20px;\"><input type=\"checkbox\" name=\"idPreguntas\" value=\"" + id + "\"> Pregunta: " + texto + " --> Tipo:" + tipo + "\n" + "</p>");
                 }
-                out.println("<br />"
-                        + "<br />\n"
-                        + "                \n"
-                        + "                <button class=\"button1\" type=\"submit\">Modificar examen</button>   \n"
-                        + "                \n"
-                        + "            </form>\n"
-                        + "                <br />\n"
-                        + "                <button class=\"button3\" onclick=\"RegresarExamen()\">Regresar</button>   \n"
-                        + "                \n"
-                        + "            \n"
-                        + "        </div>\n"
-                        + "    </center>\n"
-                        + "    <script src=\"../Scripts/index.js\"></script>");
+                out.println("</div>");
+                out.println("</div>"
+                        + "<input type=\"submit\" class=\"button2\" value=\"Subir Examen\" style=\"position: relative; top: 60px; left: -25px;\" />\n"
+                        + "                <input type=\"button\" class=\"button3\" value=\"Regresar\" onclick=\"RegresarExamen()\" style=\"position: relative; top: 60px; left: 10px;\" />"
+                        + "</form>"
+                        + "</div>"
+                        + "<script src=\"../Scripts/index.js\"></script>");
 
             } catch (JDOMException io) {
                 System.out.println(io.getMessage());

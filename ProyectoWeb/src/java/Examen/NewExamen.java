@@ -77,30 +77,30 @@ public class NewExamen extends HttpServlet {
                 //Se obtiene la lista de hijos de la raiz 'usuarios'
                 List list = rootNode.getChildren("pregunta");
 
-                out.println("<div id=\"Preguntas\">\n" +
-"            <form action=\"AltaExamen\" method=\"post\" > \n" +
-"            <div id=\"Contenido3\">\n" +
-"                \n" +
-"                <div id=\"Top\" style=\"background-color: #117db8;\">\n" +
-"                    \n" +
-"                    <br />\n" +
-"                    <b>\n" +
-"                        <p class=\"Subtitulos3\">Crear Nuevo Examen</p> \n" +
-"                    </b> \n" +
-"                   \n" +
-"                </div>\n" +
-"                \n" +
-"                <br />\n" +
-"               \n" +
-"                <p class=\"Subtitulos3\" style=\"color: black\">ID de Examen:   \n" +
-"                <input class=\"Form2\n" +
-"                       \" v-model=\"ID\" name=\"ID\" style=\"width: 30px;\" required placeholder=\"#\"></p>\n" +
-"                 \n" +
-"                <p class=\"Subtitulos3\" style=\"color: black\">Nombre del Examen </p>\n" +
-"                <p class=\"Subtitulos3\"><textarea cols=\"40\" rows=\"3\" v-model=\"pregunta\" required name=\"pregunta\" placeholder=\"Escribe una pregunta de cualquier tema\"></textarea></p>\n" +
-"                \n" +
-"                <p class=\"Subtitulos3\" style=\"color: black\">Preguntas Disponibles</p>\n" +
-"                <p class=\"Subtitulos3\" style=\"color: black\">Seleccione las preguntas que quiera en su examen</p>");
+                out.println("<div id=\"Preguntas\">\n"
+                        + "            <form action=\"AltaExamen\" method=\"post\" > \n"
+                        + "            <div id=\"Contenido3\">\n"
+                        + "                \n"
+                        + "                <div id=\"Top\" style=\"background-color: #117db8;\">\n"
+                        + "                    \n"
+                        + "                    <br />\n"
+                        + "                    <b>\n"
+                        + "                        <p class=\"Subtitulos3\">Crear Nuevo Examen</p> \n"
+                        + "                    </b> \n"
+                        + "                   \n"
+                        + "                </div>\n"
+                        + "                \n"
+                        + "                <br />\n"
+                        + "               \n"
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">ID de Examen:   \n"
+                        + "                <input class=\"Form2\n"
+                        + "                       \" v-model=\"ID\" name=\"ID\" style=\"width: 30px;\" required placeholder=\"#\"></p>\n"
+                        + "                 \n"
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">Nombre del Examen </p>\n"
+                        + "                <p class=\"Subtitulos3\"><textarea cols=\"40\" rows=\"3\" v-model=\"pregunta\" required name=\"pregunta\" placeholder=\"Escribe una pregunta de cualquier tema\"></textarea></p>\n"
+                        + "                \n"
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">Preguntas Disponibles</p>\n"
+                        + "                <p class=\"Subtitulos3\" style=\"color: black\">Seleccione las preguntas que quiera en su examen</p>");
 
                 out.println("<div style=\"overflow: scroll; width:680px; height:290px; \">");
                 for (int i = 0; i < list.size(); i++) {
@@ -111,16 +111,14 @@ public class NewExamen extends HttpServlet {
                     //Se obtiene el valor que esta entre los tags
                     String texto = campo.getChildTextTrim("texto");
                     String tipo = campo.getChildTextTrim("tipo");
-                    
-                    out.println("<p style=\"position: relative; left: 20px;\"><input type=\"checkbox\" name=\"idPreguntas\" value=\""+id+"\"> Pregunta: "+texto+" --> Tipo:"+tipo+"\n" +"</p>");
-                    
-                    
+
+                    out.println("<p style=\"position: relative; left: 20px;\"><input type=\"checkbox\" name=\"idPreguntas\" value=\"" + id + "\"> Pregunta: " + texto + " --> Tipo:" + tipo + "\n" + "</p>");
 
                 }
                 out.println("</div>");
                 out.println("</div>"
-                        + "<input type=\"submit\" class=\"button2\" value=\"Subir Examen\" style=\"position: relative; top: 60px; left: -25px;\" />\n" +
-"                <input type=\"button\" class=\"button3\" value=\"Regresar\" onclick=\"RegresarExamen()\" style=\"position: relative; top: 60px; left: 10px;\" />"
+                        + "<input type=\"submit\" class=\"button2\" value=\"Subir Examen\" style=\"position: relative; top: 60px; left: -25px;\" />\n"
+                        + "                <input type=\"button\" class=\"button3\" value=\"Regresar\" onclick=\"RegresarExamen()\" style=\"position: relative; top: 60px; left: 10px;\" />"
                         + "</form>"
                         + "</div>"
                         + "<script src=\"../Scripts/index.js\"></script>");

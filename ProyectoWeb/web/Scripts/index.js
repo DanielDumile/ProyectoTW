@@ -276,7 +276,7 @@ function Calificar2() {
     if(Intentos === 0){
         
         alert('Se acabaron los intentos');
-        
+        Feedback.value = evaluar.value;
     }else{
 
         for (var i = 0; i < porNombre.length; i++) {

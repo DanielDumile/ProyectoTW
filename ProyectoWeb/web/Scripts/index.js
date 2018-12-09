@@ -316,6 +316,7 @@ function CalificarHotObject() {
     var Marcadas = document.getElementsByName("Respuesta");
     var Correcta = document.getElementById("Resp").value;
     var Array = Correcta.split(",");
+    var ans = document.getElementById("answer");
 
     var Contador = 0;
     var Check = 0;
@@ -345,16 +346,16 @@ function CalificarHotObject() {
     if (Contador === Array.length) {
 
         if (Division === Contador) {
-            document.getElementById("answer").value = 'Correcta';
+            ans.value = 'Correcta';
             alert('Respuesta Correcta');
         } else {
-            document.getElementById("answer").value = 'Incorrecta';
+            ans.value = 'Incorrecta';
             alert('Respuesta Incorrecta');
 
         }
 
     } else {
-        document.getElementById("answer").value = 'Incorrecta';
+        ans.value = 'Incorrecta';
         alert('Respuesta Incorrecta');
 
     }

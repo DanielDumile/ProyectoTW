@@ -48,7 +48,9 @@ public class ResolverExamen extends HttpServlet {
 
             HttpSession sesion = request.getSession();
             sesion.setAttribute("rutaXML", ruta);
-            //int indice = Integer.parseInt((String)sesion.getAttribute("indice"));
+            ArrayList respuestasSesion = new ArrayList<>();
+            respuestasSesion =(ArrayList) sesion.getAttribute("respuestas");
+            sesion.setAttribute("preguntas", respuestasSesion);
 
             //Estas puedens ser por session
             int indice = Integer.parseInt(request.getParameter("indice"));
@@ -220,43 +222,43 @@ public class ResolverExamen extends HttpServlet {
                                         + "                <p>\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"" + 1 + "\"/>\n"
-                                        + "                        <img src=\"Imagenes/" + ((Element) lista.get(0)).getTextTrim() + "\" />\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(0)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"" + 2 + "\"/>\n"
-                                        + "                      <img src=\"Imagenes/" + ((Element) lista.get(1)).getTextTrim() + "\" />\n"
+                                        + "                      <img src=\"" + ((Element) lista.get(1)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                        + "                        <img src=\"Imagenes/" + ((Element) lista.get(2)).getTextTrim() + "\" />\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(2)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                        + "                      <img src=\"Imagenes/" + ((Element) lista.get(3)).getTextTrim() + "\" />\n"
+                                        + "                      <img src=\"" + ((Element) lista.get(3)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "                </p>\n"
                                         + "                \n"
                                         + "                <p>\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                        + "                        <img src=\"Imagenes/" + ((Element) lista.get(4)).getTextTrim() + "\" />\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(4)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                        + "                      <img src=\"Imagenes/" + ((Element) lista.get(5)).getTextTrim() + "\" />\n"
+                                        + "                      <img src=\"" + ((Element) lista.get(5)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                        <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                        + "                        <img src=\"Imagenes/" + ((Element) lista.get(6)).getTextTrim() + "\" />\n"
+                                        + "                        <img src=\"" + ((Element) lista.get(6)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "\n"
                                         + "                    <label class=\"checkeable\">\n"
                                         + "                      <input type=\"checkbox\" name=\"Respuesta\" value=\"Aqui ira el numero de respuesta\"/>\n"
-                                        + "                      <img src=\"Imagenes/" + ((Element) lista.get(7)).getTextTrim() + "\" />\n"
+                                        + "                      <img src=\"" + ((Element) lista.get(7)).getTextTrim() + "\" />\n"
                                         + "                    </label>\n"
                                         + "                    \n"
                                         + "                    <img class=\"Ad6\" src=\"Imagenes/HOT.png\" alt=\"Examen\" />\n"

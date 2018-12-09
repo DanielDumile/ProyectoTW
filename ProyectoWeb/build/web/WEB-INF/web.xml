@@ -68,6 +68,18 @@
         <servlet-name>NuevoAltaTF</servlet-name>
         <servlet-class>Administrador.NuevoAltaTF</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InicioExamen</servlet-name>
+        <servlet-class>Examen.InicioExamen</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Intermedio</servlet-name>
+        <servlet-class>Examen.Intermedio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Evaluacion</servlet-name>
+        <servlet-class>Examen.Evaluacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AltaHot</servlet-name>
         <url-pattern>/AltaHot</url-pattern>
@@ -175,6 +187,18 @@
     <servlet-mapping>
         <servlet-name>NuevoAltaTF</servlet-name>
         <url-pattern>/NuevoAltaTF</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InicioExamen</servlet-name>
+        <url-pattern>/InicioExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Intermedio</servlet-name>
+        <url-pattern>/Intermedio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Evaluacion</servlet-name>
+        <url-pattern>/Evaluacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -119,8 +119,8 @@ public class NewExamen extends HttpServlet {
                 }
                 out.println("</div>");
                 out.println("</div>"
-                        + "<input type=\"submit\" class=\"button2\" value=\"Subir Examen\" style=\"position: relative; top: 20px; left: -30px;\" />\n" +
-"                <input type=\"button\" class=\"button3\" value=\"Regresar\" onclick=\"RegresarExamen()\" style=\"position: relative; top: 20px; left: 10px;\" />"
+                        + "<input type=\"submit\" class=\"button2\" value=\"Subir Examen\" style=\"position: relative; top: 60px; left: -25px;\" />\n" +
+"                <input type=\"button\" class=\"button3\" value=\"Regresar\" onclick=\"RegresarExamen()\" style=\"position: relative; top: 60px; left: 10px;\" />"
                         + "</form>"
                         + "</div>"
                         + "<script src=\"../Scripts/index.js\"></script>");

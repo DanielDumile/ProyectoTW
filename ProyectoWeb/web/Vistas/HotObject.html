@@ -30,6 +30,16 @@
                 document.F1.intentar.disabled = true;
 
             }
+             if(document.F1.ActivarMulti.checked){
+                
+                document.F1.multimedia.disabled=false;
+                
+                
+            }else{
+                
+                document.F1.multimedia.disabled=true;
+                
+            }
 
         }
     </script>
@@ -61,28 +71,28 @@
                         <input class="Form2
                                " v-model="intentos" name="intentos" style="width: 30px;" required placeholder="#"></p>
 
-                    <p class="Subtitulos3" style="color: black; float: right; position: relative; top: -20px; left: 35px;">Multimedia:
+                    <p class="Subtitulos3" style="color: black; float: right; position: relative; top: -20px; left: 120px;">Activar Multimedia <input type="checkbox" onclick="OnOff()" name="ActivarMulti" />
                     </p>
 
-                    <p class="Subtitulos3" style="color: black; float: right; position: relative; top: 10px; left: 300px;">
+                    <p class="Subtitulos3" style="color: black; float: right; position: relative; top: 10px; left: 390px;">
                         <input class="Form2
                                " type="file" name="multimedia" style="width: 270px; height: 25px;"></p>
 
-                    <p class="Subtitulos3" style="color: black">Pregunta: </p>
-                    <p class="Subtitulos3"><textarea cols="40" rows="3" v-model="pregunta" required name="pregunta" placeholder="Escribe una pregunta de cualquier tema"></textarea></p>
+                    <p class="Subtitulos3" style="color: black; float: left; position: relative; top: -90px; left: 20px;">Pregunta: </p>
+                    <p class="Subtitulos3" style="color: black; float: left; position: relative; top: -50px; left: -60px;"><textarea cols="40" rows="3" v-model="pregunta" required name="pregunta" placeholder="Escribe una pregunta de cualquier tema"></textarea></p>
 
                     <!--<img class="Ad4" src="../Imagenes/VF.png" alt="Examen" />-->
 
-                    <p class="Subtitulos3" style="color: black">Suba imagenes de las opciones y seleccione cuales seran correctas:</p>
+                    <p class="Subtitulos3" style="color: black; float: left; position: relative; top: -75px; left: 20px;">Suba imagenes de las opciones y seleccione cuales seran correctas:</p>
 
-                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 1" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="1" style="position: relative; left: 20px;"></p>
-                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 2"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="2" style="position: relative; left: 20px;"></p>
-                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 3" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="3" style="position: relative; left: 20px;"></p>
-                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 4"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="4" style="position: relative; left: 20px;"></p>
-                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 5" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="5" style="position: relative; left: 20px;"></p>
-                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 6"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="6" style="position: relative; left: 20px;"></p>
-                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 7" style="width: 600px; height: 25px; position: relative; left: 16px;"> <input type="checkbox" name="Correcta" value="7" style="position: relative; left: 20px;"></p>
-                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 8"style="width: 600px; height: 25px; position: relative; left: 16px;" > <input type="checkbox" name="Correcta" value="8" style="position: relative; left: 20px;"></p>
+                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 1" style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;"> <input type="checkbox" name="Correcta" value="1" style="position: relative; left: 20px; top: -50px;"></p>
+                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 2"style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;" > <input type="checkbox" name="Correcta" value="2" style="position: relative; left: 20px;top: -50px;"></p>
+                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 3" style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;"> <input type="checkbox" name="Correcta" value="3" style="position: relative; left: 20px; top: -50px;"></p>
+                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 4"style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;" > <input type="checkbox" name="Correcta" value="4" style="position: relative; left: 20px;top: -50px;"></p>
+                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 5" style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;"> <input type="checkbox" name="Correcta" value="5" style="position: relative; left: 20px;top: -50px;"></p>
+                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 6"style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;" > <input type="checkbox" name="Correcta" value="6" style="position: relative; left: 20px;top: -50px;"></p>
+                    <p><input class="Form2" v-model="H1" type="file" required name="opciones" placeholder="Opción 7" style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;"> <input type="checkbox" name="Correcta" value="7" style="position: relative; left: 20px;top: -50px;"></p>
+                    <p><input class="Form2" v-model="H2" type="file" required name="opciones" placeholder="Opción 8"style="width: 600px; height: 25px; position: relative; left: 16px; top: -50px;" > <input type="checkbox" name="Correcta" value="8" style="position: relative; left: 20px;top: -50px;"></p>
 
 
                 </div>

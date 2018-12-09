@@ -7,10 +7,12 @@ package Examen;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,6 +34,10 @@ public class Evaluacion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession sesion = request.getSession();
+            //sesion.setAttribute("rutaXML", ruta);
+            ArrayList respuestasSesion = new ArrayList<>();
+            respuestasSesion =(ArrayList) sesion.getAttribute("respuestas");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -39,6 +45,9 @@ public class Evaluacion extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Evaluacion at " + request.getContextPath() + "</h1>");
+            for(int i =0; i <respuestasSesion.size(); i++){
+                out.println("Respuesta a la pregunta numero "+(i+1)+" es: "+respuestasSesion.get(i)+"<br>");
+            }
             out.println("</body>");
             out.println("</html>");
         }

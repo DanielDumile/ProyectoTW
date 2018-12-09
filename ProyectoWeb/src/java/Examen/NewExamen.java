@@ -102,6 +102,7 @@ public class NewExamen extends HttpServlet {
 "                <p class=\"Subtitulos3\" style=\"color: black\">Preguntas Disponibles</p>\n" +
 "                <p class=\"Subtitulos3\" style=\"color: black\">Seleccione las preguntas que quiera en su examen</p>");
 
+                out.println("<div style=\"overflow: scroll;\">");
                 for (int i = 0; i < list.size(); i++) {
                     //Se obtiene el elemento 'user1'
                     Element campo = (Element) list.get(i);
@@ -110,14 +111,16 @@ public class NewExamen extends HttpServlet {
                     //Se obtiene el valor que esta entre los tags
                     String texto = campo.getChildTextTrim("texto");
                     String tipo = campo.getChildTextTrim("tipo");
-
-                    out.println("<p style=\"position: relative; left: 20px;\"><input type=\"checkbox\" name=\"idPreguntas\" value=\""+id+"\"> Pregunta: "+texto+" --> Tipo:"+tipo+"\n" +
-"</p>");
+                    
+                    out.println("<p style=\"position: relative; left: 20px;\"><input type=\"checkbox\" name=\"idPreguntas\" value=\""+id+"\"> Pregunta: "+texto+" --> Tipo:"+tipo+"\n" +"</p>");
+                    
+                    
 
                 }
+                out.println("</div>");
                 out.println("</div>"
                         + "<input type=\"submit\" class=\"button2\" value=\"Subir Examen\" style=\"position: relative; top: 20px; left: -30px;\" />\n" +
-"                <input type=\"button\" class=\"button3\" value=\"Regresar\" style=\"position: relative; top: 20px; left: 10px;\" />"
+"                <input type=\"button\" class=\"button3\" value=\"Regresar\" onclick=\"RegresarExamen()\" style=\"position: relative; top: 20px; left: 10px;\" />"
                         + "</form>"
                         + "</div>"
                         + "<script src=\"../Scripts/index.js\"></script>");

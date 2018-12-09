@@ -51,10 +51,11 @@ public class ResolverExamen extends HttpServlet {
             sesion.setAttribute("rutaXML", ruta);
             ArrayList respuestasSesion = new ArrayList<>();
             respuestasSesion =(ArrayList) sesion.getAttribute("respuestas");
-            sesion.setAttribute("preguntas", respuestasSesion);
+            int indice = Integer.parseInt(request.getParameter("indice"));
+            sesion.setAttribute("respuestas", respuestasSesion);
 
             
-            int indice = Integer.parseInt(request.getParameter("indice"));
+            
             String idExamen = request.getParameter("ID");
             int cant_preguntas = Integer.parseInt(request.getParameter("cantidad"));
             
@@ -91,18 +92,19 @@ public class ResolverExamen extends HttpServlet {
                 System.out.println(io.getMessage());
             }
 
-
-            if (indice >= cant_preguntas || indice < 0) {
+            if (indice >= cant_preguntas) {
                 //Consulta de preguntas
-                out.println("<!DOCTYPE html>");
+                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<script src=\"Scripts/index.js\"></script><title>Resolver Examen</title>");
-                out.println("<link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\" />");
+                out.println("<title>Servlet InicioExamen</title>");
+                out.println("<script> function cargar(){ document.getElementById(\"formi\").submit();}</script>");
                 out.println("</head>");
-                out.println("<body>");
-                out.println("<script>RegresarExamen();</script>");
-                out.println("</body>");
+                out.println("<body onLoad='cargar();'><form method='post' name='formi' id='formi' action='Evaluacion'>");
+                out.println("<input type='text' name='ID' value='" + idExamen + "' hidden>");
+                out.println("<input type='text' name='cantidad' value='" + String.valueOf(cant_preguntas) + "' hidden>");
+                out.println("<input type='text' name='indice' value='"+String.valueOf(indice)+"' hidden>");
+                out.println("</form></body>");
                 out.println("</html>");
             } else {
                 //SACAMOS A TODAS LAS PREGUNTAS PERO SOLO PONEMOS A LA QUE NOS INTERESA

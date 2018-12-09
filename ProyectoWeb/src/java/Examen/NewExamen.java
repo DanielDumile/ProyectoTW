@@ -102,7 +102,7 @@ public class NewExamen extends HttpServlet {
 "                <p class=\"Subtitulos3\" style=\"color: black\">Preguntas Disponibles</p>\n" +
 "                <p class=\"Subtitulos3\" style=\"color: black\">Seleccione las preguntas que quiera en su examen</p>");
 
-                out.println("<div style=\"overflow: scroll;\">");
+                out.println("<div style=\"overflow: scroll; width:680px; height:290px; \">");
                 for (int i = 0; i < list.size(); i++) {
                     //Se obtiene el elemento 'user1'
                     Element campo = (Element) list.get(i);

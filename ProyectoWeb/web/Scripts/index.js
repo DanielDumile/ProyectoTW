@@ -254,13 +254,13 @@ function Calificar(){
                     
                 }
             }
-            
+            var ans= document.getElementById("answer");
             if(resultado === Respuesta){
-                document.getElementById("answer").value='Correcta';
+                ans.value='Correcta';
                 alert('Respuesta Correcta');
                 
             }else{
-                document.getElementById("answer").value='Incorrecta';
+                ans.value='Incorrecta';
                 alert('Respuesta Incorrecta');
                 
             }
@@ -276,7 +276,7 @@ function Siguiente(){
     index.value = aux;
     
     var dir = document.getElementById("direccion");
-    dir.value="Siguiente";
+    dir.value='Siguiente';
     
     document.getElementById("formi").submit();
     
@@ -292,7 +292,7 @@ function Evaluacion(){
     index.value = aux;
     
     var dir = document.getElementById("direccion");
-    dir.value="Evaluacion";
+    dir.value='Evaluacion';
     
     document.getElementById("formi").submit();
     
@@ -308,7 +308,7 @@ function Anterior(){
     index.value = aux;
     
     var dir = document.getElementById("direccion");
-    dir.value="Anterior";
+    dir.value='Anterior';
     
     document.getElementById("formi").submit();
     

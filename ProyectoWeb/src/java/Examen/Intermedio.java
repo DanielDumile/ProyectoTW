@@ -35,12 +35,13 @@ public class Intermedio extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession sesion = request.getSession();
-            ArrayList respuestasSesion = new ArrayList<>();
+            ArrayList respuestasSesion;
             respuestasSesion = (ArrayList) sesion.getAttribute("respuestas");
             
             String idExamen = request.getParameter("idExamen");//ya
             String answer = request.getParameter("answer");//ya
             int indice = Integer.parseInt(request.getParameter("indice"));//ya
+            int cant_preguntas = Integer.parseInt(request.getParameter("cantidad"));//ya
             String direccion = request.getParameter("direccion");
 
             respuestasSesion.set(indice, answer);
@@ -52,11 +53,12 @@ public class Intermedio extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Servlet InicioExamen</title>");
-                out.println("<script> function cargar(){ document.formi.submit();}</script>");
+                out.println("<script> function cargar(){ document.getElementById(\"formi\").submit();}</script>");
                 out.println("</head>");
                 out.println("<body onLoad='cargar();'><form method='post' name='formi' id='formi' action='Evaluacion'>");
                 out.println("<input type='text' name='ID' value='" + idExamen + "' hidden>");
-                out.println("<input type='text' name='indice value='"+(indice)+"' hidden></form>");
+                out.println("<input type='text' name='cantidad' value='" + String.valueOf(cant_preguntas) + "' hidden>");
+                out.println("<input type='text' name='indice value='"+String.valueOf(indice)+"' hidden></form>");
                 out.println("</body>");
                 out.println("</html>");
             }
@@ -65,14 +67,15 @@ public class Intermedio extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Servlet InicioExamen</title>");
-                out.println("<script> function cargar(){ document.formi.submit();}</script>");
+                out.println("<script> function cargar(){ document.getElementById(\"formi\").submit();}</script>");
                 out.println("</head>");
                 out.println("<body onLoad='cargar();'><form method='post' name='formi' id='formi' action='ResolverExamen'>");
                 out.println("<input type='text' name='ID' value='" + idExamen + "' hidden>");
+                out.println("<input type='text' name='cantidad' value='" + String.valueOf(cant_preguntas) + "' hidden>");
                 if(direccion.equals("Siguiente"))
-                    out.println("<input type='text' name='indice value='"+(indice+1)+"' hidden></form>");
+                    out.println("<input type='text' name='indice value='"+String.valueOf(indice+1)+"' hidden></form>");
                 else
-                    out.println("<input type='text' name='indice value='"+(indice-1)+"' hidden></form>");
+                    out.println("<input type='text' name='indice value='"+String.valueOf(indice-1)+"' hidden></form>");
                 out.println("</body>");
                 out.println("</html>");
             }

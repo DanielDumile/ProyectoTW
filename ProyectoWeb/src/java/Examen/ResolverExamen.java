@@ -92,7 +92,7 @@ public class ResolverExamen extends HttpServlet {
             }
 
 
-            if (indice >= cant_preguntas) {
+            if (indice >= cant_preguntas || indice < 0) {
                 //Consulta de preguntas
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
@@ -127,7 +127,7 @@ public class ResolverExamen extends HttpServlet {
                             + "        \n"
                             + "    </head>\n"
                             + "    <body>"
-                            + "<form id='formi' action='ResolverExamen' method='post' >");
+                            + "<form id='formi' action='Intermedio' method='post' >");
                     for (int i = 0; i < list.size(); i++) {
                         Element campo = (Element) list.get(i);
                         String id = campo.getAttributeValue("id");

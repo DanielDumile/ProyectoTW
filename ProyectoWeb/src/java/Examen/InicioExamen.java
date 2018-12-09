@@ -86,7 +86,7 @@ public class InicioExamen extends HttpServlet {
             out.println("</head>");
             out.println("<body onLoad='cargar();'><form method='post' name='formi' id='formi' action='ResolverExamen'>");
             out.println("<input type='text' name='ID' value='"+idExamen+"' hidden>");
-             out.println("<input type='text' name='cantidad' value='"+cant_preguntas+"' hidden>");
+            out.println("<input type='text' name='cantidad' value='"+cant_preguntas+"' hidden>");
             out.println("<input type='text' name='indice' value='0' hidden></form>");
             out.println("</body>");
             out.println("</html>");

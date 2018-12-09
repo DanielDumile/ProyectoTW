@@ -256,11 +256,11 @@ function Calificar(){
             }
             
             if(resultado === Respuesta){
-                
+                document.getElementById("answer").value='Correcta';
                 alert('Respuesta Correcta');
                 
             }else{
-                
+                document.getElementById("answer").value='Incorrecta';
                 alert('Respuesta Incorrecta');
                 
             }
@@ -272,9 +272,43 @@ function Siguiente(){
     
     var index = document.getElementById("indice");
     var aux = parseInt(document.getElementById("indice").value);
-    aux = aux + 1;
-    
+    //aux = aux + 1; 
     index.value = aux;
+    
+    var dir = document.getElementById("direccion");
+    dir.value="Siguiente";
+    
+    document.getElementById("formi").submit();
+    
+    
+    
+}
+
+function Evaluacion(){
+    
+    var index = document.getElementById("indice");
+    var aux = parseInt(document.getElementById("indice").value);
+    //aux = aux + 1; 
+    index.value = aux;
+    
+    var dir = document.getElementById("direccion");
+    dir.value="Evaluacion";
+    
+    document.getElementById("formi").submit();
+    
+    
+    
+}
+
+function Anterior(){
+    
+    var index = document.getElementById("indice");
+    var aux = parseInt(document.getElementById("indice").value);
+    //aux = aux - 1;
+    index.value = aux;
+    
+    var dir = document.getElementById("direccion");
+    dir.value="Anterior";
     
     document.getElementById("formi").submit();
     
@@ -316,16 +350,16 @@ function CalificarHotObject(){
             if(Contador === Array.length){
                 
                 if(Division === Contador){
-
+                    document.getElementById("answer").value='Correcta';
                      alert('Respuesta Correcta');
                 }else{
-                    
+                    document.getElementById("answer").value='Incorrecta';
                     alert('Respuesta Incorrecta');
                     
                 }
                 
             }else{
-                
+                document.getElementById("answer").value='Incorrecta';
                  alert('Respuesta Incorrecta');
                 
             }

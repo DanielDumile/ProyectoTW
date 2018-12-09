@@ -38,12 +38,12 @@ public class Intermedio extends HttpServlet {
             ArrayList respuestasSesion = new ArrayList<>();
             respuestasSesion = (ArrayList) sesion.getAttribute("respuestas");
             
-            String idExamen = request.getParameter("idExamen");
-            String respuesta = request.getParameter("respuesta");
-            int indice = Integer.parseInt(request.getParameter("indice"));
+            String idExamen = request.getParameter("idExamen");//ya
+            String answer = request.getParameter("answer");//ya
+            int indice = Integer.parseInt(request.getParameter("indice"));//ya
             String direccion = request.getParameter("direccion");
 
-            respuestasSesion.set(indice, respuesta);
+            respuestasSesion.set(indice, answer);
             
             sesion.setAttribute("respuestas", respuestasSesion);
 

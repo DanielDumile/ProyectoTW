@@ -81,7 +81,7 @@ public class MostrarPregunta extends HttpServlet {
                     String tipo = campo.getChildTextTrim("tipo");
                     String texto = campo.getChildTextTrim("texto");
                     String respuesta = campo.getChildTextTrim("respuesta");
-                    
+
                     //NUEVOS ELEMENTOS AQUI
                     String multimedia = campo.getChildTextTrim("multimedia");
                     String inicial = campo.getChildTextTrim("inicial");
@@ -94,66 +94,62 @@ public class MostrarPregunta extends HttpServlet {
                     //out.println(id);
                     System.out.println(id);
                     if (id_pregunta.equals(id)) {
-                        
+
                         if (tipo.equals("TrueFalse")) {
-                           out.println("");
-                            
-                            
-                            out.println("<div id=\"Preguntas\">\n" +
-"            \n" +
-                                   
-"            <div id=\"Contenido\">\n" +
-"                \n" +
-"                <div id=\"Top\">\n" +
-"                    \n" +
-"                    <br />\n" +
-"                    <Encabezado Pregunta=\""+texto+"\" ></Encabezado> \n" +
-"                    <input type=\"text\" value=\""+id+"\" hidden />\n" +
-"                </div>\n" +
-"                \n" +
-"                <br />\n" +
-"                <br />\n" +
-"                \n" +
-"                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Verdadero\" name=\"Valor\"/> Verdadero</p>\n" +
-"                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Falso\" name=\"Valor\"/> Falso</p>\n" +
-"                 \n" +
-"                <img class=\"Ad4\" src=\""+multimedia+"\" alt=\"Examen\" />\n" +
-"                \n" +
-"                \n" +
-"                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:190px;\" >\n" +
-"                     <br />\n" +
-"                     <p class=\"Subtitulos3\"><b>Intentos : </b><input type='text' value="+intentos+" disabled name='try' class='Subtitulos3' id='try' width:30px; style='border: none; background-color:#4CAF50; color: white'/></p>\n" +
-"                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Calificar2()\" id=\"Calificar\" value=\"Calificar\" />"
-                                    + "<input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Regresar()\" id=\"Calificar\" value=\"Regresar\" />\n" +
-"                </div>\n" +
-"            </div>\n" +
-"            \n");
-                            
-                            
-                            out.println("<input type='text' value='"+inicial+"' name='inicial' id='inicial' hidden />");
-                            out.println("<input type='text' value='"+evaluar+"' name='evaluar' id='evaluar' hidden />");
-                            out.println("<input type='text' value='"+correcta+"' name='correcta' id='correcta' hidden />");
-                            out.println("<input type='text' value='"+incorrecta+"' name='incorrecta' id='incorrecta' hidden />");
-                            out.println("<input type='text' value='"+intentar+"' name='intentar' id='intentar' hidden />");
+                            out.println("");
+
+                            out.println("<div id=\"Preguntas\">\n"
+                                    + "            \n"
+                                    + "            <div id=\"Contenido\">\n"
+                                    + "                \n"
+                                    + "                <div id=\"Top\">\n"
+                                    + "                    \n"
+                                    + "                    <br />\n"
+                                    + "                    <Encabezado Pregunta=\"" + texto + "\" ></Encabezado> \n"
+                                    + "                    <input type=\"text\" value=\"" + id + "\" hidden />\n"
+                                    + "                </div>\n"
+                                    + "                \n"
+                                    + "                <br />\n"
+                                    + "                <br />\n"
+                                    + "                \n"
+                                    + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Verdadero\" name=\"Valor\"/> Verdadero</p>\n"
+                                    + "                <p class=\"Subtitulos3\" style=\"color: black\"><input type=\"radio\" value=\"Falso\" name=\"Valor\"/> Falso</p>\n"
+                                    + "                 \n"
+                                    + "                <img class=\"Ad4\" src=\"" + multimedia + "\" alt=\"Examen\" />\n"
+                                    + "                \n"
+                                    + "                \n"
+                                    + "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:190px;\" >\n"
+                                    + "                     <br />\n"
+                                    + "                     <p class=\"Subtitulos3\"><b>Intentos : </b><input type='text' value=" + intentos + " disabled name='try' class='Subtitulos3' id='try' width:30px; style='border: none; background-color:#4CAF50; color: white'/></p>\n"
+                                    + "                     <input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Calificar2()\" id=\"Calificar\" value=\"Calificar\" />"
+                                    + "<input type=\"button\" class=\"button2\"style=\"position: relative; left: 120px; top:-70px;\" onclick=\"Regresar()\" id=\"Calificar\" value=\"Regresar\" />\n"
+                                    + "                </div>\n"
+                                    + "            </div>\n"
+                                    + "            \n");
+
+                            out.println("<input type='text' value='" + inicial + "' name='inicial' id='inicial' hidden />");
+                            out.println("<input type='text' value='" + evaluar + "' name='evaluar' id='evaluar' hidden />");
+                            out.println("<input type='text' value='" + correcta + "' name='correcta' id='correcta' hidden />");
+                            out.println("<input type='text' value='" + incorrecta + "' name='incorrecta' id='incorrecta' hidden />");
+                            out.println("<input type='text' value='" + intentar + "' name='intentar' id='intentar' hidden />");
                             out.println("<input type='text' value='No lo ocupo' name='answer' id='answer' hidden />");
-                           
-                            out.println("<input type='text' value='"+respuesta+"' name='Resp' id='Resp' hidden />"+
-                            
-"            <div id=\"Left\" style=\"position: relative; left: 100px; top:-100px;\">\n" +
-"                <p>Lea cuidadosamente la pregunta\n" +
-"                y seleccione si es verdadera o falsa</p>\n" +
-"                <p>Seleccione <b>Calificar</b> para obtener puntaje</p>\n" +
-"                <p>Seleccione <b>Siguiente</b> para pasar a la otra pregunta</p>\n" +
-"            </div>\n" +
-"            \n" +
-"            <div id=\"Left\" style=\"position: relative; left: -205px; top:130px;\">\n" +
-"                <p><b>FeedBack</b></p>\n" +
-"                <p><textarea id='feed' readonly style='width: 290px; height: 120px; background-color: white; text­align: center; border:none;'>"+inicial+"</textarea></p>\n" +
-"            </div>\n" +
-"        </div>");
-                            
+
+                            out.println("<input type='text' value='" + respuesta + "' name='Resp' id='Resp' hidden />"
+                                    + "            <div id=\"Left\" style=\"position: relative; left: 100px; top:-100px;\">\n"
+                                    + "                <p>Lea cuidadosamente la pregunta\n"
+                                    + "                y seleccione si es verdadera o falsa</p>\n"
+                                    + "                <p>Seleccione <b>Calificar</b> para obtener puntaje</p>\n"
+                                    + "                <p>Seleccione <b>Siguiente</b> para pasar a la otra pregunta</p>\n"
+                                    + "            </div>\n"
+                                    + "            \n"
+                                    + "            <div id=\"Left\" style=\"position: relative; left: -205px; top:130px;\">\n"
+                                    + "                <p><b>FeedBack</b></p>\n"
+                                    + "                <p><textarea id='feed' readonly style='width: 290px; height: 120px; background-color: white; text­align: center; border:none;'>" + inicial + "</textarea></p>\n"
+                                    + "            </div>\n"
+                                    + "        </div>");
+
                         } else {
-                            
+
                         }
                         break;
                     }

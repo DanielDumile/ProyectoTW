@@ -247,7 +247,7 @@ public class MostrarPregunta extends HttpServlet {
 "\n" +
 "                    <label class=\"checkeable\">\n" +
 "                      <input type=\"checkbox\" name=\"Respuesta\" value='8'/>\n" +
-"                      <img src=\""+((Element) lista.get(6)).getTextTrim()+"\" />\n" +
+"                      <img src=\""+((Element) lista.get(7)).getTextTrim()+"\" />\n" +
 "                    </label>\n" +
 "                    \n" +
 "                    <img class=\"Ad6\" src=\""+multimedia+"\" alt=\"Examen\" />\n" +

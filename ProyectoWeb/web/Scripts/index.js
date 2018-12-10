@@ -193,6 +193,7 @@ function EliminarPregunta() {
     } else {
 
         if (confirm("Esta seguro de eliminar la pregunta")) {
+            alert('Se elimino la pregunta seleccionada');
             document.getElementById("f1").submit();
         }
 
@@ -408,3 +409,78 @@ function Calificar2() {
         }
     }
 }
+
+function Calificar3() {
+
+    var Marcadas = document.getElementsByName("Respuesta");
+    var Correcta = document.getElementById("Resp").value;
+    var Array = Correcta.split(",");
+    var ans = document.getElementById("answer");
+    
+    var Intentos = parseInt(document.getElementById("try").value);
+    var Feedback = document.getElementById("feed");
+    var correcta =document.getElementById("correcta").value;
+    var incorrecta = document.getElementById("incorrecta").value;
+    var intentar = document.getElementById("intentar").value;
+    
+    var evaluar = document.getElementById("evaluar").value;
+    
+    Feedback.value = evaluar;
+
+     if(Intentos === 0){
+        
+        alert('Se acabaron los intentos');
+        Feedback.value = intentar;
+        
+       
+    }else{
+
+    var Contador = 0;
+    var Check = 0;
+
+    for (var i = 0; i < Marcadas.length; i++) {
+
+        for (var j = 0; j < Array.length; j++) {
+
+            if (Marcadas[i].checked) {
+                Check++;
+
+                if (Marcadas[i].value === Array[j]) {
+
+                    Contador++;
+
+                }
+
+            } else {
+
+                break;
+            }
+        }
+
+    }
+    var Division = Check / Array.length;
+
+    if (Contador === Array.length) {
+
+        if (Division === Contador) {
+            ans.value = 'Correcta';
+            alert('Respuesta Correcta');
+            Feedback.value = correcta;
+        } else {
+            ans.value = 'Incorrecta';
+            alert('Respuesta Incorrecta');
+            Feedback.value = incorrecta;
+            document.getElementById("try").value--;
+
+        }
+
+    } else {
+        ans.value = 'Incorrecta';
+        alert('Respuesta Incorrecta');
+        Feedback.value = incorrecta;
+        document.getElementById("try").value--;
+    }
+    }
+}
+
+

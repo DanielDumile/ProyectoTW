@@ -315,6 +315,10 @@ function CalificarHotObject() {
     var Correcta = document.getElementById("Resp").value;
     var Array = Correcta.split(",");
     var ans = document.getElementById("answer");
+    var Feedback = document.getElementById("feed");
+    var correcta =document.getElementById("correcta").value;
+    var incorrecta = document.getElementById("incorrecta").value;
+    var intentar = document.getElementById("intentar").value;
 
     var Contador = 0;
     var Check = 0;
@@ -346,16 +350,17 @@ function CalificarHotObject() {
         if (Division === Contador) {
             ans.value = 'Correcta';
             alert('Respuesta Correcta');
+            Feedback.value = correcta;
         } else {
             ans.value = 'Incorrecta';
             alert('Respuesta Incorrecta');
-
+            Feedback.value = incorrecta;
         }
 
     } else {
         ans.value = 'Incorrecta';
         alert('Respuesta Incorrecta');
-
+        Feedback.value = incorrecta;
     }
 
 }

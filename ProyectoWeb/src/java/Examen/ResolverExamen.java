@@ -318,7 +318,7 @@ public class ResolverExamen extends HttpServlet {
                                         + "                     <br />\n"
                                         + "                     \n"
                                         + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />"
-                                        + "<input type=\"button\" class=\"button2\" onclick=\"Calificar()\" value=\"Calificar\" />\n"
+                                        + "             <input type=\"button\" class=\"button2\" value=\"Calificar\" onclick='CalificarHotObject()' />\n"
                                         + "               </div>\n"
                                         + "            </div>\n"
                                         + "            \n"
@@ -331,7 +331,7 @@ public class ResolverExamen extends HttpServlet {
                                         + "            \n"
                                         + "            <div id=\"Left\" style=\"position: relative; left: -205px; top:130px; border: 4px solid #f0b60f;\">\n"
                                         + "                <p><b>FeedBack</b></p>\n"
-                                        + "                <p><textarea id='feed' readonly style='width: 290px; height: 120px; background-color: white; text­align: center; border:none;'>" + inicial + "</textarea></p>\n"
+                                        + "                <p><input type='text' id='feed' value='" + inicial + "' readonly ></p>\n"
                                         + "            </div>\n"
                                         + "        </div>");
 
@@ -432,7 +432,7 @@ public class ResolverExamen extends HttpServlet {
                                         + "                     <br />\n"
                                         + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
                                         + "                    \n"
-                                        + "                     <input type=\"button\" class=\"button2\" value=\"Calificar\" onclick='CalificarHotObject()()' />\n"
+                                        + "                     <input type=\"button\" class=\"button2\" value=\"Calificar\" onclick='CalificarHotObject()' />\n"
                                         + "                </div>\n"
                                         + "            </div>\n"
                                         + "            \n"

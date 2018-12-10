@@ -120,7 +120,7 @@ public class Cambios extends HttpServlet {
                         if (tipo.equals("TrueFalse")) {
                             sesion.setAttribute("tipo", "TrueFalse");
 
-                            out.println("<form action=\"../AltaTF\" method=\"post\" name=\"F1\" enctype='multipart/form-data'>\n"
+                            out.println("<form action=\"ModificarPregunta\" method=\"post\" name=\"F1\" enctype='multipart/form-data'>\n"
                                     + "            <div id=\"Preguntas2\">\n"
                                     + "\n"
                                     + "                <div id=\"Contenido2\">\n"
@@ -210,7 +210,7 @@ public class Cambios extends HttpServlet {
                             //((Element) lista.get(0)).getTextTrim()
                             out.println("");
                             
-                            out.println("<form action=\"../AltaHot\" method=\"post\" name=\"F1\" enctype='multipart/form-data'>\n"
+                            out.println("<form action=\"ModificarPregunta\" method=\"post\" name=\"F1\" enctype='multipart/form-data'>\n"
                                     + "\n"
                                     + "            <div id=\"Preguntas2\">\n"
                                     + "\n"

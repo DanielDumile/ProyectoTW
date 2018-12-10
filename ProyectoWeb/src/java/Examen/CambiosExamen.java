@@ -112,7 +112,7 @@ public class CambiosExamen extends HttpServlet {
                 List list = rootNode.getChildren("pregunta");
 
                 out.println("<div id=\"Preguntas\">\n"
-                        + "            <form action=\"AltaExamen\" method=\"post\" > \n"
+                        + "            <form action=\"ModificarExamen\" method=\"post\" > \n"
                         + "            <div id=\"Contenido3\">\n"
                         + "                \n"
                         + "                <div id=\"Top\" style=\"background-color: #117db8;\">\n"
@@ -132,7 +132,7 @@ public class CambiosExamen extends HttpServlet {
                         + "<input type='text' value='"+idExamen+"' name='IDV' hidden>"
                         + "                 \n"
                         + "                <p class=\"Subtitulos3\" style=\"color: black\">Nombre del Examen </p>\n"
-                        + "                <p class=\"Subtitulos3\"><textarea cols=\"40\" rows=\"3\" v-model=\"pregunta\" required name=\"pregunta\" >"+textoExamen+"</textarea></p>\n"
+                        + "                <p class=\"Subtitulos3\"><textarea cols=\"40\" rows=\"3\" v-model=\"pregunta\" required name=\"texto\" >"+textoExamen+"</textarea></p>\n"
                         + "                \n"
                         + "                <p class=\"Subtitulos3\" style=\"color: black\">Preguntas Disponibles</p>\n"
                         + "                <p class=\"Subtitulos3\" style=\"color: black\">Seleccione las preguntas que quiera en su examen</p>");

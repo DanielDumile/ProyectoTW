@@ -272,7 +272,6 @@ public class MostrarPregunta extends HttpServlet {
                                     + "                <p><textarea id='feed' readonly style='width: 290px; height: 120px; background-color: white; text­align: center; border:none;'>" + inicial + "</textarea></p>\n"
                                     + "            </div>\n"
                                     + "        </div>");
-
                         }
                         break;
                     }

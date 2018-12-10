@@ -204,18 +204,20 @@ public class ResolverExamen extends HttpServlet {
                                         + "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:190px;\" >\n"
                                         + "                     <br />\n"
                                         + "                     \n");
+                                
+                                out.println("             <input type=\"button\" class=\"button2\" style='position: relative; left:-205px; top: 70px;' value=\"Calificar\" onclick='Calificar()' />\n");
+                                out.println("             <input type=\"button\" class=\"button2\"   style='position: relative; left:140px; top: 70px;' value=\"Evaluacion\" onclick='Evaluacion()' />\n");
+
                                 if (indice != 0) {
-                                    out.println("             <input type=\"button\" class=\"button2\"  value=\"Inicio\" onclick='Inicio()' />\n"
-                                            + "             <input type=\"button\" class=\"button2\"  value=\"Anterior\" onclick='Anterior()' />\n");
+                                    out.println("             <input type=\"button\" class=\"button2\" style='position: relative; left:-50px; top: 0px; ' value=\"Inicio\" onclick='Inicio()' />\n"
+                                            + "             <input type=\"button\" class=\"button2\"  style='position: relative; left:140px; top: -43px;'value=\"Anterior\" onclick='Anterior()' />\n");
                                 }
                                 //out.println("             <input type=\"button\" class=\"button2\"  value=\"Anterior\" onclick='Anterior()' />\n");
-                                out.println("             <input type=\"button\" class=\"button2\"  value=\"Calificar\" onclick='Calificar()' />\n");
-                                out.println("             <input type=\"button\" class=\"button2\"  value=\"Evaluacion\" onclick='Evaluacion()' />\n");
-
+                                
                                 //out.println("                     <input type=\"button\" class=\"button2\"  onclick='Siguiente()' value=\"Siguiente\" />");
                                 if (indice != cant_preguntas - 1) {
-                                    out.println("                     <input type=\"button\" class=\"button2\"  onclick='Siguiente()' value=\"Siguiente\" />");
-                                    out.println("                     <input type=\"button\" class=\"button2\"  onclick='Ultima()' value=\"Ultima\" />");
+                                    out.println("                     <input type=\"button\" class=\"button2\"  style='position: relative; left:20px; top: 120px;' onclick='Siguiente()' value=\"Siguiente\" />");
+                                    out.println("                     <input type=\"button\" class=\"button2\" style='position: relative; left:140px; top:-43px;' onclick='Ultima()' value=\"Ultima\" />");
                                 }
                                 out.println("                </div>\n"
                                         + "            </div>\n"

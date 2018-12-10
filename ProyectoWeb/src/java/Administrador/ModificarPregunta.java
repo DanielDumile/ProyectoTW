@@ -83,18 +83,18 @@ public class ModificarPregunta extends HttpServlet {
     private int maxMemSize = 4 * 1024;
     private File file;
     //Variables globlales a utilizar
-    String idPregunta = "";
-    String tipo = "";
+    String idPregunta;
+    String tipo;
 
-    String respuestaTF = "";
+    String respuestaTF;
     ArrayList<String> respuestaCorrecta = new ArrayList<>();
     ArrayList<String> opciones = new ArrayList<>();
-    String pregunta = "";
+    String pregunta;
     //Nuevos
-    String multimedia = "";
-    String intentos = "";
-    String inicial = "Mensaje Inicial", evaluar = "Momento de saber tu calificacion", correcta = "Respuesta Correcta", incorrecta = "Trata de nuevo", intentar = "Buen intento";
-
+    String multimedia;
+    String intentos;
+    String inicial, evaluar , correcta, incorrecta, intentar;
+    
     private static void deleteElement(String id, String ruta) throws IOException {
 
         File xmlFile = new File(ruta);
@@ -345,6 +345,7 @@ public class ModificarPregunta extends HttpServlet {
             HttpSession sesion = request.getSession();
             //sesion.setAttribute("user",usuario);
             sesion.setAttribute("rutaXML", ruta);
+            tipo="";
             tipo = (String) sesion.getAttribute("tipo");
             if (tipo.equals("TrueFalse")) {
                 multimedia = "TF.png";
@@ -377,6 +378,18 @@ public class ModificarPregunta extends HttpServlet {
                 List fileItems = upload.parseRequest(request);
                 //request.getParameter("file")
                 // Process the uploaded file items
+                idPregunta = "";
+                pregunta = "";
+                intentos = "";
+                respuestaTF = "";
+                inicial = "Mensaje Inicial";
+                evaluar = "Momento de saber tu calificacion";
+                correcta = "Respuesta Correcta";
+                incorrecta = "Trata de nuevo";
+                intentar = "Buen intento";
+                //multimedia = "Hot.png";
+                respuestaCorrecta.clear();
+                opciones.clear();
                 getValores(fileItems);
             } catch (Exception ex) {
                 System.out.println(ex);

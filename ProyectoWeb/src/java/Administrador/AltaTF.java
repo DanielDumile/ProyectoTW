@@ -57,14 +57,13 @@ public class AltaTF extends HttpServlet {
     private File file;
 
     //Variables globlales a utilizar
-    String id = "";
-    String respuestaCorrecta = "";
-    String pregunta = "";
+    String id;
+    String respuestaCorrecta;
+    String pregunta;
     //Nuevos
-    String multimedia = "TF.png";
-    String intentos = "";
-    String inicial = "Mensaje Inicial", evaluar = "Momento de saber tu calificacion", correcta = "Respuesta Correcta", incorrecta = "Trata de nuevo", intentar = "Buen intento";
-
+    String multimedia;
+    String intentos;
+    String inicial, evaluar , correcta, incorrecta, intentar;
     public void getValores(List fileItems) throws Exception {
         Iterator i = fileItems.iterator();
 
@@ -168,6 +167,16 @@ public class AltaTF extends HttpServlet {
                 List fileItems = upload.parseRequest(request);
                 //request.getParameter("file")
                 // Process the uploaded file items
+                id = "";
+                pregunta = "";
+                intentos = "";
+                respuestaCorrecta = "";
+                inicial = "Mensaje Inicial";
+                evaluar = "Momento de saber tu calificacion";
+                correcta = "Respuesta Correcta";
+                incorrecta = "Trata de nuevo";
+                intentar = "Buen intento";
+                multimedia = "TF.png";
                 getValores(fileItems);
             } catch (Exception ex) {
                 System.out.println(ex);

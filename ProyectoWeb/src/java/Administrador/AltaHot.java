@@ -49,15 +49,15 @@ public class AltaHot extends HttpServlet {
     private File file;
 
     //Variables globlales a utilizar
-    String id = "";
+    String id;
     //String respuestaCorrecta = "";
     ArrayList<String> respuestaCorrecta = new ArrayList<>();
     ArrayList<String> opciones = new ArrayList<>();
-    String pregunta = "";
+    String pregunta;
     //Nuevos
-    String multimedia = "Hot.png";
-    String intentos = "";
-    String inicial = "Mensaje Inicial", evaluar = "Momento de saber tu calificacion", correcta = "Respuesta Correcta", incorrecta = "Trata de nuevo", intentar = "Buen intento";
+    String multimedia;
+    String intentos;
+    String inicial, evaluar , correcta, incorrecta, intentar;
 
     public void getValores(List fileItems) throws Exception {
         Iterator i = fileItems.iterator();
@@ -168,6 +168,17 @@ public class AltaHot extends HttpServlet {
                 List fileItems = upload.parseRequest(request);
                 //request.getParameter("file")
                 // Process the uploaded file items
+                id = "";
+                pregunta = "";
+                intentos = "";
+                inicial = "Mensaje Inicial";
+                evaluar = "Momento de saber tu calificacion";
+                correcta = "Respuesta Correcta";
+                incorrecta = "Trata de nuevo";
+                intentar = "Buen intento";
+                multimedia = "Hot.png";
+                respuestaCorrecta.clear();
+                opciones.clear();
                 getValores(fileItems);
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -199,6 +210,7 @@ public class AltaHot extends HttpServlet {
                         eTexto.setText(pregunta);
                         eTipo.setText("HotObject");
                         String auxRespuesta = "";
+                        
                         for (int i = 0; i < respuestaCorrecta.size(); i++) {
                             auxRespuesta += respuestaCorrecta.get(i);
                             if (i != respuestaCorrecta.size() - 1) {

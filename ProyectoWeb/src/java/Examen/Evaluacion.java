@@ -41,13 +41,41 @@ public class Evaluacion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Evaluacion</title>");            
+            out.println("<title>Evaluacion</title>");     
+            out.println("<link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\">\n" +
+"        <script src=\"../Frameworks/vue.js\"></script>"
+                    + "<script src=\"Scripts/index.js\"></script>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Evaluacion at " + request.getContextPath() + "</h1>");
+            
+            out.println("\n" +
+"        <div id=\"Preguntas\">\n" +
+"                     <div id=\"Contenido3\">\n" +
+"                \n" +
+"                <div id=\"Top\" style=\"background-color: #117db8; position: relative; top: -25px;\">\n" +
+"                    <p class='Subtitulos3' style=\"position: relative; left: 20px; top:10px\">Resultados de la Evaluación</p>" +
+"                    <br />\n" +
+"                \n" +
+"                </div>\n" +
+"                \n" +
+"                <br />\n" +
+"               \n" +
+                    "");
+            out.println("<div style=\"overflow: scroll; width:680px; height:450px; \">");
             for(int i =0; i <respuestasSesion.size(); i++){
-                out.println("Respuesta a la pregunta numero "+(i+1)+" es: "+respuestasSesion.get(i)+"<br>");
-            }
+               out.println("<p class='Subtitulos3' style=\"position: relative; left: 20px; color: black;\">Respuesta a la pregunta numero "+(i+1)+" es: "+respuestasSesion.get(i)+"</p><br>");
+            } 
+            out.println("</div>");
+    out.println("<input type='button' value='Regresar' style=\"position: relative; left: 250px; top: 20px;\" class='button3' onclick='RegresarExamen()' />\n" +
+"                \n" +
+"                 \n" +
+"                </div>\n" +
+"            </div>\n" +
+"            \n" +
+"            \n" +
+" \n" +
+"        <script src=\"../Scripts/index.js\"></script>");
+            
             out.println("</body>");
             out.println("</html>");
         }

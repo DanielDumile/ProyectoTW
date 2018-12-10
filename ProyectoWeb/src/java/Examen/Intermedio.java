@@ -75,8 +75,15 @@ public class Intermedio extends HttpServlet {
                 out.println("<input type='text' name='cantidad' value='" + cant_preguntas + "' hidden>");
                 if(direccion.equals("Siguiente"))
                     out.println("<input type='text' name='indice' value='"+(indice+1)+"' hidden>");
-                else
+                else if(direccion.equals("Anterior")){
                     out.println("<input type='text' name='indice' value='"+(indice-1)+"' hidden>");
+                }
+                else if(direccion.equals("Inicio")){
+                    out.println("<input type='text' name='indice' value='"+(0)+"' hidden>");
+                }
+                else if(direccion.equals("Ultima")){
+                    out.println("<input type='text' name='indice' value='"+(cant_preguntas-1)+"' hidden>");
+                }
                 out.println("</form></body>");
                 out.println("</html>");
             }

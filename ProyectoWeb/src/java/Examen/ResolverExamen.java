@@ -125,6 +125,35 @@ public class ResolverExamen extends HttpServlet {
                             + "        <link rel=\"stylesheet\" href=\"Styles/Style.css\" type=\"text/css\">\n"
                             + "        <script src=\"Frameworks/vue.js\"></script>"
                             + "<script src=\"Scripts/index.js\"></script>\n"
+                            + "  <style>\n"
+                            + "            \n"
+                            + "            .checkeable input {\n"
+                            + "                display: none;\n"
+                            + "                float: left;\n"
+                            + "            }\n"
+                            + "            \n"
+                            + "            .checkeable img {\n"
+                            + "                width: 100px;\n"
+                            + "                height: 100px;\n"
+                            + "                border: 5px solid transparent;\n"
+                            + "                position: relative;\n"
+                            + "                left: 35px;\n"
+                            + "                bottom: 20px;\n"
+                            + "      \n"
+                            + "            }\n"
+                            + "            \n"
+                            + "            .checkeable input {\n"
+                            + "                display: none;\n"
+                            + "                float: left;\n"
+                            + "            }\n"
+                            + "            \n"
+                            + "            .checkeable input:checked  + img {\n"
+                            + "              border-color: grey;\n"
+                            + "              opacity: 0.5;\n"
+                            + "             \n"
+                            + "            }\n"
+                            + "            \n"
+                            + "        </style>\n"
                             + "        \n"
                             + "    </head>\n"
                             + "    <body>"
@@ -174,10 +203,21 @@ public class ResolverExamen extends HttpServlet {
                                         + "                \n"
                                         + "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:190px;\" >\n"
                                         + "                     <br />\n"
-                                        + "                     \n"
-                                        + "                     <input type=\"button\" class=\"button2\" onclick=\"Calificar()\" value=\"Calificar\" />"
-                                        + "<input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />\n"
-                                        + "                </div>\n"
+                                        + "                     \n");
+                                if (indice != 0) {
+                                    out.println("             <input type=\"button\" class=\"button2\"  value=\"Inicio\" onclick='Inicio()' />\n"
+                                            + "             <input type=\"button\" class=\"button2\"  value=\"Anterior\" onclick='Anterior()' />\n");
+                                }
+                                //out.println("             <input type=\"button\" class=\"button2\"  value=\"Anterior\" onclick='Anterior()' />\n");
+                                out.println("             <input type=\"button\" class=\"button2\"  value=\"Calificar\" onclick='Calificar()' />\n");
+                                out.println("             <input type=\"button\" class=\"button2\"  value=\"Evaluacion\" onclick='Evaluacion()' />\n");
+
+                                //out.println("                     <input type=\"button\" class=\"button2\"  onclick='Siguiente()' value=\"Siguiente\" />");
+                                if (indice != cant_preguntas - 1) {
+                                    out.println("                     <input type=\"button\" class=\"button2\"  onclick='Siguiente()' value=\"Siguiente\" />");
+                                    out.println("                     <input type=\"button\" class=\"button2\"  onclick='Ultima()' value=\"Ultima\" />");
+                                }
+                                out.println("                </div>\n"
                                         + "            </div>\n"
                                         + "            \n");
 
@@ -316,10 +356,22 @@ public class ResolverExamen extends HttpServlet {
                                         + "                \n"
                                         + "                 <div id=\"Bottom\" style=\"position: relative; left: 0px; top:20px; background-color:#f0b60f\" >\n"
                                         + "                     <br />\n"
-                                        + "                     \n"
-                                        + "                     <input type=\"button\" class=\"button2\" onclick='Siguiente()' value=\"Siguiente\" />"
-                                        + "             <input type=\"button\" class=\"button2\" value=\"Calificar\" onclick='CalificarHotObject()' />\n"
-                                        + "               </div>\n"
+                                        + "                     \n");
+                                if (indice != 0) {
+                                    out.println("             <input type=\"button\" class=\"button2\"  value=\"Inicio\" onclick='Inicio()' />\n"
+                                            + "             <input type=\"button\" class=\"button2\"  value=\"Anterior\" onclick='Anterior()' />\n");
+                                }
+                                //out.println("             <input type=\"button\" class=\"button2\"  value=\"Anterior\" onclick='Anterior()' />\n");
+                                out.println("             <input type=\"button\" class=\"button2\"  value=\"Calificar\" onclick='CalificarHotObject()' />\n");
+                                out.println("             <input type=\"button\" class=\"button2\"  value=\"Evaluacion\" onclick='Evaluacion()' />\n");
+
+                                //out.println("                     <input type=\"button\" class=\"button2\"  onclick='Siguiente()' value=\"Siguiente\" />");
+                                if (indice != cant_preguntas - 1) {
+                                    out.println("                     <input type=\"button\" class=\"button2\"  onclick='Siguiente()' value=\"Siguiente\" />");
+                                    out.println("                     <input type=\"button\" class=\"button2\"  onclick='Ultima()' value=\"Ultima\" />");
+                                }
+
+                                out.println("               </div>\n"
                                         + "            </div>\n"
                                         + "            \n"
                                         + "            <div id=\"Left\" style=\"position: relative; left: 100px; top: -100px; border: 4px solid #f0b60f;\">\n"

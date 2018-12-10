@@ -309,6 +309,38 @@ function Anterior() {
 
 }
 
+function Inicio() {
+
+    var index = document.getElementById("indice");
+    var aux = parseInt(document.getElementById("indice").value);
+    //aux = aux - 1;
+    index.value = aux;
+
+    var dir = document.getElementById("direccion");
+    dir.value = 'Inicio';
+
+    document.getElementById("formi").submit();
+
+
+
+}
+
+function Ultima() {
+
+    var index = document.getElementById("indice");
+    var aux = parseInt(document.getElementById("indice").value);
+    //aux = aux - 1;
+    index.value = aux;
+
+    var dir = document.getElementById("direccion");
+    dir.value = 'Ultima';
+
+    document.getElementById("formi").submit();
+
+
+
+}
+
 function CalificarHotObject() {
 
     var Marcadas = document.getElementsByName("Respuesta");
